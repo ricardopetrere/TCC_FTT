@@ -1,0 +1,8 @@
+http://www.bogotobogo.com/cplusplus/files/c-gui-programming-with-qt-4-2ndedition.pdf
+http://www.prp.ueg.br/sic2010/apresentacao/trabalhos/pdf/exatas_terra/sic/pesquisa_e_desenvolvimento.pdf
+http://www.die.ufpi.br/ercemapi2011/minicursos/MC10.pdf
+https://github.com/bharathwaaj/sandbox/tree/master/Programming%20books/qt
+https://raw.githubusercontent.com/bharathwaaj/sandbox/master/Programming%20books/qt/Foundations.of.Qt.Development.pdf
+https://raw.githubusercontent.com/bharathwaaj/sandbox/master/Programming%20books/qt/AdvancedQtProgramming.pdf
+https://raw.githubusercontent.com/bharathwaaj/sandbox/master/Programming%20books/qt/gui_programming_with_qt_4.rar
+http://www-cs.ccny.cuny.edu/~wolberg/cs221/qt/books/BookOfQt4.pdf
