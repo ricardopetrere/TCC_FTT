@@ -1,7 +1,5 @@
 #Ignora os arquivos temporários do word (~$*.docx)
-monografia/~*
-documentos/~*
-TCCs passados/~*
+*~*
 
 #####################################################################
 #Pego de https://github.com/github/gitignore/blob/master/Qt.gitignore
