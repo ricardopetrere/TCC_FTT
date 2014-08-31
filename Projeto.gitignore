@@ -1,5 +1,8 @@
-#Ignora os arquivos tempor·rios do word (~$*.docx)
-*~$*
+#Ignora os arquivos tempor√°rios do word (~$*.docx)
+monografia/~$*
+documentos/~$*
+TCCs passados/~$*
+
 #####################################################################
 #Pego de https://github.com/github/gitignore/blob/master/Qt.gitignore
 # C++ objects and libs
