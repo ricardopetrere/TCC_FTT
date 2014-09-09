@@ -1,6 +1,7 @@
 ﻿#Ignora os arquivos temporários do word (~$*.docx,~WRL*.tmp)
 *~$*
 ~WRL*.tmp
+Thumbs.db
 #####################################################################
 #Pego de https://github.com/github/gitignore/blob/master/Qt.gitignore
 # C++ objects and libs
