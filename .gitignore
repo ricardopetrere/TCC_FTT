@@ -1,6 +1,7 @@
 ﻿#Ignora os arquivos temporários do word (~$*.docx,~WRL*.tmp)
 *~$*
 ~WRL*.tmp
+#Ignora o arquivo Thumbs.db (devido às miniaturas)
 Thumbs.db
 #####################################################################
 #Pego de https://github.com/github/gitignore/blob/master/Qt.gitignore
@@ -28,6 +29,7 @@ qrc_*.cpp
 ui_*.h
 Makefile*
 *-build-*
+*build-*
 
 # QtCreator
 
