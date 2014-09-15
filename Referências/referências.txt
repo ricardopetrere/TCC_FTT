@@ -1,7 +1,7 @@
 http://www.bogotobogo.com/cplusplus/files/c-gui-programming-with-qt-4-2ndedition.pdf
 http://dcsoft.wordpress.com/2010/01/30/qt-book-download-c-gui-programming-with-qt-4-second-edition-by-jasmin-blanchette-and-mark-summerfield-prentice-hall/
 http://www.prp.ueg.br/sic2010/apresentacao/trabalhos/pdf/exatas_terra/sic/pesquisa_e_desenvolvimento.pdf
-http://www.die.ufpi.br/ercemapi2011/minicursos/MC10.pdf
+http://www.die.ufpi.br/ercemapi2011/minicursos/MC10.pdf ou http://www.die.ufpi.br/ercemapi2011/minicursos/EBOOK.pdf
 https://github.com/bharathwaaj/sandbox/tree/master/Programming%20books/qt
 https://raw.githubusercontent.com/bharathwaaj/sandbox/master/Programming%20books/qt/Foundations.of.Qt.Development.pdf
 https://raw.githubusercontent.com/bharathwaaj/sandbox/master/Programming%20books/qt/AdvancedQtProgramming.pdf
