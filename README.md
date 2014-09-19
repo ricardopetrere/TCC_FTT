@@ -19,7 +19,7 @@ O repositório está separado da seguinte forma:
 documentos:
   possui os entregáveis externos ao TCC, como cronograma de atividades
 
-fontes: (em breve)
+fontes:
   possui os fontes utilizados no projeto, sejam eles programas-teste ou o protótipo em si
 
 monografia:
