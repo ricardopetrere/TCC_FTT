@@ -8,8 +8,4 @@ https://raw.githubusercontent.com/bharathwaaj/sandbox/master/Programming%20books
 https://raw.githubusercontent.com/bharathwaaj/sandbox/master/Programming%20books/qt/gui_programming_with_qt_4.rar
 http://www-cs.ccny.cuny.edu/~wolberg/cs221/qt/books/BookOfQt4.pdf
 http://www-cs.ccny.cuny.edu/~wolberg/cs221/qt/books/C++-GUI-Programming-with-Qt-4-1st-ed.pdf
-
-
-http://linux.chinaitlab.com/Special/FreeBSD/images/qt201208.png
-http://upload.wikimedia.org/wikipedia/fr/9/9c/Qt_Software_logo.png
-http://qt.digia.com/Static/Images/QtLogo.png
+https://www.wireshark.org/download/docs/user-guide-us.pdf
