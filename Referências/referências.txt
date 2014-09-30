@@ -9,3 +9,4 @@ https://raw.githubusercontent.com/bharathwaaj/sandbox/master/Programming%20books
 http://www-cs.ccny.cuny.edu/~wolberg/cs221/qt/books/BookOfQt4.pdf
 http://www-cs.ccny.cuny.edu/~wolberg/cs221/qt/books/C++-GUI-Programming-with-Qt-4-1st-ed.pdf
 https://www.wireshark.org/download/docs/user-guide-us.pdf
+http://www.pucrs.br/edipucrs/online/historiadacomputacao.pdf
