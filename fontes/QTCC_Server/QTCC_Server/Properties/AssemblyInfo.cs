@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("QTCC_Server")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("QTCC - Servidor")]
+[assembly: AssemblyDescription("Servidor do aplicativo QTCC")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("QTCC_Server")]
+[assembly: AssemblyCompany("Ricardo Petrére")]
+[assembly: AssemblyProduct("QTCC - Servidor")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
