@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.1
+import QtQuick.Controls.Styles 1.0
 
 ApplicationWindow
 {
@@ -38,13 +39,13 @@ ApplicationWindow
         id:lista_conversas_model
         //Conversa
         ListElement{
-            caminho_imagem:"images/images/ouster.png"
+            caminho_imagem:"/images/ouster.png"
             nome_contato: "A"
             ultima_mensagem_contato:"Teste A"
         }
         //Conversa
         ListElement{
-            caminho_imagem:"/images/images/qtcreator.png"
+            caminho_imagem:"/images/qtcreator.png"
             nome_contato: "Qt Creator"
             ultima_mensagem_contato: "E aí? Tudo bem? Estou aqui te mandando essa mensagem porque eu preciso realizar um teste."
         }

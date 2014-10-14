@@ -1,13 +1,28 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2014-10-13T22:00:05
+#
+#-------------------------------------------------
+
+QT       += core gui
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+TARGET = QTCC
 TEMPLATE = app
 
-QT += qml quick widgets
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    ui/mainwindow.cpp \
+    ui/conversas.cpp
 
-RESOURCES += qml.qrc
+HEADERS  += \
+    ui/mainwindow.h \
+    ui/conversas.h
 
-# Additional import path used to resolve QML modules in Qt Creator's code model
-QML_IMPORT_PATH =
+FORMS    += ui/mainwindow.ui \
+    ui/conversas.ui
 
-# Default rules for deployment.
-include(deployment.pri)
+CONFIG += mobility
+MOBILITY = 
+
