@@ -14,14 +14,21 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     ui/mainwindow.cpp \
-    ui/conversas.cpp
+    ui/conversas.cpp \
+    ui/contatos.cpp \
+    ngc/contato.cpp \
+    ngc/historicoconversa.cpp
 
 HEADERS  += \
     ui/mainwindow.h \
-    ui/conversas.h
+    ui/conversas.h \
+    ui/contatos.h \
+    ngc/contato.h \
+    ngc/historicoconversa.h
 
 FORMS    += ui/mainwindow.ui \
-    ui/conversas.ui
+    ui/conversas.ui \
+    ui/contatos.ui
 
 CONFIG += mobility
 MOBILITY = 
