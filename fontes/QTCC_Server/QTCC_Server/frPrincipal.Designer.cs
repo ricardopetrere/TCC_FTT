@@ -1,6 +1,6 @@
 ﻿namespace QTCC_Server
 {
-    partial class Form1
+    partial class frPrincipal
     {
         /// <summary>
         /// Required designer variable.

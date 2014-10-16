@@ -10,9 +10,9 @@ using CFG_BD_XML;
 
 namespace QTCC_Server
 {
-    public partial class Form1 : Form
+    public partial class frPrincipal : Form
     {
-        public Form1()
+        public frPrincipal()
         {
             InitializeComponent();
         }

@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/Conversas.qml</file>
-        <file>images/ouster.png</file>
-        <file>images/qtcreator.png</file>
+        <file>qml/ConversaView.qml</file>
     </qresource>
 </RCC>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical">
+  <Class Name="QTCC_Server.frPrincipal">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAACAAABAAABCAAAACAAAIBAAAAGAAAAAAAAA=</HashCode>
+      <FileName>frPrincipal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QTCC_Server.CS.CONSTANTES">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="QTCC_Server.CS.CONSTANTES.MensagemTipoEnum">
+        <TypeIdentifier>
+          <NewMemberFileName>cs\CONSTANTES.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Enum Name="QTCC_Server.CS.CONSTANTES.StatusEnvioEnum">
+        <TypeIdentifier>
+          <NewMemberFileName>cs\CONSTANTES.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>cs\CONSTANTES.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QTCC_Server.CS.Contato">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAARAAAAAAAAAAABAgAIAAAAAAAAAAAAAUAEAAAA=</HashCode>
+      <FileName>cs\Contato.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QTCC_Server.CS.Grupo">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAQAAAAAAAAAAAAAEAAAAAAAAABCAA=</HashCode>
+      <FileName>cs\Grupo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QTCC_Server.CS.Mensagem">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACAAAAAAAAICAAAABAAgAQAAAAAAIMBAAAkAAAAAA=</HashCode>
+      <FileName>cs\Mensagem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QTCC_Server.CS.MensagemImagemAudioVideo">
+    <Position X="7" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>cs\MensagemImagemAudioVideo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QTCC_Server.CS.Usuario">
+    <Position X="2.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAQAAACAAAAAACAAAAQIgACAAAAAAAAAAAAAIAAQ=</HashCode>
+      <FileName>cs\Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -11,7 +11,7 @@ ApplicationWindow
     title: qsTr("Conversas")
 
     //Referencial de tamanho para o cabeçalho do programa
-    property int tamanho_cabecalho: 128
+    property int tamanho_cabecalho: 100
 
     //Barra de menu com as opções
     menuBar: MenuBar {
@@ -39,29 +39,45 @@ ApplicationWindow
         id:lista_conversas_model
         //Conversa
         ListElement{
-            caminho_imagem:"/images/ouster.png"
+            caminho_imagem:"qrc:/images/ouster.png"
             nome_contato: "A"
             ultima_mensagem_contato:"Teste A"
         }
         //Conversa
         ListElement{
-            caminho_imagem:"/images/qtcreator.png"
+            caminho_imagem:"qrc:/images/qtcreator.png"
             nome_contato: "Qt Creator"
             ultima_mensagem_contato: "E aí? Tudo bem? Estou aqui te mandando essa mensagem porque eu preciso realizar um teste."
         }
     }
 
-    //Delegate indicando o padrão do componente de "última conversa"
+    //Delegate indicando o padrão do componente de "conversa"
     Component {
         id:lista_conversas_delegate
-        Row{
+
+        /*
+        Row {
+            ConversaView {
+                caminho_imagem: model.caminho_imagem
+                nome_contato: model.nome_contato
+                ultima_mensagem_contato: model.ultima_mensagem_contato
+            }
+            spacing: 10
+        }
+        */
+
+        Rectangle{
             id:conversa
             height: tamanho_cabecalho
             Image {
                 id: foto_usuario
+                asynchronous: true
                 source: model.caminho_imagem
-                width: tamanho_cabecalho
-                height: tamanho_cabecalho
+                sourceSize.height: height
+
+                //width: tamanho_cabecalho
+                //height: width
+                width: height
                 anchors.bottom: parent.bottom
                 anchors.top: parent.top
             }
@@ -70,20 +86,26 @@ ApplicationWindow
                 border.width: 10
                 anchors.left: foto_usuario.right
                 Text {
+                    id: txtnome_contato
                     anchors.top: conversa.top
                     anchors.left: parent.left
-                    id: txtnome_contato
                     font.bold: true
                     text: model.nome_contato
                 }
                 Text {
+                    id: txtultima_mensagem_contato
                     anchors.top: txtnome_contato.bottom
                     anchors.left: parent.left
-                    id: txtultima_mensagem_contato
                     text: model.ultima_mensagem_contato
                 }
             }
-            spacing: 10
+            //não está funcionando
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    console.log("Clicou")
+                }
+            }
         }
     }
 }

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/ouster.png</file>
+        <file>images/qtcreator.png</file>
+    </qresource>
+</RCC>
