@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComunicacaoRede.cs" />
     <Compile Include="cs\CONSTANTES.cs" />
     <Compile Include="frPrincipal.cs">
       <SubType>Form</SubType>

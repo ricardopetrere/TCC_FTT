@@ -78,27 +78,27 @@ namespace QTCC_Server.CS
 
         public static Mensagem MontaVO(System.Data.DataRow registro)
         {
-            
+            throw new NotImplementedException();
         }
 
         public static int InsereMensagem(Mensagem mensagem)
         {
-
+            throw new NotImplementedException();
         }
 
         public static Mensagem BuscaMensagem(int id_mensagem)
         {
-
+            throw new NotImplementedException();
         }
 
         public List<Mensagem> ListaMensagensPorStatus(CONSTANTES.StatusEnvioEnum status_envio)
         {
-
+            throw new NotImplementedException();
         }
 
         public int DeletaMensagemParaContato(Contato contato)
         {
-
+            throw new NotImplementedException();
         }
         #endregion
     }

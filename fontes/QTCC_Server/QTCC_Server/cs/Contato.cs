@@ -44,27 +44,27 @@ namespace QTCC_Server.CS
 
         public static Contato MontaVO(System.Data.DataRow registro)
         {
-
+            throw new NotImplementedException();
         }
 
         public static int InsereContato(Contato contato)
         {
-
+            throw new NotImplementedException();
         }
 
         public static int AlteraContato(Contato contato)
         {
-
+            throw new NotImplementedException();
         }
 
         public static int ExcluiContato(int id_contato)
         {
-
+            throw new NotImplementedException();
         }
 
         public static Contato BuscaContato(int id_contato)
         {
-
+            throw new NotImplementedException();
         }
         #endregion
     }

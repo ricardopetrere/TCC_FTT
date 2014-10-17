@@ -30,17 +30,17 @@ namespace QTCC_Server.CS
 
         public int AdicionaMembro(Usuario usuario)
         {
-
+            throw new NotImplementedException();
         }
 
         public int RemoveMembro(Usuario usuario)
         {
-
+            throw new NotImplementedException();
         }
 
         public int TrocarAdministrador(Usuario novo_administrador)
         {
-
+            throw new NotImplementedException();
         }
         #endregion
     }

@@ -44,32 +44,32 @@ namespace QTCC_Server.CS
 
         public int AlteraStatus(String novo_status)
         {
-
+            throw new NotImplementedException();
         }
 
         public int AdicionaContato(Contato novo_contato)
         {
-
+            throw new NotImplementedException();
         }
 
         public int RemoveContato(Contato contato)
         {
-
+            throw new NotImplementedException();
         }
 
         public Contato BuscaContato(String contato_email)
         {
-
+            throw new NotImplementedException();
         }
 
         public Boolean PossuiContato(Contato contato)
         {
-
+            throw new NotImplementedException();
         }
 
         public int AlterarSenha(String senha_antiga, String senha_nova)
         {
-
+            throw new NotImplementedException();
         }
         #endregion
     }
