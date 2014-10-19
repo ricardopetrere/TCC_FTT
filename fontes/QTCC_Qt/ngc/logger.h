@@ -14,9 +14,6 @@ public:
     //http://stackoverflow.com/a/18427241
     static void debug(QString mensagem)
     {
-        QDateTime data_d = QDateTime::currentDateTime();
-        QString data_atual = QDateTime::currentDateTime().toString();
-        qDebug() << QDate::currentDate();
         qDebug(QDateTime::currentDateTime().toString().toLatin1() + ": " + mensagem.toLatin1());
     }
     static void debug(QString textoDoWidget, QString mensagem_para_concatenar)

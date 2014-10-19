@@ -15,21 +15,18 @@ Cadastre_se::~Cadastre_se()
     delete ui;
 }
 
-//Cancelar
 void Cadastre_se::on_btnCancelar_clicked()
 {
     Logger::debug("Cancelado.");
     close();
 }
 
-//Cadastrar
 void Cadastre_se::on_btnCadastrar_clicked()
 {
     Logger::debug(ui->lineNome->text(), " cadastrado.");
     return;
 }
 
-//Escolha uma imagem
 void Cadastre_se::on_btnEscolhaImagem_clicked()
 {
     //http://stackoverflow.com/questions/1604440/how-to-set-selected-filter-on-qfiledialog
