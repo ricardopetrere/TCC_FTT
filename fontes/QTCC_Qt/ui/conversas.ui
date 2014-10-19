@@ -37,12 +37,15 @@
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <widget class="QListView" name="listView">
+     <widget class="QListWidget" name="listWidget">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>1</horstretch>
         <verstretch>1</verstretch>
        </sizepolicy>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::CustomContextMenu</enum>
       </property>
       <property name="verticalScrollBarPolicy">
        <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -53,6 +56,16 @@
       <property name="uniformItemSizes">
        <bool>true</bool>
       </property>
+      <item>
+       <property name="text">
+        <string>Conversa 1</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Conversa 2</string>
+       </property>
+      </item>
      </widget>
     </item>
    </layout>
@@ -71,7 +84,6 @@
      <string>Opções</string>
     </property>
     <addaction name="actionNova_Conversa"/>
-    <addaction name="actionDetalhes"/>
    </widget>
    <addaction name="menuOp_es"/>
   </widget>

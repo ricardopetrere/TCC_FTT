@@ -152,6 +152,10 @@ Rectangle {
                 url_codificada = url_codificada.split("%3E").join(">")
                 url_codificada = url_codificada.split("%3F").join("?")
 
+                //Facebook utiliza em vídeos, mas não é utilizável para baixar
+                //url_codificada = url_codificada.split("%5C").join("\\")
+                url_codificada = url_codificada.split("%5C").join("")
+
                 txt_url_codificada.text=url_codificada
             }
         }

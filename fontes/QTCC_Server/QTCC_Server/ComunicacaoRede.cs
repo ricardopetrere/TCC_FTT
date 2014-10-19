@@ -21,14 +21,21 @@ namespace QTCC_Server
         public static void AbreConexao()
         {
             InicializaConexao();
+            System.ComponentModel.BackgroundWorker b = new System.ComponentModel.BackgroundWorker();
+            b.DoWork += b_DoWork;
+            b.RunWorkerAsync();
+        }
+
+        private static void b_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
             ReceberPacotes();
         }
 
         private static void ReceberPacotes()
         {
-            //http://msdn.microsoft.com/pt-br/library/system.threading.tasks.task(v=vs.110).aspx
-            Action acao_listen = () =>
+            try
             {
+
                 //http://msdn.microsoft.com/pt-br/library/system.net.sockets.tcplistener(v=vs.110).aspx
                 Byte[] bytes = new Byte[256];
                 String data = null;
@@ -51,8 +58,11 @@ namespace QTCC_Server
                     stream.Write(retorno, 0, retorno.Length);
                     client.Close();
                 }
-            };
-            task_listen = Task.Factory.StartNew(acao_listen);
+            }
+            catch
+            {
+
+            }
         }
 
         private static void InicializaConexao()
@@ -61,7 +71,7 @@ namespace QTCC_Server
                 listener = new TcpListener(System.Net.IPAddress.Parse("127.0.0.1"), porta_listener);
             listener.Start();
         }
-        
+
         public static void FechaConexao()
         {
             if (listener != null)

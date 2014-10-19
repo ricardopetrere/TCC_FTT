@@ -99,6 +99,7 @@ ApplicationWindow
                     text: model.ultima_mensagem_contato
                 }
             }
+
             //não está funcionando
             MouseArea {
                 anchors.fill: parent

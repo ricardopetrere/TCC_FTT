@@ -2,6 +2,7 @@
 #define CONVERSAS_H
 
 #include <QMainWindow>
+#include <QListWidgetItem>
 
 namespace Ui {
 class Conversas;
@@ -14,6 +15,13 @@ class Conversas : public QMainWindow
 public:
     explicit Conversas(QWidget *parent = 0);
     ~Conversas();
+
+private slots:
+    void on_listWidget_itemClicked(QListWidgetItem *item);
+
+    void on_actionNova_Conversa_triggered();
+
+    void on_listWidget_customContextMenuRequested(const QPoint &pos);
 
 private:
     Ui::Conversas *ui;

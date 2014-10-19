@@ -17,18 +17,27 @@ SOURCES += main.cpp \
     ui/conversas.cpp \
     ui/contatos.cpp \
     ngc/contato.cpp \
-    ngc/historicoconversa.cpp
+    ngc/historicoconversa.cpp \
+    ui/mensagens.cpp \
+    ui/login.cpp \
+    ui/cadastre_se.cpp
 
 HEADERS  += \
     ui/mainwindow.h \
     ui/conversas.h \
     ui/contatos.h \
     ngc/contato.h \
-    ngc/historicoconversa.h
+    ngc/historicoconversa.h \
+    ui/mensagens.h \
+    ui/login.h \
+    ui/cadastre_se.h
 
 FORMS    += ui/mainwindow.ui \
     ui/conversas.ui \
-    ui/contatos.ui
+    ui/contatos.ui \
+    ui/mensagens.ui \
+    ui/login.ui \
+    ui/cadastre_se.ui
 
 CONFIG += mobility
 MOBILITY = 
