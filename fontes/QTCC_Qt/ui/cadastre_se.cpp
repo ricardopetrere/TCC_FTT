@@ -1,6 +1,7 @@
 #include "cadastre_se.h"
 #include "ui_cadastre_se.h"
 #include "QFileDialog"
+#include "ngc/logger.h"
 
 Cadastre_se::Cadastre_se(QWidget *parent) :
     QMainWindow(parent),
@@ -15,26 +16,26 @@ Cadastre_se::~Cadastre_se()
 }
 
 //Cancelar
-void Cadastre_se::on_pushButton_clicked()
+void Cadastre_se::on_btnCancelar_clicked()
 {
-    qDebug("Cancelado.");
+    Logger::debug("Cancelado.");
     close();
 }
 
 //Cadastrar
-void Cadastre_se::on_pushButton_2_clicked()
+void Cadastre_se::on_btnCadastrar_clicked()
 {
-    qDebug(ui->lineEdit->text().toLatin1() + " cadastrado.");
+    Logger::debug(ui->lineNome->text(), " cadastrado.");
     return;
 }
 
 //Escolha uma imagem
-void Cadastre_se::on_pushButton_3_clicked()
+void Cadastre_se::on_btnEscolhaImagem_clicked()
 {
     //http://stackoverflow.com/questions/1604440/how-to-set-selected-filter-on-qfiledialog
     //QFileDialog *f = new QFileDialog(this,"Escolha uma imagem","","*.*;;*.jpg *.png;;*.jpg;;*.png");
-    QString s = QFileDialog::getOpenFileName(this,tr("Open File"), QDir::currentPath(),"Imagens (*.jpg *.jpeg *.png *.bmp *.gif *.tif *.tiff)");
     //f->show();
     //ui->lbl_Foto->setPixmap(QPixmap::fromImage(QImage(f->selectedFiles()[0])));
-    ui->lbl_Foto->setPixmap(QPixmap::fromImage(QImage(s)));
+    QString s = QFileDialog::getOpenFileName(this,tr("Open File"), QDir::currentPath(),"Imagens (*.jpg *.jpeg *.png *.bmp *.gif *.tif *.tiff)");
+    ui->lblFoto->setPixmap(QPixmap::fromImage(QImage(s)));
 }

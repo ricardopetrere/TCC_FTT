@@ -16,7 +16,9 @@ public:
     ~Mensagens();
 
 private slots:
-    void on_listWidget_customContextMenuRequested(const QPoint &pos);
+    void on_listMensagens_customContextMenuRequested(const QPoint &pos);
+
+    void on_btnEnviar_clicked();
 
 private:
     Ui::Mensagens *ui;

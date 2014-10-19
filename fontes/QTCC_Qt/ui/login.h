@@ -2,7 +2,7 @@
 #define LOGIN_H
 
 #include <QMainWindow>
-//#include <QWidget>
+#include "ngc/logger.h"
 
 namespace Ui {
 class Login;
@@ -17,7 +17,7 @@ public:
     ~Login();
     static bool estaLogado()
     {
-        qDebug(login.toLatin1());
+        Logger::debug(login.toLatin1());
         return login!="";
     }
     static void validaLogin(bool estado_para_checar,QWidget *parent)
@@ -35,9 +35,9 @@ public:
     }
 
 private slots:
-    void on_pushButton_clicked();
+    void on_btnLogin_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_btnCadastre_se_clicked();
 
 private:
     Ui::Login *ui;

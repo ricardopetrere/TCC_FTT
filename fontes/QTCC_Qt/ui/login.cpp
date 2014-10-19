@@ -1,6 +1,7 @@
 #include "login.h"
 #include "ui_login.h"
 #include "cadastre_se.h"
+#include "ngc/logger.h"
 
 Login::Login(QWidget *parent) :
     QMainWindow(parent),
@@ -17,20 +18,20 @@ Login::~Login()
 }
 
 //Login
-void Login::on_pushButton_clicked()
+void Login::on_btnLogin_clicked()
 {
-    qDebug("Login");
-    if(ui->lineEdit->text()=="Ricardo"&&ui->lineEdit_2->text()=="Ricardo")
+    Logger::debug("Login");
+    if(ui->lineEmail->text()=="admin"&&ui->lineSenha->text()=="admin")
     {
-        Login::login = ui->lineEdit->text();
+        Login::login = ui->lineEmail->text();
         close();
     }
 }
 
 //Cadastre-se
-void Login::on_pushButton_2_clicked()
+void Login::on_btnCadastre_se_clicked()
 {
-    qDebug("Cadastre-se");
+    Logger::debug("Cadastre-se");
     Cadastre_se *c = new Cadastre_se(this);
     c->show();
 }

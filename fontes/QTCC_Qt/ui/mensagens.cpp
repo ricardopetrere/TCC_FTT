@@ -1,5 +1,6 @@
 #include "mensagens.h"
 #include "ui_mensagens.h"
+#include "ngc/logger.h"
 
 Mensagens::Mensagens(QWidget *parent) :
     QMainWindow(parent),
@@ -13,8 +14,13 @@ Mensagens::~Mensagens()
     delete ui;
 }
 
-void Mensagens::on_listWidget_customContextMenuRequested(const QPoint &pos)
+void Mensagens::on_listMensagens_customContextMenuRequested(const QPoint &pos)
 {
-    if(ui->listWidget->SelectRows!=0)
-        qDebug(ui->listWidget->selectedItems()[0]->text().toLatin1() + " contextMenu");
+    if(ui->listMensagens->SelectRows!=0)
+        Logger::debug(ui->listMensagens->selectedItems()[0]->text()," contextMenu.");
+}
+
+void Mensagens::on_btnEnviar_clicked()
+{
+    Logger::debug(ui->textMensagem->toPlainText()," Enviado.");
 }

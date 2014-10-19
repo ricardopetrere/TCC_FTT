@@ -1,6 +1,7 @@
 #include "contatos.h"
 #include "ui_contatos.h"
 #include "mensagens.h"
+#include "ngc/logger.h"
 
 Contatos::Contatos(QWidget *parent) :
     QMainWindow(parent),
@@ -14,33 +15,32 @@ Contatos::~Contatos()
     delete ui;
 }
 
-void Contatos::on_listWidget_itemClicked(QListWidgetItem *item)
+void Contatos::on_listContatos_itemClicked(QListWidgetItem *item)
 {
-    qDebug(item->text().toLatin1() + " Clicado.");
+    Logger::debug(item->text(), " Clicado.");
     Mensagens *m = new Mensagens(this);
     m->setWindowModality(Qt::WindowModal);
     m->show();
     m->setWindowTitle(item->text());
 }
 
-void Contatos::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
+void Contatos::on_listContatos_itemDoubleClicked(QListWidgetItem *item)
 {
-
+    Logger::debug("on_listContatos_itemDoubleClicked");
 }
 
-void Contatos::on_listWidget_itemPressed(QListWidgetItem *item)
+void Contatos::on_listContatos_itemPressed(QListWidgetItem *item)
 {
-
+    Logger::debug("on_listContatos_itemPressed");
 }
 
-void Contatos::on_listWidget_customContextMenuRequested(const QPoint &pos)
+void Contatos::on_listContatos_customContextMenuRequested(const QPoint &pos)
 {
-    //http://stackoverflow.com/a/18427241
-    if(ui->listWidget->SelectRows!=0)
-        qDebug(ui->listWidget->selectedItems()[0]->text().toLatin1() + " contextMenu");
+    if(ui->listContatos->SelectRows!=0)
+        Logger::debug(ui->listContatos->selectedItems()[0]->text(), " contextMenu.");
 }
 
-void Contatos::on_listWidget_clicked(const QModelIndex &index)
+void Contatos::on_listContatos_clicked(const QModelIndex &index)
 {
-
+    Logger::debug("on_listContatos_clicked");
 }

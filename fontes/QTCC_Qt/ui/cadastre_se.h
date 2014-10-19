@@ -16,11 +16,11 @@ public:
     ~Cadastre_se();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_btnCancelar_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_btnCadastrar_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_btnEscolhaImagem_clicked();
 
 private:
     Ui::Cadastre_se *ui;

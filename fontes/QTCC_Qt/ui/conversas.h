@@ -17,11 +17,11 @@ public:
     ~Conversas();
 
 private slots:
-    void on_listWidget_itemClicked(QListWidgetItem *item);
+    void on_listConversas_itemClicked(QListWidgetItem *item);
 
     void on_actionNova_Conversa_triggered();
 
-    void on_listWidget_customContextMenuRequested(const QPoint &pos);
+    void on_listConversas_customContextMenuRequested(const QPoint &pos);
 
 private:
     Ui::Conversas *ui;

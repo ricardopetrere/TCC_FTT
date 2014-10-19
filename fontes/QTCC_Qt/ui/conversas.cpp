@@ -2,6 +2,7 @@
 #include "ui_conversas.h"
 #include "contatos.h"
 #include "mensagens.h"
+#include "ngc/logger.h"
 
 Conversas::Conversas(QWidget *parent) :
     QMainWindow(parent),
@@ -15,9 +16,9 @@ Conversas::~Conversas()
     delete ui;
 }
 
-void Conversas::on_listWidget_itemClicked(QListWidgetItem *item)
+void Conversas::on_listConversas_itemClicked(QListWidgetItem *item)
 {
-    qDebug(item->text().toLatin1() + " Clicado.");
+    Logger::debug(item->text(), " Clicado.");
     Mensagens *m = new Mensagens(this);
     m->setWindowModality(Qt::WindowModal);
     m->show();
@@ -26,13 +27,14 @@ void Conversas::on_listWidget_itemClicked(QListWidgetItem *item)
 
 void Conversas::on_actionNova_Conversa_triggered()
 {
+    Logger::debug("Nova Conversa.");
     Contatos *c = new Contatos(this);
     c->setWindowModality(Qt::WindowModal);
     c->show();
 }
 
-void Conversas::on_listWidget_customContextMenuRequested(const QPoint &pos)
+void Conversas::on_listConversas_customContextMenuRequested(const QPoint &pos)
 {
-    if(ui->listWidget->SelectRows!=0)
-        qDebug(ui->listWidget->selectedItems()[0]->text().toLatin1() + " contextMenu");
+    if(ui->listConversas->SelectRows!=0)
+        Logger::debug(ui->listConversas->selectedItems()[0]->text(), " contextMenu.");
 }

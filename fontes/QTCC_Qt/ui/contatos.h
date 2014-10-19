@@ -17,15 +17,15 @@ public:
     ~Contatos();
 
 private slots:
-    void on_listWidget_itemClicked(QListWidgetItem *item);
+    void on_listContatos_itemClicked(QListWidgetItem *item);
 
-    void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
+    void on_listContatos_itemDoubleClicked(QListWidgetItem *item);
 
-    void on_listWidget_itemPressed(QListWidgetItem *item);
+    void on_listContatos_itemPressed(QListWidgetItem *item);
 
-    void on_listWidget_customContextMenuRequested(const QPoint &pos);
+    void on_listContatos_customContextMenuRequested(const QPoint &pos);
 
-    void on_listWidget_clicked(const QModelIndex &index);
+    void on_listContatos_clicked(const QModelIndex &index);
 
 private:
     Ui::Contatos *ui;

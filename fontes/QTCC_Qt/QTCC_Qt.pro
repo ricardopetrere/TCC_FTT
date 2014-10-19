@@ -20,7 +20,8 @@ SOURCES += main.cpp \
     ngc/historicoconversa.cpp \
     ui/mensagens.cpp \
     ui/login.cpp \
-    ui/cadastre_se.cpp
+    ui/cadastre_se.cpp \
+    ngc/logger.cpp
 
 HEADERS  += \
     ui/mainwindow.h \
@@ -30,7 +31,8 @@ HEADERS  += \
     ngc/historicoconversa.h \
     ui/mensagens.h \
     ui/login.h \
-    ui/cadastre_se.h
+    ui/cadastre_se.h \
+    ngc/logger.h
 
 FORMS    += ui/mainwindow.ui \
     ui/conversas.ui \
