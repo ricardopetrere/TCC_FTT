@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace QTCC_Server.CS
 {
-    class Contato
+    class Contato : EntidadeBase
     {
         #region Propriedades
         private int Id

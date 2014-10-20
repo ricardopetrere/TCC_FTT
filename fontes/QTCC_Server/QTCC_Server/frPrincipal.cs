@@ -18,9 +18,9 @@ namespace QTCC_Server
             InitializeComponent();
         }
         
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MostrarListaContatos(listBox1.SelectedIndex >= 0);
+            MostrarListaContatos(listView1.SelectedIndices[0] >= 0);
         }
 
         private void MostrarListaContatos(bool mostrar)
@@ -37,10 +37,15 @@ namespace QTCC_Server
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(new frConexaoBD().ShowDialog()==DialogResult.OK)
+            ComunicacaoRede.FechaConexao();
+            if (MessageBox.Show("Tem certeza que deseja reconfigurar o acesso ao banco de dados?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
-                
+                if (new frConexaoBD().ShowDialog() == DialogResult.OK)
+                {
+
+                }
             }
+            ComunicacaoRede.AbreConexao();
         }
 
         private void frPrincipal_Load(object sender, EventArgs e)

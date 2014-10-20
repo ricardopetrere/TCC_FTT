@@ -5,7 +5,7 @@ using System.Text;
 
 namespace QTCC_Server.CS
 {
-    class MensagemImagemAudioVideo
+    class MensagemImagemAudioVideo : Mensagem
     {
         public int Tamanho_Arquivo
         {

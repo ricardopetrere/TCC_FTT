@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical">
   <Class Name="QTCC_Server.frPrincipal">
-    <Position X="7" Y="0.5" Width="1.5" />
+    <Position X="9.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAACAAABAAABCAAAACAAAIBAAAAGAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAIABACAAABAAAACAAAACA4AIBAAAAGAAAIAAAAA=</HashCode>
       <FileName>frPrincipal.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="QTCC_Server.CS.CONSTANTES">
-    <Position X="5.25" Y="0.5" Width="1.5" />
+    <Position X="7.5" Y="0.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
@@ -23,45 +23,57 @@
           <NewMemberFileName>cs\CONSTANTES.cs</NewMemberFileName>
         </TypeIdentifier>
       </Enum>
+      <Enum Name="QTCC_Server.CS.CONSTANTES.TiposPacotesDados">
+        <TypeIdentifier>
+          <NewMemberFileName>CS\CONSTANTES.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
     </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>cs\CONSTANTES.cs</FileName>
+      <FileName>CS\CONSTANTES.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="QTCC_Server.CS.Contato">
-    <Position X="1.75" Y="0.5" Width="1.5" />
+    <Position X="1.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAARAAAAAAAAAAABAgAIAAAAAAAAAAAAAUAEAAAA=</HashCode>
-      <FileName>cs\Contato.cs</FileName>
+      <FileName>CS\Contato.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="QTCC_Server.CS.Grupo">
-    <Position X="0.5" Y="4" Width="1.5" />
+    <Position X="0.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAgAAAAAAAAAAAQAAAAAAAAAAAAAEAAAAAAAAABCAA=</HashCode>
-      <FileName>cs\Grupo.cs</FileName>
+      <FileName>CS\Grupo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="QTCC_Server.CS.Mensagem">
-    <Position X="8.75" Y="0.5" Width="1.5" />
+    <Position X="5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAACAAAAAAAAICAAAABAAgAQAAAAAAIMBAAAkAAAAAA=</HashCode>
-      <FileName>cs\Mensagem.cs</FileName>
+      <FileName>CS\Mensagem.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="QTCC_Server.CS.MensagemImagemAudioVideo">
-    <Position X="7" Y="3.75" Width="1.5" />
+    <Position X="5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>cs\MensagemImagemAudioVideo.cs</FileName>
+      <FileName>CS\MensagemImagemAudioVideo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="QTCC_Server.CS.Usuario">
-    <Position X="2.75" Y="4" Width="1.5" />
+    <Position X="2.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAQAAACAAAAAACAAAAQIgACAAAAAAAAAAAAAIAAQ=</HashCode>
-      <FileName>cs\Usuario.cs</FileName>
+      <FileName>CS\Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QTCC_Server.CS.EntidadeBase" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CS\EntidadeBase.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

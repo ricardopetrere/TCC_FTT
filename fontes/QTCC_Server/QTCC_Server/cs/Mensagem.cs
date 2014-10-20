@@ -5,7 +5,7 @@ using System.Text;
 
 namespace QTCC_Server.CS
 {
-    class Mensagem
+    class Mensagem : EntidadeBase
     {
         #region Propriedades
         private int Id

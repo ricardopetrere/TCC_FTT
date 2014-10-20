@@ -1,41 +1,65 @@
-create database QTCC
-
+--create database QTCC
+--drop database QTCC
 use QTCC
+
+--Tabela de contato (base para usuário e grupo)
+create table tbContato
+(
+	 cont_id bigint identity(1,1)	--ID único do contato (grupo ou usuário) (interno do sistema)
+	,cont_nome varchar(100) not null--Nome de exibição do usuário
+	,cont_imagem image				--Imagem do usuário (salvos os bytes desta)
+	,cont_inativo bit not null		--Contato inativo (Removido)
+)
+alter table tbContato add constraint PK_Contato primary key (cont_id)
 
 --Tabela de usuário
 create table tbUsuario
 (
-	 usu_id bigint identity(1,1)	--ID único de usuário (interno do sistema)
-	,usu_nome varchar(100)			--Nome de exibição do usuário
-	,usu_email varchar(100)			--E-mail do usuário
-	,usu_senha varchar(50)			--Senha do usuário
-	,usu_imagem image				--Imagem do usuário (salvos os bytes desta)
-	,usu_mensagem varchar(100)		--Mensagem de perfil do usuário
-)
-alter table usuario add constraint PK_Usuario primary key (usu_id)
+	 cont_id bigint not null			--ID do usuário
+	--Exclusivo de Usuario
+	,usu_email varchar(100) not null	--E-mail do usuário
+	,usu_senha varchar(50) not null		--Senha do usuário
+	,usu_mensagem_perfil varchar(100)	--Mensagem de perfil do usuário
 
---Tabela de lista de contatos (Contatos)
-create table tbContatos
-(
-	 usu_id bigint --ID do usuário
-	,cont_id bigint --ID do contato da pessoa (Pessoa ou Grupo)
 )
-alter table tbContatos add constraint PK_Contatos primary key (usu_id)
+alter table tbUsuario add constraint FK_Usuario_Contato foreign key (cont_id) references tbContato (cont_id)
 
---Tabela de mensagens a ser entregues
-create table tbMensagensPendentes
+--Tabela de grupo
+create table tbGrupo
 (
-	 usu_id bigint --ID do usuário
-	,msg_usu_ori bigint --Usuário que enviou a mensagem
-	,msg_dta_envio datetime --Data de envio da mensagem (data que a mensagem foi recebida pelo servidor)
-	,msg_texto varchar(1000) --Mensagem a ser enviada
+	 cont_id bigint not null			--ID do grupo
+	--Exclusivo de Grupo
+	,grp_administrador bigint not null	--ID do administrador do grupo
 )
-alter table tbMensagensPendentes add constraint PK_MensagensPendentes primary key (usu_id,msg_usu_ori,msg_dta_envio)
+alter table tbGrupo add constraint FK_Grupo_Contato foreign key (cont_id) references tbContato (cont_id)
+alter table tbGrupo add constraint FK_Administrador_Grupo_Contato foreign key (grp_administrador) references tbContato (cont_id)
 
---Tabela de membros de um grupo
-create table tbMembrosGrupo
+--Tabela de lista de contatos (Contatos), seja de um usuário ou grupo
+create table tbListaContatos
 (
-	 usu_id bigint	--ID do grupo
-	,memb_id bigint	--ID do membro
+	 cont_id bigint not null--ID do usuário
+	,lst_id bigint not null	--ID do contato da pessoa (Pessoa ou Grupo)
 )
-alter table tbMembrosGrupo add constraint PK_MembrosGrupo primary key (usu_id)
+alter table tbListaContatos add constraint PK_ListaContatos primary key (cont_id,lst_id)
+alter table tbListaContatos add constraint FK_ListaContatos_Contato foreign key (cont_id) references tbContato (cont_id)
+alter table tbListaContatos add constraint FK_Usuario_ListaContatos_Contato foreign key (lst_id) references tbContato (cont_id)
+
+--Tabela temporária de mensagens a ser entregues
+create table tmpMensagensPendentes
+(
+	 cont_id bigint	not null		--ID do contato a receber as mensagens
+	,msg_usu_ori bigint not null	--Usuário que enviou a mensagem
+	,msg_dta_envio datetime	not null--Data de envio da mensagem (data que a mensagem foi recebida pelo servidor)
+	,msg_texto image not null		--Bytes da mensagem a ser enviada (texto, mídia)
+	,msg_tamanho int				--Tamanho da mídia (para imagem, áudio, vídeo)
+)
+alter table tmpMensagensPendentes add constraint PK_MensagensPendentes primary key (cont_id,msg_usu_ori,msg_dta_envio)
+alter table tmpMensagensPendentes add constraint FK_MensagensPendentes_Contato foreign key (cont_id) references tbContato (cont_id)
+
+create table tmpUsuariosLogados
+(
+	 cont_id bigint not null			--ID do contato
+	--,log_ip varchar(20) not null		--IP da máquina onde está conectado (para o caso de estar logado em vários lugares
+	,log_visto_ultimo datetime not null	--"Visto por último" do contato
+)
+alter table tmpUsuariosLogados add constraint PK_UsuariosLogados primary key (cont_id/*,log_ip*/)

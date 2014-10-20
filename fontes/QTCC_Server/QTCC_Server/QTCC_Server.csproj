@@ -54,6 +54,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,20 +66,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComunicacaoRede.cs" />
-    <Compile Include="cs\CONSTANTES.cs" />
+    <Compile Include="CS\CONSTANTES.cs" />
+    <Compile Include="CS\EntidadeBase.cs" />
     <Compile Include="frPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frPrincipal.Designer.cs">
       <DependentUpon>frPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="JSONController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="cs\Contato.cs" />
-    <Compile Include="cs\Grupo.cs" />
-    <Compile Include="cs\Mensagem.cs" />
-    <Compile Include="cs\MensagemImagemAudioVideo.cs" />
-    <Compile Include="cs\Usuario.cs" />
+    <Compile Include="CS\Contato.cs" />
+    <Compile Include="CS\Grupo.cs" />
+    <Compile Include="CS\Mensagem.cs" />
+    <Compile Include="CS\MensagemImagemAudioVideo.cs" />
+    <Compile Include="CS\Usuario.cs" />
     <EmbeddedResource Include="frPrincipal.resx">
       <DependentUpon>frPrincipal.cs</DependentUpon>
     </EmbeddedResource>
