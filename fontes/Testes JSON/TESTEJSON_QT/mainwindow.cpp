@@ -50,9 +50,9 @@ void MainWindow::write(QJsonObject &json) const
 
 void MainWindow::on_btnSerializar_clicked()
 {
-    QFile saveJson("user.json");
+    QFile saveJson("User.json");
     if(!saveJson.open(QIODevice::WriteOnly)){
-        qWarning("Couldn't open user.json");
+        qWarning("Couldn't open User.json");
         return;
     }
 
@@ -65,9 +65,9 @@ void MainWindow::on_btnSerializar_clicked()
 
 void MainWindow::on_btnDeserializar_clicked()
 {
-    QFile loadJson("user.json");
+    QFile loadJson("User.json");
     if(!loadJson.open(QIODevice::ReadOnly)){
-        qWarning("Couldn't open user.json");
+        qWarning("Couldn't open User.json");
         return;
     }
 

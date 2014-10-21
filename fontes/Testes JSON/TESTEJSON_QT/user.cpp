@@ -38,11 +38,11 @@ void User::setmessages(const QList<Message> &messages)
 
 void User::read(const QJsonObject &json)
 {
-    mnome = json["nome"].toString();
-    midade = json["idade"].toInt();
+    mnome = json["Nome"].toString();
+    midade = json["Idade"].toInt();
 
     mmessages.clear();
-    QJsonArray messageArray = json["messages"].toArray();
+    QJsonArray messageArray = json["Mensagens"].toArray();
     for (int messageIndex = 0; messageIndex < messageArray.size(); ++messageIndex) {
         QJsonObject messageObject = messageArray[messageIndex].toObject();
         Message message;
@@ -53,13 +53,13 @@ void User::read(const QJsonObject &json)
 
 void User::write(QJsonObject &json) const
 {
-    json["nome"] = mnome;
-    json["idade"] = midade;
+    json["Nome"] = mnome;
+    json["Idade"] = midade;
     QJsonArray messageArray;
     foreach (const Message message, mmessages) {
         QJsonObject messageObject;
         message.write(messageObject);
         messageArray.append(messageObject);
     }
-    json["messages"] = messageArray;
+    json["Mensagens"] = messageArray;
 }

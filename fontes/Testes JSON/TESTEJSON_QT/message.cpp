@@ -16,10 +16,10 @@ void Message::settexto(const QString &texto)
 
 void Message::read(const QJsonObject &json)
 {
-    mtexto = json["texto"].toString();
+    mtexto = json["Texto"].toString();
 }
 
 void Message::write(QJsonObject &json) const
 {
-    json["texto"] = mtexto;
+    json["Texto"] = mtexto;
 }
