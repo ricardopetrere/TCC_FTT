@@ -18,7 +18,7 @@ namespace Util
         private static int porta_tcp = 5500;
         private static BackgroundWorker worker;
         private static TcpListener listener;
-        public static delegate String ParaOndeLevarPacote(String pacote);
+        public delegate String ParaOndeLevarPacote(String pacote);
         #region worker
         private static void InicializaWorker()
         {
@@ -62,17 +62,18 @@ namespace Util
 
         static void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         static void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         static void worker_DoWork(object sender, DoWorkEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            ReceberPacotes();
         }
         #endregion
         #region listener
@@ -80,21 +81,20 @@ namespace Util
         {
             listener = new TcpListener(IPAddress.Loopback, porta_tcp);
         }
-        private static void IniciaListener()
+        public static void IniciaListener()
         {
-
+            listener.Start();
         }
-        private static void InterrompeListener()
+        public static void InterrompeListener()
         {
-
+            listener.Stop();
         }
-        private static void ReceberPacotes()
+        public static void ReceberPacotes()
         {
             while(true)
             {
                 try
                 {
-                    //String dados = null;
                     String retorno = "";
                     byte[] buffer = new byte[256];
                     TcpClient client = listener.AcceptTcpClient();
@@ -102,17 +102,16 @@ namespace Util
                     int offset;
                     while ((offset = s.Read(buffer, 0, buffer.Length)) != 0)
                     {
-                        //dados = Encoding.ASCII.GetString(buffer, 0, offset);
-                        retorno += Encoding.ASCII.GetString(buffer, 0, offset); //dados;
+                        retorno += Encoding.ASCII.GetString(buffer, 0, offset);
                     }
                     byte[] resposta = Encoding.ASCII.GetBytes("Recebido");
                     s.Write(resposta, 0, resposta.Length);
                     s.Close();
                     client.Close();
                 }
-                catch
+                catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
                 }
             }
         }

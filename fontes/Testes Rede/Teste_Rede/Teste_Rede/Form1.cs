@@ -14,7 +14,13 @@ namespace Teste_Rede
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
             Util.ComunicacaoRede.Inicializa();
+            Util.ComunicacaoRede.IniciaListener();
+            Util.ComunicacaoRede.IniciaWorker();
         }
 
     }
