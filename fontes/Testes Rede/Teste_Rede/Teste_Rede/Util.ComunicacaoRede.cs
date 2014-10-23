@@ -5,116 +5,81 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace Util
 {
     public static class ComunicacaoRede
     {
-        public static void Inicializa()
-        {
-            InicializaWorker();
-            InicializaListener();
-        }
         private static int porta_tcp = 5500;
-        private static BackgroundWorker worker;
-        private static TcpListener listener;
-        public delegate String ParaOndeLevarPacote(String pacote);
-        #region worker
-        private static void InicializaWorker()
+
+        #region Envio pela Rede
+        //http://tech.pro/tutorial/704/csharp-tutorial-simple-threaded-tcp-server
+        #region Cliente
+        public static String EnviarPacote(String dado)
         {
-            worker = new BackgroundWorker();
-            worker.WorkerSupportsCancellation = true;
-            worker.WorkerReportsProgress = true;
-            worker.DoWork += worker_DoWork;
-            worker.ProgressChanged += worker_ProgressChanged;
-            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
-        }
-        public static bool IniciaWorker()
-        {
-            if(!worker.IsBusy)
+            TcpClient client = new TcpClient("127.0.0.1", 5500);
+            NetworkStream s = client.GetStream();
+            byte[] buffer_envio;
+            buffer_envio = Encoding.ASCII.GetBytes(dado);
+            s.Write(buffer_envio, 0, buffer_envio.Length);
+
+            String retorno = "";
+            byte[] buffer_recebido = new byte[1024];
+            int index = 0;
+            while (s.DataAvailable && (index = s.Read(buffer_recebido, 0, buffer_recebido.Length)) != 0)
             {
-                worker.RunWorkerAsync();
-                return true;
+                retorno += Encoding.ASCII.GetString(buffer_recebido);
             }
-            return false;
+            s.Close();
+            return retorno;
         }
-        public static bool IniciaWorker(object argument)
-        {
-            if(!worker.IsBusy)
-            {
-                worker.RunWorkerAsync(argument);
-                return true;
-            }
-            return false;
-        }
-        public static bool InterrompeWorker()
+        #endregion Cliente
+        #region Servidor
+        public static void ReceberPacote(object objClient)
         {
             try
             {
-                worker.CancelAsync();
-                return true;
+                TcpClient client = (TcpClient)objClient;
+                String retorno = "";
+                byte[] buffer = new byte[1024];
+                NetworkStream s = client.GetStream();
+                int offset;
+                while (s.DataAvailable && (offset = s.Read(buffer, 0, buffer.Length)) != 0)
+                {
+                    retorno += Encoding.ASCII.GetString(buffer, 0, offset);
+                }
+                byte[] resposta = Encoding.ASCII.GetBytes("Recebido");
+                s.Write(resposta, 0, resposta.Length);
+                s.Close();
+                client.Close();
+                Console.WriteLine(retorno);
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                Console.WriteLine("Erro: " + ex.Message);
             }
         }
-
-        static void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        public static void IniciarServidor()
         {
-            //throw new NotImplementedException();
+            Thread tEscutaClientes = new Thread(new ThreadStart(EscutaClientes));
+            tEscutaClientes.Start();
+            Console.WriteLine("tEscutaClientes");
         }
-
-        static void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private static void EscutaClientes()
         {
-            //throw new NotImplementedException();
-        }
-
-        static void worker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            //throw new NotImplementedException();
-            ReceberPacotes();
-        }
-        #endregion
-        #region listener
-        private static void InicializaListener()
-        {
-            listener = new TcpListener(IPAddress.Loopback, porta_tcp);
-        }
-        public static void IniciaListener()
-        {
+            TcpListener listener = new TcpListener(IPAddress.Loopback, porta_tcp);
             listener.Start();
-        }
-        public static void InterrompeListener()
-        {
-            listener.Stop();
-        }
-        public static void ReceberPacotes()
-        {
-            while(true)
+            while (true)
             {
-                try
-                {
-                    String retorno = "";
-                    byte[] buffer = new byte[256];
-                    TcpClient client = listener.AcceptTcpClient();
-                    NetworkStream s = client.GetStream();
-                    int offset;
-                    while ((offset = s.Read(buffer, 0, buffer.Length)) != 0)
-                    {
-                        retorno += Encoding.ASCII.GetString(buffer, 0, offset);
-                    }
-                    byte[] resposta = Encoding.ASCII.GetBytes("Recebido");
-                    s.Write(resposta, 0, resposta.Length);
-                    s.Close();
-                    client.Close();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
+                TcpClient client = listener.AcceptTcpClient();
+                Thread tReceberPacote = new Thread(new ParameterizedThreadStart(ReceberPacote));
+                tReceberPacote.Start(client);
+                Console.WriteLine("tReceberPacote");
             }
+            Console.WriteLine("listener");
         }
-        #endregion
+        #endregion Servidor
+        #endregion Envio pela Rede
     }
 }

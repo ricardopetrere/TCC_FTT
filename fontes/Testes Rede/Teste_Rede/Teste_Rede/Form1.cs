@@ -14,13 +14,13 @@ namespace Teste_Rede
         public Form1()
         {
             InitializeComponent();
+            Util.ComunicacaoRede.IniciarServidor();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btnEnviar_Click(object sender, EventArgs e)
         {
-            Util.ComunicacaoRede.Inicializa();
-            Util.ComunicacaoRede.IniciaListener();
-            Util.ComunicacaoRede.IniciaWorker();
+            lblStatusEnvio.Text = "Enviando";
+            lblStatusEnvio.Text = Util.ComunicacaoRede.EnviarPacote(txtMensagemEnviada.Text);
         }
 
     }

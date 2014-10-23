@@ -25,7 +25,7 @@ namespace Teste_Rede_Client
             byte[] buffer_envio;
             buffer_envio = Encoding.ASCII.GetBytes(textBox1.Text);
             s.Write(buffer_envio, 0, buffer_envio.Length);
-            while (!s.DataAvailable) { }
+            //while (!s.DataAvailable) { }
 
             String retorno = "";
             byte[] buffer_recebido = new byte[1024];
@@ -33,9 +33,11 @@ namespace Teste_Rede_Client
             while((index = s.Read(buffer_recebido,0,buffer_recebido.Length))!=0)
             {
                 retorno += Encoding.ASCII.GetString(buffer_recebido);
+                if (!s.DataAvailable)
+                    break;
             }
             s.Close();
-            textBox2.Text = retorno;
+            textBox2.Text += retorno+"\n";
         }
     }
 }

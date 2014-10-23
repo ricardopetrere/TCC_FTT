@@ -35,6 +35,7 @@
             this.txtMensagemRecebida = new System.Windows.Forms.TextBox();
             this.numPorta = new System.Windows.Forms.NumericUpDown();
             this.btnEnviar = new System.Windows.Forms.Button();
+            this.lblStatusEnvio = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numPorta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,6 +91,7 @@
             0,
             0});
             this.numPorta.Name = "numPorta";
+            this.numPorta.ReadOnly = true;
             this.numPorta.Size = new System.Drawing.Size(58, 20);
             this.numPorta.TabIndex = 5;
             this.numPorta.Value = new decimal(new int[] {
@@ -106,12 +108,22 @@
             this.btnEnviar.TabIndex = 6;
             this.btnEnviar.Text = "Enviar";
             this.btnEnviar.UseVisualStyleBackColor = true;
+            this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
+            // 
+            // lblStatusEnvio
+            // 
+            this.lblStatusEnvio.AutoSize = true;
+            this.lblStatusEnvio.Location = new System.Drawing.Point(124, 12);
+            this.lblStatusEnvio.Name = "lblStatusEnvio";
+            this.lblStatusEnvio.Size = new System.Drawing.Size(0, 13);
+            this.lblStatusEnvio.TabIndex = 7;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(372, 208);
+            this.Controls.Add(this.lblStatusEnvio);
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.numPorta);
             this.Controls.Add(this.txtMensagemRecebida);
@@ -121,7 +133,6 @@
             this.Controls.Add(this.txtMensagemEnviada);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPorta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -134,9 +145,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtMensagemRecebida;
         private System.Windows.Forms.NumericUpDown numPorta;
         private System.Windows.Forms.Button btnEnviar;
+        private System.Windows.Forms.Label lblStatusEnvio;
+        private System.Windows.Forms.TextBox txtMensagemRecebida;
     }
 }
 
