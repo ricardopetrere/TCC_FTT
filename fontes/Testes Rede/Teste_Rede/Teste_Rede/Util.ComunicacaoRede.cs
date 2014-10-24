@@ -8,7 +8,7 @@ using System.Net.Sockets;
 using System.Threading;
 
 namespace Util
-{
+{//http://stackoverflow.com/questions/5883282/binding-property-to-control-in-winforms
     public class ComunicacaoRede : INotifyPropertyChanged
     {
         private static int porta_tcp = 5500;
