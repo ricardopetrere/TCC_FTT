@@ -84,6 +84,7 @@
             // 
             // numPorta
             // 
+            this.numPorta.Enabled = false;
             this.numPorta.Location = new System.Drawing.Point(284, 30);
             this.numPorta.Maximum = new decimal(new int[] {
             65535,
@@ -91,7 +92,6 @@
             0,
             0});
             this.numPorta.Name = "numPorta";
-            this.numPorta.ReadOnly = true;
             this.numPorta.Size = new System.Drawing.Size(58, 20);
             this.numPorta.TabIndex = 5;
             this.numPorta.Value = new decimal(new int[] {
@@ -132,7 +132,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtMensagemEnviada);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Teste_Rede";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.numPorta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

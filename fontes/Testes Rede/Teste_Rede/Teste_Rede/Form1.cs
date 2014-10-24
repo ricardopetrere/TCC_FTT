@@ -11,16 +11,23 @@ namespace Teste_Rede
 {
     public partial class Form1 : Form
     {
+        Util.ComunicacaoRede servidor = new Util.ComunicacaoRede();
         public Form1()
         {
             InitializeComponent();
-            Util.ComunicacaoRede.IniciarServidor();
+            servidor.IniciarServidor();
+            //txtMensagemRecebida.DataBindings.Add(new Binding("Text", servidor, "Texto_Recebido"));
         }
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
             lblStatusEnvio.Text = "Enviando";
             lblStatusEnvio.Text = Util.ComunicacaoRede.EnviarPacote(txtMensagemEnviada.Text);
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            servidor.ParaThread();
         }
 
     }
