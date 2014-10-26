@@ -16,23 +16,26 @@ SOURCES += main.cpp \
     ui/mainwindow.cpp \
     ui/conversas.cpp \
     ui/contatos.cpp \
-    ngc/contato.cpp \
     ngc/historicoconversa.cpp \
     ui/mensagens.cpp \
     ui/login.cpp \
     ui/cadastre_se.cpp \
-    ngc/logger.cpp
+    vo/ebase.cpp \
+    vo/emensagem.cpp \
+    vo/econtato.cpp
 
 HEADERS  += \
     ui/mainwindow.h \
     ui/conversas.h \
     ui/contatos.h \
-    ngc/contato.h \
     ngc/historicoconversa.h \
     ui/mensagens.h \
     ui/login.h \
     ui/cadastre_se.h \
-    ngc/logger.h
+    ngc/logger.h \
+    vo/ebase.h \
+    vo/emensagem.h \
+    vo/econtato.h
 
 FORMS    += ui/mainwindow.ui \
     ui/conversas.ui \

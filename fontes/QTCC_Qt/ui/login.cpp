@@ -11,7 +11,8 @@ Login::Login(QWidget *parent) :
 }
 
 //QString Login::login="-1";
-QString Login::login=NULL;
+int Login::login=-1;
+//QString Login::login=NULL;
 
 Login::~Login()
 {
@@ -25,7 +26,7 @@ void Login::on_btnLogin_clicked()
     if(ui->lineEmail->text()=="admin"&&ui->lineSenha->text()=="admin")
     {
         Logger::debug(ui->lineEmail->text()," logou com sucesso.");
-        Login::login = ui->lineEmail->text();
+        Login::login = 0;//ui->lineEmail->text();
         close();
     }
 }
