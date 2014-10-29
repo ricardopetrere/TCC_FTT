@@ -11,12 +11,24 @@ namespace Teste_Rede
 {
     public partial class Form1 : Form
     {
-        Util.ComunicacaoRede servidor = new Util.ComunicacaoRede();
+        internal static Form1 entidade;
+        //Util.ComunicacaoRede servidor = new Util.ComunicacaoRede();
         public Form1()
         {
             InitializeComponent();
-            servidor.IniciarServidor();
-            //txtMensagemRecebida.DataBindings.Add(new Binding("Text", servidor, "Texto_Recebido"));
+            entidade = this;
+            numPorta.Value = Util.ComunicacaoRede.Porta_TCP;
+            //servidor.IniciarServidor();
+            Util.ComunicacaoRede.onAtualizaTela += ComunicacaoRede_onAtualizaTela;
+            Util.ComunicacaoRede.IniciarServidor();
+        }
+
+        void ComunicacaoRede_onAtualizaTela(object sender, EventArgs e)
+        {
+            this.Invoke(new System.Windows.Forms.MethodInvoker(delegate()
+            {
+                txtMensagemRecebida.Text = sender.ToString();
+            }));
         }
 
         private void btnEnviar_Click(object sender, EventArgs e)
@@ -24,11 +36,5 @@ namespace Teste_Rede
             lblStatusEnvio.Text = "Enviando";
             lblStatusEnvio.Text = Util.ComunicacaoRede.EnviarPacote(txtMensagemEnviada.Text);
         }
-
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            servidor.ParaThread();
-        }
-
     }
 }

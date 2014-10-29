@@ -9,30 +9,26 @@ using System.Threading;
 
 namespace Util
 {//http://stackoverflow.com/questions/5883282/binding-property-to-control-in-winforms
-    public class ComunicacaoRede : INotifyPropertyChanged
+    public class ComunicacaoRede
     {
+        public static event EventHandler onAtualizaTela;
+
+
         private static int porta_tcp = 5500;
-        private Thread tEscutaClientes;
-        private TcpListener listener;
-        private String _texto_recebido;
-        public String Texto_Recebido
+        public static int Porta_TCP
         {
-            get 
+            get
             {
-                return _texto_recebido; 
+                return porta_tcp;
             }
             set
             {
-                _texto_recebido = value;
-                InvokePropertyChanged(new PropertyChangedEventArgs("Texto_Recebido"));
+                porta_tcp = value;
             }
         }
-        //[System.Security.Permissions.SecurityPermission(System.Security.Permissions.SecurityAction.Demand, ControlThread = true)]
-        public void ParaThread()
-        {
-            listener.Stop();
-            tEscutaClientes.Abort();
-        }
+        //private Thread tEscutaClientes;
+        private static TcpListener listener;
+        //private TcpListener listener;
         #region Envio pela Rede
         //http://tech.pro/tutorial/704/csharp-tutorial-simple-threaded-tcp-server
         #region Cliente
@@ -47,19 +43,20 @@ namespace Util
             String retorno = "";
             byte[] buffer_recebido = new byte[1024];
             int index = 0;
-            while((index = s.Read(buffer_recebido,0,buffer_recebido.Length))!=0)
+            while ((index = s.Read(buffer_recebido, 0, buffer_recebido.Length)) != 0)
             //while (s.DataAvailable)
             //    if((index = s.Read(buffer_recebido, 0, buffer_recebido.Length)) != 0)
-                {
-                    retorno += Encoding.ASCII.GetString(buffer_recebido);
-                }
+            {
+                retorno += Encoding.ASCII.GetString(buffer_recebido);
+            }
             s.Close();
             return retorno;
         }
         #endregion Cliente
         #region Servidor
-        
-        public void ReceberPacote(object objClient)
+
+        public static void ReceberPacote(object objClient)
+        //public void ReceberPacote(object objClient)
         {
             try
             {
@@ -71,33 +68,35 @@ namespace Util
                 while (s.DataAvailable && (offset = s.Read(buffer, 0, buffer.Length)) != 0)
                 //while (s.DataAvailable)
                 //    if((offset = s.Read(buffer, 0, buffer.Length)) != 0)
-                    {
-                        retorno += Encoding.ASCII.GetString(buffer, 0, offset);
-                    }
+                {
+                    retorno += Encoding.ASCII.GetString(buffer, 0, offset);
+                }
                 byte[] resposta = Encoding.ASCII.GetBytes("Recebido");
                 s.Write(resposta, 0, resposta.Length);
                 s.Close();
                 client.Close();
-                Texto_Recebido = retorno;
-                //ExecutarBind(retorno);
-                //Console.WriteLine(retorno);
+
+
+                if (onAtualizaTela != null)
+                    onAtualizaTela(retorno, new EventArgs());
+
+                Console.WriteLine(retorno);
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Erro: " + ex.Message);
             }
         }
-        //void ExecutarBind(String valor)
-        //{
-        //    Texto_Recebido = valor;
-        //}
-        public void IniciarServidor()
+        public static void IniciarServidor()
+        //public void IniciarServidor()
         {
+            Thread tEscutaClientes;
             tEscutaClientes = new Thread(new ThreadStart(EscutaClientes));
+            tEscutaClientes.IsBackground = true;
             tEscutaClientes.Start();
-            //Console.WriteLine("tEscutaClientes");
         }
-        private void EscutaClientes()
+        private static void EscutaClientes()
+        //private void EscutaClientes()
         {
             listener = new TcpListener(IPAddress.Loopback, porta_tcp);
             listener.Start();
@@ -105,18 +104,11 @@ namespace Util
             {
                 TcpClient client = listener.AcceptTcpClient();
                 Thread tReceberPacote = new Thread(new ParameterizedThreadStart(ReceberPacote));
+                tReceberPacote.IsBackground = true;
                 tReceberPacote.Start(client);
-                //Console.WriteLine("tReceberPacote");
             }
         }
         #endregion Servidor
         #endregion Envio pela Rede
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void InvokePropertyChanged(PropertyChangedEventArgs e)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null) handler(this, e);
-        }
     }
 }

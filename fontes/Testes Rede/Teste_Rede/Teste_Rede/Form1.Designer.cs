@@ -79,6 +79,7 @@
             this.txtMensagemRecebida.Location = new System.Drawing.Point(12, 123);
             this.txtMensagemRecebida.Multiline = true;
             this.txtMensagemRecebida.Name = "txtMensagemRecebida";
+            this.txtMensagemRecebida.ReadOnly = true;
             this.txtMensagemRecebida.Size = new System.Drawing.Size(252, 72);
             this.txtMensagemRecebida.TabIndex = 4;
             // 
@@ -134,7 +135,6 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Teste_Rede";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.numPorta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -150,7 +150,7 @@
         private System.Windows.Forms.NumericUpDown numPorta;
         private System.Windows.Forms.Button btnEnviar;
         private System.Windows.Forms.Label lblStatusEnvio;
-        private System.Windows.Forms.TextBox txtMensagemRecebida;
+        internal System.Windows.Forms.TextBox txtMensagemRecebida;
     }
 }
 
