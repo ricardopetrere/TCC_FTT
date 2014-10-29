@@ -11,11 +11,9 @@ namespace Teste_Rede
 {
     public partial class Form1 : Form
     {
-        internal static Form1 entidade;
         public Form1()
         {
             InitializeComponent();
-            entidade = this;
             numPorta.Value = Util.ComunicacaoRede.Porta_TCP;
             Util.ComunicacaoRede.onAtualizaTela += ComunicacaoRede_onAtualizaTela;
             Util.ComunicacaoRede.IniciarServidor();

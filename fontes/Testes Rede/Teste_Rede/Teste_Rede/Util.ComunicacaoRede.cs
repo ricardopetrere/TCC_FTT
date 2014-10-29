@@ -33,7 +33,7 @@ namespace Util
             TcpClient client = new TcpClient("127.0.0.1", 5500);
             NetworkStream s = client.GetStream();
             byte[] buffer_envio;
-            buffer_envio = Encoding.ASCII.GetBytes(dado);
+            buffer_envio = Encoding.Default.GetBytes(dado);
             s.Write(buffer_envio, 0, buffer_envio.Length);
 
             String retorno = "";
@@ -43,7 +43,7 @@ namespace Util
             //while (s.DataAvailable)
             //    if((index = s.Read(buffer_recebido, 0, buffer_recebido.Length)) != 0)
             {
-                retorno += Encoding.ASCII.GetString(buffer_recebido);
+                retorno += Encoding.Default.GetString(buffer_recebido);
             }
             s.Close();
             return retorno;
@@ -64,13 +64,12 @@ namespace Util
                 //while (s.DataAvailable)
                 //    if((offset = s.Read(buffer, 0, buffer.Length)) != 0)
                 {
-                    retorno += Encoding.ASCII.GetString(buffer, 0, offset);
+                    retorno += Encoding.Default.GetString(buffer, 0, offset);
                 }
-                byte[] resposta = Encoding.ASCII.GetBytes("Recebido");
+                byte[] resposta = Encoding.Default.GetBytes("Recebido");
                 s.Write(resposta, 0, resposta.Length);
                 s.Close();
                 client.Close();
-
 
                 if (onAtualizaTela != null)
                     onAtualizaTela(retorno, new EventArgs());
@@ -84,8 +83,7 @@ namespace Util
         }
         public static void IniciarServidor()
         {
-            Thread tEscutaClientes;
-            tEscutaClientes = new Thread(new ThreadStart(EscutaClientes));
+            Thread tEscutaClientes = new Thread(new ThreadStart(EscutaClientes));
             tEscutaClientes.IsBackground = true;
             tEscutaClientes.Start();
         }
