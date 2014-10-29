@@ -12,8 +12,6 @@ namespace Util
     public class ComunicacaoRede
     {
         public static event EventHandler onAtualizaTela;
-
-
         private static int porta_tcp = 5500;
         public static int Porta_TCP
         {
@@ -26,9 +24,7 @@ namespace Util
                 porta_tcp = value;
             }
         }
-        //private Thread tEscutaClientes;
         private static TcpListener listener;
-        //private TcpListener listener;
         #region Envio pela Rede
         //http://tech.pro/tutorial/704/csharp-tutorial-simple-threaded-tcp-server
         #region Cliente
@@ -56,7 +52,6 @@ namespace Util
         #region Servidor
 
         public static void ReceberPacote(object objClient)
-        //public void ReceberPacote(object objClient)
         {
             try
             {
@@ -88,7 +83,6 @@ namespace Util
             }
         }
         public static void IniciarServidor()
-        //public void IniciarServidor()
         {
             Thread tEscutaClientes;
             tEscutaClientes = new Thread(new ThreadStart(EscutaClientes));
@@ -96,7 +90,6 @@ namespace Util
             tEscutaClientes.Start();
         }
         private static void EscutaClientes()
-        //private void EscutaClientes()
         {
             listener = new TcpListener(IPAddress.Loopback, porta_tcp);
             listener.Start();
