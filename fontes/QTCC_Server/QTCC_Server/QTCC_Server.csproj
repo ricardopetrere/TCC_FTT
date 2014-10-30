@@ -76,7 +76,6 @@
     <Compile Include="frPrincipal.Designer.cs">
       <DependentUpon>frPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Util\JSONController.cs" />
     <Compile Include="Util\JSON_Logic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
