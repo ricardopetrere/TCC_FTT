@@ -3,6 +3,7 @@
 
 #include <vo/ebase.h>
 #include <vo/econtato.h>
+#include <QDate>
 
 class EMensagem : public EBase
 {

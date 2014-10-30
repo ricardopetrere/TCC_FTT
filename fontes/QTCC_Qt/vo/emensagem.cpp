@@ -1,4 +1,4 @@
-#include "emensagem.h"
+#include "vo/emensagem.h"
 
 EMensagem::EMensagem()
 {

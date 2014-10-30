@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace QTCC_Server.CS
+namespace QTCC_Server.VO
 {
     class Contato : EntidadeBase
     {

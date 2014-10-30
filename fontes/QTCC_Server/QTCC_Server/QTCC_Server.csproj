@@ -65,24 +65,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ComunicacaoRede.cs" />
-    <Compile Include="CS\CONSTANTES.cs" />
-    <Compile Include="CS\EntidadeBase.cs" />
+    <Compile Include="Util\ComunicacaoController.cs" />
+    <Compile Include="Util\PacoteBaseJSON.cs" />
+    <Compile Include="Util\TransmissaoPacotesException.cs" />
+    <Compile Include="VO\CONSTANTES.cs" />
+    <Compile Include="VO\EntidadeBase.cs" />
     <Compile Include="frPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frPrincipal.Designer.cs">
       <DependentUpon>frPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="JSONController.cs" />
-    <Compile Include="JSON_Logic.cs" />
+    <Compile Include="Util\JSONController.cs" />
+    <Compile Include="Util\JSON_Logic.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CS\Contato.cs" />
-    <Compile Include="CS\Grupo.cs" />
-    <Compile Include="CS\Mensagem.cs" />
-    <Compile Include="CS\MensagemImagemAudioVideo.cs" />
-    <Compile Include="CS\Usuario.cs" />
+    <Compile Include="VO\Contato.cs" />
+    <Compile Include="VO\Grupo.cs" />
+    <Compile Include="VO\Mensagem.cs" />
+    <Compile Include="VO\MensagemImagemAudioVideo.cs" />
+    <Compile Include="VO\Usuario.cs" />
+    <Compile Include="Util\Util.ComunicacaoRede.cs" />
     <EmbeddedResource Include="frPrincipal.resx">
       <DependentUpon>frPrincipal.cs</DependentUpon>
     </EmbeddedResource>
