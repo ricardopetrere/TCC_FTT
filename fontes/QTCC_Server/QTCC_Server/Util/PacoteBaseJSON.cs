@@ -11,6 +11,7 @@ namespace QTCC_Server.Util
     {
         [DataMember]
         public VO.EntidadeBase Entidade { get; set; }
+        
         #region TipoPacote
         //http://stackoverflow.com/a/10334951
         public VO.CONSTANTES.TiposPacotesDados TipoPacote { get; set; }
@@ -24,7 +25,7 @@ namespace QTCC_Server.Util
                 if (Enum.TryParse(value, true, out g))
                     this.TipoPacote = g;
                 else
-                    throw new Exception("Falha ao ler campo \"TiposPacotesDados\"");
+                    throw new Util.ConversaoJSONException(TipoPacote);
             }
         }
         #endregion TipoPacote

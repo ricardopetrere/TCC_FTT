@@ -7,7 +7,8 @@ namespace QTCC_Server.VO
 {
     public static class CONSTANTES
     {
-        public enum MensagemTipoEnum 
+        #region Enumeradores
+        public enum TipoMensagemEnum 
         { 
             GravacaoVoz=1,
             Texto=2,
@@ -32,5 +33,6 @@ namespace QTCC_Server.VO
             EnviarNovoUsuario=7,
             EnviarNovoGrupo=8
         };
+        #endregion Enumeradores
     }
 }

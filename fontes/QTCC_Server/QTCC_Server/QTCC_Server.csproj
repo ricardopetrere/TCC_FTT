@@ -67,7 +67,7 @@
   <ItemGroup>
     <Compile Include="Util\ComunicacaoController.cs" />
     <Compile Include="Util\PacoteBaseJSON.cs" />
-    <Compile Include="Util\TransmissaoPacotesException.cs" />
+    <Compile Include="Util\Exceptions.cs" />
     <Compile Include="VO\CONSTANTES.cs" />
     <Compile Include="VO\EntidadeBase.cs" />
     <Compile Include="frPrincipal.cs">
@@ -83,6 +83,7 @@
     <Compile Include="VO\Grupo.cs" />
     <Compile Include="VO\Mensagem.cs" />
     <Compile Include="VO\MensagemImagemAudioVideo.cs" />
+    <Compile Include="VO\RequisicaoLogin.cs" />
     <Compile Include="VO\Usuario.cs" />
     <Compile Include="Util\Util.ComunicacaoRede.cs" />
     <EmbeddedResource Include="frPrincipal.resx">
