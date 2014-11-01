@@ -65,6 +65,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\EntidadeBaseController.cs" />
+    <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Util\ComunicacaoController.cs" />
     <Compile Include="Util\PacoteBaseJSON.cs" />
     <Compile Include="Util\Exceptions.cs" />

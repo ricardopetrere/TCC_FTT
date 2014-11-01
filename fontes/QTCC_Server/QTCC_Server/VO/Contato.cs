@@ -69,6 +69,7 @@ namespace QTCC_Server.VO
         #endregion Inativo
         #endregion
 
+        #region Campos em JSON
         public static class Campos
         {
             public const string IDContato = "IDContato";
@@ -76,6 +77,7 @@ namespace QTCC_Server.VO
             public const string Foto = "Foto";
             public const string Inativo = "Inativo";
         }
+        #endregion Campos em JSON
 
         #region Métodos
         public Contato()
@@ -84,31 +86,6 @@ namespace QTCC_Server.VO
             Nome = "";
             Foto = null;
             Inativo = false;
-        }
-
-        public static Contato MontaVO(System.Data.DataRow registro)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static int InsereContato(Contato contato)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static int AlteraContato(Contato contato)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static int ExcluiContato(int id_contato)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static Contato BuscaContato(int id_contato)
-        {
-            throw new NotImplementedException();
         }
         #endregion
     }

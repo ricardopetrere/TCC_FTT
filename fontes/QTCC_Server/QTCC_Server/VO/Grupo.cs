@@ -77,11 +77,13 @@ namespace QTCC_Server.VO
         #endregion Administrador
         #endregion
 
+        #region Campos em JSON
         public static class Campos
         {
             public const string Membros = "Membros";
             public const string Administrador = "Administrador";
         }
+        #endregion Campos em JSON
 
         #region Métodos
         public Grupo()

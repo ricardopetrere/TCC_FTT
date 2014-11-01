@@ -9,19 +9,19 @@ namespace QTCC_Server.Util
     [DataContract]
     class PacoteBaseJSON
     {
-        [DataMember]
+        [DataMember(Name="Entidade")]
         public VO.EntidadeBase Entidade { get; set; }
         
         #region TipoPacote
         //http://stackoverflow.com/a/10334951
-        public VO.CONSTANTES.TiposPacotesDados TipoPacote { get; set; }
+        public VO.CONSTANTES.TiposPacotesDadosEnum TipoPacote { get; set; }
         [DataMember(Name = "TipoPacote")]
         String TipoPacote_String
         {
             get { return this.TipoPacote.ToString(); }
             set
             {
-                VO.CONSTANTES.TiposPacotesDados g;
+                VO.CONSTANTES.TiposPacotesDadosEnum g;
                 if (Enum.TryParse(value, true, out g))
                     this.TipoPacote = g;
                 else

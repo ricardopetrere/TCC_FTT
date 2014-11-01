@@ -13,8 +13,15 @@ public:
 
     static QJsonObject Serializar(EBase e);
     static EBase Deserializar(QJsonObject json);
+    class Campos
+    {
+    public:
+        static const QString ID;
+    };
+
 protected:
     int _id;
 };
+const QString EBase::Campos::ID="Id";
 
 #endif // EBASE_H

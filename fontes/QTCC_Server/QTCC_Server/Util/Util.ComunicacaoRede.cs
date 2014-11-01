@@ -40,7 +40,7 @@ namespace QTCC_Server.Util
             try
             {
                 TcpClient client = (TcpClient)objClient;
-                String retorno = "";
+                String recebido = "";
                 byte[] buffer = new byte[1024];
                 NetworkStream s = client.GetStream();
                 int offset;
@@ -48,20 +48,21 @@ namespace QTCC_Server.Util
                 //while (s.DataAvailable)
                 //    if((offset = s.Read(buffer, 0, buffer.Length)) != 0)
                 {
-                    retorno += Encoding.Default.GetString(buffer, 0, offset);
+                    recebido += Encoding.Default.GetString(buffer, 0, offset);
                 }
                 byte[] resposta;
                 try
                 {
                     if (onPacoteRecebido != null)
                     {
-                        onPacoteRecebido(retorno, new EventArgs());
+                        onPacoteRecebido(recebido, new EventArgs());
                     }
                     else//Como poderia cair aqui??
                     {
                         Console.WriteLine("onPacoteRecebido não instanciado!");
                     }
-                    resposta = Encoding.Default.GetBytes("Recebido");
+                    //resposta = Encoding.Default.GetBytes("Recebido");
+                    resposta = Encoding.Default.GetBytes(ComunicacaoController.TrataPacote(recebido));
                 }
                 catch(Exception e)
                 {
@@ -71,7 +72,7 @@ namespace QTCC_Server.Util
                 s.Close();
                 client.Close();
 
-                Console.WriteLine(retorno);
+                Console.WriteLine(recebido);
             }
             catch (Exception ex)
             {

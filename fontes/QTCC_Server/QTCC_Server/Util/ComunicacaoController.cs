@@ -7,65 +7,55 @@ namespace QTCC_Server.Util
 {
     public class ComunicacaoController
     {
-        //internal static void ComunicacaoRede_onPacoteRecebido(object sender, EventArgs e)
+        //public static String TrataPacote(string pacote_recebido)
         //{
         //    //Arrumar para usar pipeline mesmo. Está estranho e aparentemente errado desse jeito
-        //    PacoteBaseJSON p = JSON_Logic.Deserializa<PacoteBaseJSON>(sender.ToString());
+        //    PacoteBaseJSON p = JSON_Logic.Deserializa<PacoteBaseJSON>(pacote_recebido.ToString());
         //    switch (p.TipoPacote)
         //    {
-        //        case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.RequisicaoLogin:
-        //            break;
-        //        case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.ReceberNovasMensagens:
-        //            break;
-        //        case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.EnviarNovaMensagem:
-
-        //            break;
-        //        case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.StatusContato:
-        //            break;
-        //        case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.StatusMensagem:
-        //            break;
-        //        case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.NovoCadastro:
-        //            break;
-        //        case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.EnviarNovoUsuario:
-        //            break;
-        //        case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.EnviarNovoGrupo:
-        //            break;
-        //        default:
-        //            break;
         //    }
         //}
 
-        internal static void ComunicacaoRede_onPacoteRecebido(object sender, EventArgs e)
+        public static String TrataPacote(string pacote_recebido)
         {
-            string[] dados_pacote = sender.ToString().Split('|');
-            VO.CONSTANTES.TiposPacotesDados TipoPacote;
+            String retorno = "";
+            string[] dados_pacote = pacote_recebido.ToString().Split('|');
+            VO.CONSTANTES.TiposPacotesDadosEnum TipoPacote;
             if (Enum.TryParse(dados_pacote[0], out TipoPacote))
+            {
                 switch (TipoPacote)
                 {
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.RequisicaoLogin:
+                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.RequisicaoLogin:
                         VO.RequisicaoLogin login = JSON_Logic.Deserializa<VO.RequisicaoLogin>(dados_pacote[1]);
                         break;
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.ReceberNovasMensagens:
+                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.ReceberNovasMensagens:
                         break;
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.EnviarNovaMensagem:
+                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.EnviarNovaMensagem:
                         VO.Mensagem m = JSON_Logic.Deserializa<VO.Mensagem>(dados_pacote[1]);
                         break;
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.StatusContato:
+                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.StatusContato:
                         break;
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.StatusMensagem:
+                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.StatusMensagem:
                         break;
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.NovoCadastro:
+                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.NovoCadastro:
                         VO.Usuario u = JSON_Logic.Deserializa<VO.Usuario>(dados_pacote[1]);
                         break;
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.EnviarNovoUsuario:
+                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.EnviarNovoUsuario:
                         VO.Usuario novo_u = JSON_Logic.Deserializa<VO.Usuario>(dados_pacote[1]);
                         break;
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDados.EnviarNovoGrupo:
+                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.EnviarNovoGrupo:
                         VO.Grupo g = JSON_Logic.Deserializa<VO.Grupo>(dados_pacote[1]);
                         break;
                     default:
+                        throw new NotImplementedException();
                         break;
                 }
+                return retorno;
+            }
+            else
+            {
+                throw new InvalidCastException();
+            }
         }
     }
 }

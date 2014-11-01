@@ -76,6 +76,7 @@ namespace QTCC_Server.VO
         #endregion Senha
         #endregion Propriedades
 
+        #region Campos em JSON
         public static class Campos
         {
             public const string Texto_Status = "Texto_Status";
@@ -83,6 +84,7 @@ namespace QTCC_Server.VO
             public const string Email = "Email";
             public const string Senha = "Senha";
         }
+        #endregion Campos em JSON
 
         #region Métodos
         public Usuario()

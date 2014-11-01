@@ -9,15 +9,24 @@ namespace QTCC_Server.VO
     [DataContract]
     public class RequisicaoLogin
     {
-        [DataMember(Name=Campos.IDContato)]
-        public int IDContato { get; set; }
+        #region Propriedades
+        #region Login
+        [DataMember(Name = Campos.Login)]
+        public int Login { get; set; }
+        #endregion Login
 
-        [DataMember(Name=Campos.Senha)]
-        public String Senha { get; set; }
+        #region Senha
+        [DataMember(Name = Campos.Senha)]
+        public String Senha { get; set; } 
+        #endregion
+        #endregion Propriedades
+
+        #region Campos em JSON
         public static class Campos
         {
-            public const string IDContato = "IDContato";
+            public const string Login = "Login";
             public const string Senha = "Senha";
         }
+        #endregion Campos em JSON
     }
 }

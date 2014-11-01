@@ -17,7 +17,7 @@ namespace QTCC_Server
         public frPrincipal()
         {
             InitializeComponent();
-            ComunicacaoRede.onPacoteRecebido += ComunicacaoController.ComunicacaoRede_onPacoteRecebido;
+            //ComunicacaoRede.onPacoteRecebido += ComunicacaoController.ComunicacaoRede_onPacoteRecebido;
         }
         
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)

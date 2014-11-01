@@ -22,7 +22,7 @@ namespace QTCC_Server.VO
             EnviadoAoServidor=2,
             DestinatarioRecebeu=3
         };
-        public enum TiposPacotesDados 
+        public enum TiposPacotesDadosEnum 
         { 
             RequisicaoLogin = 1,
             ReceberNovasMensagens=2,

@@ -168,6 +168,7 @@ namespace QTCC_Server.VO
         #endregion Contato_Para_Deletou
         #endregion Propriedades
 
+        #region Campos em JSON
         public static class Campos
         {
             public const string IDMensagem = "IDMensagem";
@@ -180,6 +181,7 @@ namespace QTCC_Server.VO
             public const string Tipo_Mensagem = "Tipo_Mensagem";
             public const string Status_Mensagem = "Status_Mensagem";
         }
+        #endregion Campos em JSON
 
         #region Métodos
         public Mensagem()

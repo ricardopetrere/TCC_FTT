@@ -3,7 +3,7 @@
 EContato::EContato() : EBase()
 {
     _nome = "";
-    _imagem = QImage();
+    _foto = QImage();
     _inativo=false;
 }
 
@@ -17,14 +17,14 @@ QString &EContato::Nome()
     return _nome;
 }
 
-void EContato::setImage(QImage &imagem)
+void EContato::setFoto(QImage &foto)
 {
-    _imagem = imagem;
+    _foto = foto;
 }
 
-QImage &EContato::Imagem()
+QImage &EContato::Foto()
 {
-    return _imagem;
+    return _foto;
 }
 
 void EContato::setInativo(bool &inativo)
@@ -40,22 +40,22 @@ bool &EContato::Inativo()
 EContato EContato::Deserializar(QJsonObject &json)
 {
     EContato e;
-    e._id = json["Id"].toInt();
-    e._nome = json["Nome"].toString();
-    e._inativo = json["Inativo"].toBool();
+    e._id = json[Campos::IDContato].toInt();
+    e._nome = json[Campos::Nome].toString();
+    e._inativo = json[Campos::Inativo].toBool();
 //    QImage a;
-//    if(a.loadFromData(json["Imagem"].toString().toLatin1()))
-//        e._imagem = a;
+//    if(a.loadFromData(json[Campos::Foto].toString().toLatin1()))
+//        e._foto = a;
     return e;
 }
 
 QJsonObject EContato::Serializar(EContato e)
 {
     QJsonObject json;
-    json["Id"] = e._id;
-    json["Nome"] = e._nome;
-    //json["Imagem"] = e._imagem;
-    json["Inativo"] = e._inativo;
+    json[Campos::IDContato] = e._id;
+    json[Campos::Nome] = e._nome;
+    //json[Campos::Foto] = e._foto;
+    json[Campos::Inativo] = e._inativo;
     return json;
 }
 
