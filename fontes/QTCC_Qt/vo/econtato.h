@@ -8,19 +8,21 @@ class EContato : public EBase
 {
 public:
     EContato();
-    void setNome( QString &nome);
-    QString &Nome();
-    void setFoto(QImage &foto);
-    QImage &Foto();
-    void setInativo(bool &inativo);
-    bool &Inativo();
+    void setNome(const QString &nome);
+    const QString &Nome();
+    void setFoto(const QImage &foto);
+    const QImage &Foto();
+    void setInativo(const bool &inativo);
+    const bool &Inativo();
+
+    static EContato busca(const int &id);
 
     static EContato Deserializar(QJsonObject &json);
     static QJsonObject Serializar(EContato e);
     class Campos
     {
         public:
-            static const QString IDContato;
+            //static const QString IDContato;
             static const QString Nome;
             static const QString Foto;
             static const QString Inativo;
@@ -30,8 +32,4 @@ protected:
     QImage _foto;
     bool _inativo;
 };
-const QString EContato::Campos::IDContato = "IDContato";
-const QString EContato::Campos::Nome = "Nome";
-const QString EContato::Campos::Foto = "Foto";
-const QString EContato::Campos::Inativo = "Inativo";
 #endif // ECONTATO_H

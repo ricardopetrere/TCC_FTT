@@ -1,26 +1,26 @@
 #include "ebase.h"
 
+const QString EBase::Campos::ID="Id";
+
 EBase::EBase()
 {
     _id = -1;
 }
 
-int &EBase::Id()
+const int &EBase::Id()
 {
     return _id;
 }
 
-void EBase::setId(int &id)
+void EBase::setId(const int &id)
 {
     _id = id;
 }
 
-QJsonObject EBase::Serializar(EBase e)
+QJsonObject EBase::Serializar(const EBase e)
 {
-
 }
 
-EBase EBase::Deserializar(QJsonObject json)
+EBase EBase::Deserializar(const QJsonObject json)
 {
-
 }

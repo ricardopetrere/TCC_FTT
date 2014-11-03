@@ -7,35 +7,18 @@ namespace QTCC_Server.Controller
 {
     public abstract class EntidadeBaseController<T>
     {
+        public T Entidade { get; set; }
 
-        public abstract T MontaVO(System.Data.DataRow registro)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract T MontaVO(System.Data.DataRow registro);
 
-        public abstract int Insere(T entidade)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract int Insere(T entidade);
 
-        public abstract int Altera(T entidade)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract int Altera(T entidade);
 
-        public abstract int Exclui(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract int Exclui(int id);
 
-        public abstract T Busca(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract T Busca(int id);
 
-        public abstract List<T> Lista()
-        {
-            throw new NotImplementedException();
-        }
+        public abstract List<T> Lista();
     }
 }

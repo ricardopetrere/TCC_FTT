@@ -35,7 +35,7 @@ namespace QTCC_Server.VO
             set
             {
                 Contato de;
-                if ((de = Contato.BuscaContato(value)) != null)
+                if ((de = new Controller.ContatoController().Busca(value)) != null)
                 {
                     this.Contato_De = de;
                 }
@@ -63,7 +63,7 @@ namespace QTCC_Server.VO
             set
             {
                 Contato para;
-                if ((para = Contato.BuscaContato(value)) != null)
+                if ((para = new Controller.ContatoController().Busca(value)) != null)
                 {
                     this.Contato_Para = para;
                 }

@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     //Login::validaLogin(true,this);
     Login *l = new Login(this);
-    if(!l->estaLogado())
+    if(!Login::estaLogado())
     {
         l->setWindowModality(Qt::WindowModal);
         l->show();
@@ -26,9 +26,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionLogout_triggered()
 {
     Logger::debug("Logout.");
-    //Login::validaLogin(false,this);
     Login *l = new Login(this);
-    if(l->estaLogado())
+    if(Login::estaLogado())
     {
         Login::realizaLogout();
         l->setWindowModality(Qt::WindowModal);

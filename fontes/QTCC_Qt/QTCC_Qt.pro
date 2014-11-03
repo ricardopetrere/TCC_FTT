@@ -4,11 +4,11 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = QTCC
+TARGET = QTCC_Qt
 TEMPLATE = app
 
 
@@ -22,7 +22,10 @@ SOURCES += main.cpp \
     ui/cadastre_se.cpp \
     vo/ebase.cpp \
     vo/emensagem.cpp \
-    vo/econtato.cpp
+    vo/econtato.cpp \
+    vo/eusuario.cpp \
+    util/comunicacaorede.cpp \
+    vo/constantes.cpp
 
 HEADERS  += \
     ui/mainwindow.h \
@@ -35,7 +38,10 @@ HEADERS  += \
     ngc/logger.h \
     vo/ebase.h \
     vo/emensagem.h \
-    vo/econtato.h
+    vo/econtato.h \
+    vo/eusuario.h \
+    util/comunicacaorede.h \
+    vo/constantes.h
 
 FORMS    += ui/mainwindow.ui \
     ui/conversas.ui \

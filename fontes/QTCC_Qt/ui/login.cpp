@@ -10,9 +10,7 @@ Login::Login(QWidget *parent) :
     ui->setupUi(this);
 }
 
-//QString Login::login="-1";
 int Login::login=-1;
-//QString Login::login=NULL;
 
 Login::~Login()
 {

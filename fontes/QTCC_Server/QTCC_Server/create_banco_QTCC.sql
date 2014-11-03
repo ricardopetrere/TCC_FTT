@@ -7,7 +7,7 @@ create table tbContato
 (
 	 cont_id bigint identity(1,1)	--ID único do contato (grupo ou usuário) (interno do sistema)
 	,cont_nome varchar(100) not null--Nome de exibição do usuário
-	,cont_imagem image				--Imagem do usuário (salvos os bytes desta)
+	,cont_foto image				--Imagem do usuário (salvos os bytes desta)
 	,cont_inativo bit not null		--Contato inativo (Removido)
 )
 alter table tbContato add constraint PK_Contato primary key (cont_id)
@@ -19,7 +19,7 @@ create table tbUsuario
 	--Exclusivo de Usuario
 	,usu_email varchar(100) not null	--E-mail do usuário
 	,usu_senha varchar(50) not null		--Senha do usuário
-	,usu_mensagem_perfil varchar(100)	--Mensagem de perfil do usuário
+	,usu_texto_status varchar(100)		--Mensagem de perfil do usuário
 
 )
 alter table tbUsuario add constraint FK_Usuario_Contato foreign key (cont_id) references tbContato (cont_id)
@@ -63,3 +63,79 @@ create table tmpUsuariosLogados
 	,log_visto_ultimo datetime not null	--"Visto por último" do contato
 )
 alter table tmpUsuariosLogados add constraint PK_UsuariosLogados primary key (cont_id/*,log_ip*/)
+go
+
+---------------------------------------------------------------
+--------------------Stored Procedures--------------------------
+---------------------------------------------------------------
+-- =============================================
+-- Author:		Ricardo Petrére
+-- Create date: 02/11/2014
+-- Description:	Procedure responsável por inserir
+-- um novo usuário no banco de dados.
+-- =============================================
+create procedure spInsereUsuario
+(
+	@Cont_Nome			varchar(100),
+	@Cont_Foto			image,
+	@Usu_Email			varchar(100),
+	@Usu_Senha			varchar(50),
+	@Usu_Texto_Status	varchar(100),
+	@Cont_Id			bigint output
+)
+as
+begin
+	declare @cont_inativo bit = 0  -- Por razões óbvias, cont_inativo vai com default = false
+	set @Cont_Id = -1
+	declare @ErroMsg varchar(255) = ''
+
+	--Valida o E-mail informado.
+	--É uma validação bem simples. Não está em branco, possui '@', '.' e algo antes e depois de ambos?
+	--Passou.
+	begin
+		declare @index_@ int = PATINDEX('@',@Usu_Email)
+		declare @index_ponto int = PATINDEX('.',@Usu_Email)
+		declare @length_email int = LEN(LTRIM(RTRIM(@Usu_Email)))
+		if(@length_email<1) or (@index_@<1) or (@index_ponto<@index_@+2) or (@index_ponto=@length_email)
+		begin
+			set @ErroMsg ='E-mail inválido. O formato de e-mail deve ser <usuario>@<provedor>.<abrangência (ex: com, co.uk)>'
+			goto Erro
+		end
+	end
+
+	--Checa se já existe outro contato com o mesmo e-mail.
+	if exists (select 'x' from tbUsuario where usu_email = @Usu_Email)
+	begin;
+		set @ErroMsg = 'E-mail já utilizado'
+		goto Erro
+	end
+
+	--Checa se o nome foi passado em branco
+	if (LEN(RTRIM(LTRIM(@Cont_Nome)))<1)
+	begin
+		set @ErroMsg = 'É necessário inserir um nome de usuário'
+		goto Erro
+	end
+
+	begin transaction
+	begin try
+		insert into tbContato(cont_nome,Cont_Foto,cont_inativo)
+		values(@Cont_Nome,@Cont_Foto,0)
+		set @Cont_Id = @@IDENTITY
+
+		insert into tbUsuario(cont_id,usu_email,usu_senha,usu_texto_status)
+		values(@Cont_Id,@Usu_Email,@Usu_Senha,@Usu_Texto_Status)
+		commit transaction
+	end try
+	begin catch
+		rollback transaction;
+		set @ErroMsg = 'Falha na inserção do contato'
+		goto Erro
+	end catch
+	
+	Erro:;
+		throw 51000,@Erro_Msg,1
+end
+
+
+go

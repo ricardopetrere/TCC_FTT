@@ -2,6 +2,9 @@
 #include "ui_cadastre_se.h"
 #include "QFileDialog"
 #include "ngc/logger.h"
+#include "vo/econtato.h"
+#include "vo/eusuario.h"
+#include <QMessageBox>
 
 Cadastre_se::Cadastre_se(QWidget *parent) :
     QMainWindow(parent),
@@ -23,7 +26,27 @@ void Cadastre_se::on_btnCancelar_clicked()
 
 void Cadastre_se::on_btnCadastrar_clicked()
 {
-    Logger::debug(ui->lineNome->text(), " cadastrado.");
+//    EContato c;
+//    c.setNome(ui->lineNome->text());
+    EUsuario u;
+    u.setNome(ui->lineNome->text());
+    u.setFoto(ui->lblFoto->pixmap()->toImage());
+    u.setEmail(ui->lineEmail->text());
+    if(ui->lineSenha->text()!=ui->lineRepitaSenha->text())
+    {
+        Logger::showQMessageBox("Senhas diferentes!","Erro");
+        return;
+    }
+    u.setSenha(ui->lineSenha->text());
+
+    if(u.cadastraNovo())
+    {
+        Logger::debug(ui->lineNome->text(), " cadastrado.");
+    }
+    else
+    {
+        Logger::showQMessageBox("Erro ao cadastrar","Erro");
+    }
     return;
 }
 

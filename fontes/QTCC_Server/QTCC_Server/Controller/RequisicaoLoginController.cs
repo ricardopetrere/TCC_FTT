@@ -5,7 +5,7 @@ using System.Text;
 
 namespace QTCC_Server.Controller
 {
-    class LoginController : EntidadeBaseController<VO.RequisicaoLogin>
+    class RequisicaoLoginController : EntidadeBaseController<VO.RequisicaoLogin>
     {
         public override VO.RequisicaoLogin MontaVO(System.Data.DataRow registro)
         {

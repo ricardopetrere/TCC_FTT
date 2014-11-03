@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QDate>
 #include <QDebug>
+#include <QMessageBox>
 
 class Logger : public QObject
 {
@@ -26,6 +27,13 @@ public:
         foreach(QString _qString, listDeQStrings)
             QStrings_concatenadas += _qString + " ";
         debug(QStrings_concatenadas,mensagem_para_concatenar);
+    }
+    static void showQMessageBox(QString mensagem_exibicao,QString titulo)
+    {
+        QMessageBox msg;
+        msg.setText(mensagem_exibicao);
+        msg.setWindowTitle(titulo);
+        msg.show();
     }
 
 signals:

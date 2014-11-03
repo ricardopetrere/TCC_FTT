@@ -17,11 +17,7 @@ public:
     ~Login();
     static bool estaLogado()
     {
-        //Logger::debug("Usuário logado: \'" + login.toLatin1() + "\'");
-        //return (QString::compare(login.toLatin1(), "-1", Qt::CaseInsensitive)!=0);
-        //return !login.isNull();
         return login!=-1;
-        //return login!="-1";
     }
     static void validaLogin(bool estado_para_checar,QWidget *parent)
     {
@@ -34,8 +30,6 @@ public:
     }
     static void realizaLogout()
     {
-        //login="-1";
-        //login = login.null;
         login = -1;
     }
 
@@ -46,7 +40,6 @@ private slots:
 
 private:
     Ui::Login *ui;
-    //static QString login;
     static int login;
 
 };

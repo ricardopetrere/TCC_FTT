@@ -8,11 +8,11 @@ class EBase
 {
 public:
     EBase();
-    int &Id();
-    void setId(int &id);
+    const int &Id();
+    void setId(const int &id);
 
-    static QJsonObject Serializar(EBase e);
-    static EBase Deserializar(QJsonObject json);
+    static QJsonObject Serializar(const EBase e);
+    static EBase Deserializar(const QJsonObject json);
     class Campos
     {
     public:
@@ -22,6 +22,5 @@ public:
 protected:
     int _id;
 };
-const QString EBase::Campos::ID="Id";
 
 #endif // EBASE_H

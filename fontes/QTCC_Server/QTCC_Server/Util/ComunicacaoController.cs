@@ -23,34 +23,37 @@ namespace QTCC_Server.Util
             VO.CONSTANTES.TiposPacotesDadosEnum TipoPacote;
             if (Enum.TryParse(dados_pacote[0], out TipoPacote))
             {
-                switch (TipoPacote)
+                try
                 {
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.RequisicaoLogin:
-                        VO.RequisicaoLogin login = JSON_Logic.Deserializa<VO.RequisicaoLogin>(dados_pacote[1]);
-                        break;
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.ReceberNovasMensagens:
-                        break;
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.EnviarNovaMensagem:
-                        VO.Mensagem m = JSON_Logic.Deserializa<VO.Mensagem>(dados_pacote[1]);
-                        break;
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.StatusContato:
-                        break;
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.StatusMensagem:
-                        break;
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.NovoCadastro:
-                        VO.Usuario u = JSON_Logic.Deserializa<VO.Usuario>(dados_pacote[1]);
-                        break;
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.EnviarNovoUsuario:
-                        VO.Usuario novo_u = JSON_Logic.Deserializa<VO.Usuario>(dados_pacote[1]);
-                        break;
-                    case QTCC_Server.VO.CONSTANTES.TiposPacotesDadosEnum.EnviarNovoGrupo:
-                        VO.Grupo g = JSON_Logic.Deserializa<VO.Grupo>(dados_pacote[1]);
-                        break;
-                    default:
-                        throw new NotImplementedException();
-                        break;
+
+                    switch (TipoPacote)
+                    {
+                        case VO.CONSTANTES.TiposPacotesDadosEnum.RequisicaoLogin:
+                            break;
+                        case VO.CONSTANTES.TiposPacotesDadosEnum.ReceberNovasMensagens:
+                            break;
+                        case VO.CONSTANTES.TiposPacotesDadosEnum.EnviarNovaMensagem:
+                            break;
+                        case VO.CONSTANTES.TiposPacotesDadosEnum.StatusContato:
+                            break;
+                        case VO.CONSTANTES.TiposPacotesDadosEnum.StatusMensagem:
+                            break;
+                        case VO.CONSTANTES.TiposPacotesDadosEnum.NovoCadastro:
+                            retorno = new Controller.UsuarioController().NovoCadastro(JSON_Logic.Deserializa<VO.Usuario>(dados_pacote[1]));
+                            break;
+                        case VO.CONSTANTES.TiposPacotesDadosEnum.EnviarNovoUsuario:
+                            break;
+                        case VO.CONSTANTES.TiposPacotesDadosEnum.EnviarNovoGrupo:
+                            break;
+                        default:
+                            throw new NotImplementedException();
+                    }
+                    return retorno;
                 }
-                return retorno;
+                catch(Exception ex)
+                {
+                    return ex.Message;
+                }
             }
             else
             {

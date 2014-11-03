@@ -42,7 +42,7 @@ namespace QTCC_Server.VO
                 List<Contato> retorno = new List<Contato>();
                 foreach (int ID in value)
                 {
-                    Contato c = Contato.BuscaContato(ID);
+                    Contato c = new Controller.ContatoController().Busca(ID);
                     if (c != null)
                     {
                         retorno.Add(c);
@@ -68,7 +68,7 @@ namespace QTCC_Server.VO
 
         #region Senha
         [DataMember(Name = Campos.Senha)]
-        private String Senha
+        public String Senha
         {
             get;
             set;
