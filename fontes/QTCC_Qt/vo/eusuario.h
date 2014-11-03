@@ -44,8 +44,6 @@ protected:
     QList<EContato> _contatos;
     QString _email;
     QString _senha;
-private:
-    EUsuario(EUsuario* usuario);
 };
 
 #endif // EUSUARIO_H

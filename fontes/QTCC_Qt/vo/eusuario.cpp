@@ -2,7 +2,7 @@
 #include "econtato.h"
 #include <QJsonObject>
 #include <QJsonArray>
-#include <util/comunicacaorede.h>
+#include <controller/usuariocontroller.h>
 
 //const QString EUsuario::Campos::IDUsuario = EBase::Campos::ID;
 const QString EUsuario::Campos::Texto_Status = "Texto_Status";
@@ -68,8 +68,7 @@ void EUsuario::setSenha(const QString &senha)
 
 bool EUsuario::cadastraNovo()
 {
-    ComunicacaoRede comm;
-    comm.enviaPacote("NovoCadastro|" + EUsuario::Serializar(this));
+    return UsuarioController::cadastraNovo(*this);
 }
 
 EUsuario EUsuario::Deserializar(QJsonObject &json)
@@ -107,12 +106,3 @@ QJsonObject EUsuario::Serializar(EUsuario u)
     json[Campos::Contatos] = contatosArray;
     return json;
 }
-
-EUsuario::EUsuario(EUsuario *usuario)
-{
-    _id = &usuario->Id;
-}
-
-
-
-

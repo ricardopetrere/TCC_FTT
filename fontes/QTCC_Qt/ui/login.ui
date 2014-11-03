@@ -14,8 +14,8 @@
    <string>Login</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
      <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
        <layout class="QFormLayout" name="formLayout">
@@ -69,16 +69,6 @@
      </layout>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>224</width>
-     <height>21</height>
-    </rect>
-   </property>
   </widget>
  </widget>
  <tabstops>

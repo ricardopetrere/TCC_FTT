@@ -87,7 +87,6 @@ as
 begin
 	declare @cont_inativo bit = 0  -- Por razões óbvias, cont_inativo vai com default = false
 	set @Cont_Id = -1
-	declare @ErroMsg varchar(255) = ''
 
 	--Valida o E-mail informado.
 	--É uma validação bem simples. Não está em branco, possui '@', '.' e algo antes e depois de ambos?
@@ -97,24 +96,21 @@ begin
 		declare @index_ponto int = PATINDEX('.',@Usu_Email)
 		declare @length_email int = LEN(LTRIM(RTRIM(@Usu_Email)))
 		if(@length_email<1) or (@index_@<1) or (@index_ponto<@index_@+2) or (@index_ponto=@length_email)
-		begin
-			set @ErroMsg ='E-mail inválido. O formato de e-mail deve ser <usuario>@<provedor>.<abrangência (ex: com, co.uk)>'
-			goto Erro
+		begin;
+			throw 51000,'E-mail inválido. O formato de e-mail deve ser <usuario>@<provedor>.<abrangência (ex: com, co.uk)>',1
 		end
 	end
 
 	--Checa se já existe outro contato com o mesmo e-mail.
 	if exists (select 'x' from tbUsuario where usu_email = @Usu_Email)
 	begin;
-		set @ErroMsg = 'E-mail já utilizado'
-		goto Erro
+		throw 51000,'E-mail já utilizado',1
 	end
 
 	--Checa se o nome foi passado em branco
 	if (LEN(RTRIM(LTRIM(@Cont_Nome)))<1)
-	begin
-		set @ErroMsg = 'É necessário inserir um nome de usuário'
-		goto Erro
+	begin;
+		throw 51000,'É necessário inserir um nome de usuário',1
 	end
 
 	begin transaction
@@ -129,13 +125,7 @@ begin
 	end try
 	begin catch
 		rollback transaction;
-		set @ErroMsg = 'Falha na inserção do contato'
-		goto Erro
+		throw 51000,'Falha na inserção do contato',1
 	end catch
-	
-	Erro:;
-		throw 51000,@Erro_Msg,1
 end
-
-
 go

@@ -25,7 +25,8 @@ SOURCES += main.cpp \
     vo/econtato.cpp \
     vo/eusuario.cpp \
     util/comunicacaorede.cpp \
-    vo/constantes.cpp
+    vo/constantes.cpp \
+    controller/usuariocontroller.cpp
 
 HEADERS  += \
     ui/mainwindow.h \
@@ -41,7 +42,8 @@ HEADERS  += \
     vo/econtato.h \
     vo/eusuario.h \
     util/comunicacaorede.h \
-    vo/constantes.h
+    vo/constantes.h \
+    controller/usuariocontroller.h
 
 FORMS    += ui/mainwindow.ui \
     ui/conversas.ui \
