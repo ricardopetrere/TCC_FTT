@@ -30,10 +30,10 @@ public:
     }
     static void showQMessageBox(QString mensagem_exibicao,QString titulo)
     {
-        QMessageBox msg;
-        msg.setText(mensagem_exibicao);
-        msg.setWindowTitle(titulo);
-        msg.show();
+        QMessageBox *msg = new QMessageBox();
+        msg->setText(mensagem_exibicao);
+        msg->setWindowTitle(titulo);
+        msg->show();
     }
 
 signals:

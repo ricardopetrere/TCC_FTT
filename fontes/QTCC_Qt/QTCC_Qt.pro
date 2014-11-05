@@ -55,3 +55,6 @@ FORMS    += ui/mainwindow.ui \
 CONFIG += mobility
 MOBILITY = 
 
+RESOURCES += \
+    QTCC_Qt.qrc
+

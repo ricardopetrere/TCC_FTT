@@ -1,6 +1,7 @@
 #include "econtato.h"
-#include <QImageWriter>
-#include <QImageReader>
+#include <QImage>
+#include <QBuffer>
+#include <QByteArray>
 
 //const QString EContato::Campos::IDContato = EBase::Campos::ID;
 const QString EContato::Campos::Nome = "Nome";
@@ -66,8 +67,21 @@ QJsonObject EContato::Serializar(EContato e)
     QJsonObject json;
     json[EBase::Campos::ID] = e._id;
     json[Campos::Nome] = e._nome;
-    QByteArray array((char*)e._foto.bits(),e._foto.byteCount());
-    json[Campos::Foto] = QString::fromLatin1(array);
+
+    QByteArray array;
+    QBuffer buffer(&array);
+    buffer.open(QIODevice::WriteOnly);
+    QByteArray::Format f = QImage::format();
+    e._foto.save(&buffer,"JPEG");
+
+    QByteArray s1 = QByteArray((char*)e._foto.bits(),e._foto.byteCount());
+
+    QString s2 = array.toBase64(QByteArray::Base64Encoding);
+
+    QString s3 = e._foto.
+
+    //QByteArray array((char*)e._foto.bits(),e._foto.byteCount());
+    json[Campos::Foto] = QString::fromLocal8Bit(array);
     json[Campos::Inativo] = e._inativo;
     return json;
 }

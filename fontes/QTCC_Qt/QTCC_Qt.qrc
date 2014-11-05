@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/1415096763_user-128.png</file>
+        <file>images/1415096831_user-128.png</file>
+        <file>images/1415099457_user-64.png</file>
+        <file>images/1415099481_user-64.png</file>
+    </qresource>
+</RCC>

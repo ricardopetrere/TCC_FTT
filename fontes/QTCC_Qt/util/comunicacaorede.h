@@ -3,7 +3,7 @@
 
 #include <QTcpSocket>
 
-class ComunicacaoRede : public QTcpSocket
+class ComunicacaoRede : public QObject
 {
     Q_OBJECT
 public:
@@ -12,6 +12,9 @@ public:
 signals:
 
 public slots:
+
+private:
+    QTcpSocket* socket;
 
 };
 

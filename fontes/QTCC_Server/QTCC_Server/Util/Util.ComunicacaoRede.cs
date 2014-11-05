@@ -44,7 +44,7 @@ namespace QTCC_Server.Util
                 byte[] buffer = new byte[1024];
                 NetworkStream s = client.GetStream();
                 int offset;
-                while (s.DataAvailable && (offset = s.Read(buffer, 0, buffer.Length)) != 0)
+                while ((offset = s.Read(buffer, 0, buffer.Length)) != 0 && s.DataAvailable)
                 //while (s.DataAvailable)
                 //    if((offset = s.Read(buffer, 0, buffer.Length)) != 0)
                 {

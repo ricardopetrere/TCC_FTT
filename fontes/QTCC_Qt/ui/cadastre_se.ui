@@ -24,35 +24,59 @@
           <property name="text">
            <string>Nome:</string>
           </property>
+          <property name="buddy">
+           <cstring>lineNome</cstring>
+          </property>
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="lineNome"/>
+         <widget class="QLineEdit" name="lineNome">
+          <property name="text">
+           <string>a</string>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="lblSobrenome">
           <property name="text">
            <string>Sobrenome:</string>
           </property>
+          <property name="buddy">
+           <cstring>lineSobrenome</cstring>
+          </property>
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QLineEdit" name="lineSobrenome"/>
+         <widget class="QLineEdit" name="lineSobrenome">
+          <property name="text">
+           <string>a</string>
+          </property>
+         </widget>
         </item>
         <item row="2" column="0">
          <widget class="QLabel" name="lblEmail">
           <property name="text">
            <string>Email:</string>
           </property>
+          <property name="buddy">
+           <cstring>lineEmail</cstring>
+          </property>
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QLineEdit" name="lineEmail"/>
+         <widget class="QLineEdit" name="lineEmail">
+          <property name="text">
+           <string>a</string>
+          </property>
+         </widget>
         </item>
         <item row="3" column="0">
          <widget class="QLabel" name="lblSenha">
           <property name="text">
            <string>Senha:</string>
+          </property>
+          <property name="buddy">
+           <cstring>lineSenha</cstring>
           </property>
          </widget>
         </item>
@@ -60,6 +84,9 @@
          <widget class="QLineEdit" name="lineSenha">
           <property name="inputMethodHints">
            <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+          </property>
+          <property name="text">
+           <string>a</string>
           </property>
           <property name="echoMode">
            <enum>QLineEdit::Password</enum>
@@ -71,12 +98,18 @@
           <property name="text">
            <string>Repita a senha:</string>
           </property>
+          <property name="buddy">
+           <cstring>lineRepitaSenha</cstring>
+          </property>
          </widget>
         </item>
         <item row="4" column="1">
          <widget class="QLineEdit" name="lineRepitaSenha">
           <property name="inputMethodHints">
            <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+          </property>
+          <property name="text">
+           <string>a</string>
           </property>
           <property name="echoMode">
            <enum>QLineEdit::Password</enum>
@@ -102,33 +135,39 @@
             </property>
             <property name="minimumSize">
              <size>
-              <width>100</width>
-              <height>100</height>
+              <width>150</width>
+              <height>150</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>300</width>
-              <height>300</height>
+              <width>150</width>
+              <height>150</height>
              </size>
             </property>
             <property name="baseSize">
              <size>
-              <width>100</width>
-              <height>100</height>
+              <width>150</width>
+              <height>150</height>
              </size>
             </property>
             <property name="frameShape">
              <enum>QFrame::Box</enum>
             </property>
             <property name="text">
-             <string>&lt;Imagem&gt;</string>
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="../QTCC_Qt.qrc">:/images/1415099481_user-64.png</pixmap>
             </property>
             <property name="scaledContents">
              <bool>true</bool>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
+            </property>
+            <property name="buddy">
+             <cstring>btnEscolhaImagem</cstring>
             </property>
            </widget>
           </item>
@@ -152,6 +191,9 @@
           <property name="alignment">
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
           </property>
+          <property name="buddy">
+           <cstring>lineTextoStatus</cstring>
+          </property>
          </widget>
         </item>
         <item>
@@ -161,6 +203,9 @@
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="text">
+           <string>a</string>
           </property>
          </widget>
         </item>
@@ -188,17 +233,9 @@
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>299</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../QTCC_Qt.qrc"/>
+ </resources>
  <connections/>
 </ui>

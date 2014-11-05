@@ -2,31 +2,31 @@
 #include "ngc/logger.h"
 
 ComunicacaoRede::ComunicacaoRede(QObject *parent) :
-    QTcpSocket(parent)
+    QObject(parent)
 {
     //connect(this,&ComunicacaoRede::connected,this,&ComunicacaoRede::)
-    connectToHost("localhost",5500);
-    while(!waitForConnected(-1))
-    {
-        Logger::debug("não conseguiu");
-    }
 }
 
 QString ComunicacaoRede::enviaPacote(QString pacote)
 {
-    QString retorno;
-    if(isOpen())
+    socket = new QTcpSocket(this);
+    while(!(socket->state()==QAbstractSocket::ConnectedState))
     {
-        write(pacote.toLatin1());
-        flush();
-        waitForBytesWritten(-1);
-        while (waitForReadyRead(-1)) {
-            retorno = QString(readAll());
+        socket->connectToHost("localhost",5500);
+        while(!socket->waitForConnected(10000))
+        {
+            Logger::debug("não conseguiu");
         }
     }
-    else
+    QString retorno;
+    socket->write(pacote.toLatin1());
+    socket->flush();
+    socket->waitForBytesWritten(-1);
+    socket->flush();
+    //while(!socket->bytesAvailable()>0)
+    while (socket->waitForReadyRead(-1))
     {
-
+        retorno = QString(socket->readAll());
     }
     return retorno;
 }
