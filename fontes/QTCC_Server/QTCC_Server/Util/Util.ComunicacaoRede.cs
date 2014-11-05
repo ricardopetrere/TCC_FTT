@@ -44,11 +44,11 @@ namespace QTCC_Server.Util
                 byte[] buffer = new byte[1024];
                 NetworkStream s = client.GetStream();
                 int offset;
-                while ((offset = s.Read(buffer, 0, buffer.Length)) != 0 && s.DataAvailable)
-                //while (s.DataAvailable)
-                //    if((offset = s.Read(buffer, 0, buffer.Length)) != 0)
+                while ((offset = s.Read(buffer, 0, buffer.Length)) != 0 )
                 {
                     recebido += Encoding.Default.GetString(buffer, 0, offset);
+                    if (!s.DataAvailable)
+                        break;
                 }
                 byte[] resposta;
                 try
@@ -61,7 +61,6 @@ namespace QTCC_Server.Util
                     {
                         Console.WriteLine("onPacoteRecebido não instanciado!");
                     }
-                    //resposta = Encoding.Default.GetBytes("Recebido");
                     resposta = Encoding.Default.GetBytes(ComunicacaoController.TrataPacote(recebido));
                 }
                 catch(Exception e)

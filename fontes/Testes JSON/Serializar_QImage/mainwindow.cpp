@@ -31,12 +31,8 @@ void MainWindow::write(QJsonObject &json) const
     QByteArray array;
     QBuffer buffer(&array);
     buffer.open(QIODevice::WriteOnly);
-    //QByteArray::Format f = QImage::format();
     QImage a (ui->lblFoto->pixmap()->toImage());
     a.save(&buffer,"PNG");
-
-    //int i1 = a.byteCount();
-    //QByteArray s1 = QByteArray((char*)a.bits(),i1);
 
     QString s2 = array.toBase64(QByteArray::Base64Encoding);
 

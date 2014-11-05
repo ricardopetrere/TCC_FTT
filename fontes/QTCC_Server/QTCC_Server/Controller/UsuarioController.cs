@@ -16,7 +16,7 @@ namespace QTCC_Server.Controller
 
         public override int Insere(Usuario entidade)
         {
-            return (UsuarioDAO.Insere(entidade) > 0) ? 0 : -1;
+            return UsuarioDAO.Insere(entidade);
         }
 
         public override int Altera(Usuario entidade)
@@ -41,7 +41,8 @@ namespace QTCC_Server.Controller
 
         public String NovoCadastro(Usuario usuario)
         {
-            if (Insere(usuario) > 0)
+            int ID_Inserido = Insere(usuario);
+            if ( ID_Inserido > 0)
                 return "Cadastro efetuado com sucesso";
             else
                 return "Falha no cadastro";

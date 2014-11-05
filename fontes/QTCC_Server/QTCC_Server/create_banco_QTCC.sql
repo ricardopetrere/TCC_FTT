@@ -5,7 +5,7 @@ use QTCC
 --Tabela de contato (base para usuário e grupo)
 create table tbContato
 (
-	 cont_id bigint identity(1,1)	--ID único do contato (grupo ou usuário) (interno do sistema)
+	 cont_id int identity(1,1)		--ID único do contato (grupo ou usuário) (interno do sistema)
 	,cont_nome varchar(100) not null--Nome de exibição do usuário
 	,cont_foto image				--Imagem do usuário (salvos os bytes desta)
 	,cont_inativo bit not null		--Contato inativo (Removido)
@@ -15,11 +15,11 @@ alter table tbContato add constraint PK_Contato primary key (cont_id)
 --Tabela de usuário
 create table tbUsuario
 (
-	 cont_id bigint not null			--ID do usuário
+	 cont_id int not null			--ID do usuário
 	--Exclusivo de Usuario
-	,usu_email varchar(100) not null	--E-mail do usuário
-	,usu_senha varchar(50) not null		--Senha do usuário
-	,usu_texto_status varchar(100)		--Mensagem de perfil do usuário
+	,usu_email varchar(100) not null--E-mail do usuário
+	,usu_senha varchar(50) not null	--Senha do usuário
+	,usu_texto_status varchar(100)	--Mensagem de perfil do usuário
 
 )
 alter table tbUsuario add constraint FK_Usuario_Contato foreign key (cont_id) references tbContato (cont_id)
@@ -27,9 +27,9 @@ alter table tbUsuario add constraint FK_Usuario_Contato foreign key (cont_id) re
 --Tabela de grupo
 create table tbGrupo
 (
-	 cont_id bigint not null			--ID do grupo
+	 cont_id int not null				--ID do grupo
 	--Exclusivo de Grupo
-	,grp_administrador bigint not null	--ID do administrador do grupo
+	,grp_administrador int not null	--ID do administrador do grupo
 )
 alter table tbGrupo add constraint FK_Grupo_Contato foreign key (cont_id) references tbContato (cont_id)
 alter table tbGrupo add constraint FK_Administrador_Grupo_Contato foreign key (grp_administrador) references tbContato (cont_id)
@@ -37,8 +37,8 @@ alter table tbGrupo add constraint FK_Administrador_Grupo_Contato foreign key (g
 --Tabela de lista de contatos (Contatos), seja de um usuário ou grupo
 create table tbListaContatos
 (
-	 cont_id bigint not null--ID do usuário
-	,lst_id bigint not null	--ID do contato da pessoa (Pessoa ou Grupo)
+	 cont_id int not null--ID do usuário
+	,lst_id int not null	--ID do contato da pessoa (Pessoa ou Grupo)
 )
 alter table tbListaContatos add constraint PK_ListaContatos primary key (cont_id,lst_id)
 alter table tbListaContatos add constraint FK_ListaContatos_Contato foreign key (cont_id) references tbContato (cont_id)
@@ -47,8 +47,8 @@ alter table tbListaContatos add constraint FK_Usuario_ListaContatos_Contato fore
 --Tabela temporária de mensagens a ser entregues
 create table tmpMensagensPendentes
 (
-	 cont_id bigint	not null		--ID do contato a receber as mensagens
-	,msg_usu_ori bigint not null	--Usuário que enviou a mensagem
+	 cont_id int	not null		--ID do contato a receber as mensagens
+	,msg_usu_ori int not null		--Usuário que enviou a mensagem
 	,msg_dta_envio datetime	not null--Data de envio da mensagem (data que a mensagem foi recebida pelo servidor)
 	,msg_texto image not null		--Bytes da mensagem a ser enviada (texto, mídia)
 	,msg_tamanho int				--Tamanho da mídia (para imagem, áudio, vídeo)
@@ -58,7 +58,7 @@ alter table tmpMensagensPendentes add constraint FK_MensagensPendentes_Contato f
 
 create table tmpUsuariosLogados
 (
-	 cont_id bigint not null			--ID do contato
+	 cont_id int not null			--ID do contato
 	--,log_ip varchar(20) not null		--IP da máquina onde está conectado (para o caso de estar logado em vários lugares
 	,log_visto_ultimo datetime not null	--"Visto por último" do contato
 )
@@ -68,9 +68,13 @@ go
 ---------------------------------------------------------------
 --------------------Stored Procedures--------------------------
 ---------------------------------------------------------------
+if exists (select * from sys.procedures where name = 'spInsereUsuario' and is_ms_shipped=0)
+	drop procedure spInsereUsuario
+go
+
 -- =============================================
 -- Author:		Ricardo Petrére
--- Create date: 02/11/2014
+-- Create date: 05/11/2014
 -- Description:	Procedure responsável por inserir
 -- um novo usuário no banco de dados.
 -- =============================================
@@ -81,7 +85,7 @@ create procedure spInsereUsuario
 	@Usu_Email			varchar(100),
 	@Usu_Senha			varchar(50),
 	@Usu_Texto_Status	varchar(100),
-	@Cont_Id			bigint output
+	@Cont_Id			int output
 )
 as
 begin
@@ -92,10 +96,12 @@ begin
 	--É uma validação bem simples. Não está em branco, possui '@', '.' e algo antes e depois de ambos?
 	--Passou.
 	begin
-		declare @index_@ int = PATINDEX('@',@Usu_Email)
-		declare @index_ponto int = PATINDEX('.',@Usu_Email)
-		declare @length_email int = LEN(LTRIM(RTRIM(@Usu_Email)))
-		if(@length_email<1) or (@index_@<1) or (@index_ponto<@index_@+2) or (@index_ponto=@length_email)
+		--http://stackoverflow.com/questions/15709712/what-is-best-way-to-get-last-indexof-character-in-sql
+		set @Usu_Email = RTRIM(LTRIM(@Usu_Email))
+		declare @index_@ int = PATINDEX('%@%',reverse(@Usu_Email))
+		declare @index_ponto int = PATINDEX('%.%',reverse(@Usu_Email))
+		declare @length_email int = LEN(@Usu_Email)
+		if(@length_email<1) or (@index_ponto<1) or (@index_@<@index_ponto+2) or (@index_@=@length_email)
 		begin;
 			throw 51000,'E-mail inválido. O formato de e-mail deve ser <usuario>@<provedor>.<abrangência (ex: com, co.uk)>',1
 		end

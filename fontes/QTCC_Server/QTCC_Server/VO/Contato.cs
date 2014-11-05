@@ -51,7 +51,8 @@ namespace QTCC_Server.VO
                 Image i;
                 using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
                 {
-                    ms.Write(Encoding.Default.GetBytes(value), 0, value.Length);
+                    byte[] a = Convert.FromBase64String(value);
+                    ms.Write(a,0,a.Length);
                     i = Image.FromStream(ms);
                     this.Foto = i;
                 }
@@ -72,7 +73,8 @@ namespace QTCC_Server.VO
         #region Campos em JSON
         public static class Campos
         {
-            public const string IDContato = "IDContato";
+            public const string IDContato = EntidadeBase.Campos.ID;
+            //public const string IDContato = "IDContato";
             public const string Nome = "Nome";
             public const string Foto = "Foto";
             public const string Inativo = "Inativo";

@@ -20,7 +20,7 @@ QString ComunicacaoRede::enviaPacote(QString pacote)
     }
     QString retorno;
     socket->write(pacote.toLatin1());
-    socket->flush();
+//    socket->flush();
     socket->waitForBytesWritten(-1);
     socket->flush();
     //while(!socket->bytesAvailable()>0)
@@ -28,5 +28,8 @@ QString ComunicacaoRede::enviaPacote(QString pacote)
     {
         retorno = QString(socket->readAll());
     }
-    return retorno;
+    if(retorno.startsWith("Falha: "))
+        return "";
+    else
+        return retorno;
 }

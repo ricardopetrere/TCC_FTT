@@ -26,8 +26,6 @@ void Cadastre_se::on_btnCancelar_clicked()
 
 void Cadastre_se::on_btnCadastrar_clicked()
 {
-//    EContato c;
-//    c.setNome(ui->lineNome->text());
     EUsuario u;
     u.setNome(ui->lineNome->text() + " " + ui->lineSobrenome->text());
     u.setFoto(ui->lblFoto->pixmap()->toImage());
@@ -42,7 +40,6 @@ void Cadastre_se::on_btnCadastrar_clicked()
 
     if(u.cadastraNovo())
     {
-        //Logger::debug(ui->lineNome->text(), " cadastrado.");
         Logger::showQMessageBox("Cadastro realizado com sucesso.","Sucesso");
     }
     else
@@ -53,10 +50,6 @@ void Cadastre_se::on_btnCadastrar_clicked()
 
 void Cadastre_se::on_btnEscolhaImagem_clicked()
 {
-    //http://stackoverflow.com/questions/1604440/how-to-set-selected-filter-on-qfiledialog
-    //QFileDialog *f = new QFileDialog(this,"Escolha uma imagem","","*.*;;*.jpg *.png;;*.jpg;;*.png");
-    //f->show();
-    //ui->lbl_Foto->setPixmap(QPixmap::fromImage(QImage(f->selectedFiles()[0])));
     QString s = QFileDialog::getOpenFileName(this,tr("Open File"), QDir::currentPath(),"Imagens (*.jpg *.jpeg *.png *.bmp *.gif *.tif *.tiff)");
     ui->lblFoto->setPixmap(QPixmap::fromImage(QImage(s)));
     ui->lblFoto->setScaledContents(true);

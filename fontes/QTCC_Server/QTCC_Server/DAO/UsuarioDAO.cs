@@ -19,21 +19,26 @@ namespace QTCC_Server.DAO
                 SqlCommand cmd = new SqlCommand(string.Format("spInsereUsuario"), c);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Cont_Nome",u.Nome);
-                cmd.Parameters.AddWithValue("@Cont_Foto",u.Foto);
+                using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+                {
+                    u.Foto.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                    cmd.Parameters.AddWithValue("@Cont_Foto", ms.ToArray());
+                }
                 cmd.Parameters.AddWithValue("@Usu_Email",u.Email);
                 cmd.Parameters.AddWithValue("@Usu_Senha",u.Senha);
                 cmd.Parameters.AddWithValue("@Usu_Texto_Status",u.Texto_Status);
-                cmd.Parameters.Add("@Cont_Id", SqlDbType.BigInt).Direction = ParameterDirection.Output;
-                //cmd.Parameters.AddWithValue("@Cont_Id",u.IDContato).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("@Cont_Id", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                 BD_SQL.ExecutaSQL(cmd);
-                //cmd.ExecuteNonQuery();
                 return u.IDContato = (int)cmd.Parameters["@Cont_Id"].Value;
-                //return u.IDContato;
             }
             catch(SqlException sql_ex)
             {
                 throw sql_ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
             finally
             {
