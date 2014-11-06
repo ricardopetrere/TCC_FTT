@@ -41,6 +41,7 @@ void Cadastre_se::on_btnCadastrar_clicked()
     if(u.cadastraNovo())
     {
         Logger::showQMessageBox("Cadastro realizado com sucesso.","Sucesso");
+        close();
     }
     else
     {
@@ -52,5 +53,5 @@ void Cadastre_se::on_btnEscolhaImagem_clicked()
 {
     QString s = QFileDialog::getOpenFileName(this,tr("Open File"), QDir::currentPath(),"Imagens (*.jpg *.jpeg *.png *.bmp *.gif *.tif *.tiff)");
     ui->lblFoto->setPixmap(QPixmap::fromImage(QImage(s)));
-    ui->lblFoto->setScaledContents(true);
+    //ui->lblFoto->setScaledContents(true);
 }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using QTCC_Server.Controller;
+using QTCC_Server.VO;
 
 namespace QTCC_Server.Util
 {
@@ -20,30 +22,31 @@ namespace QTCC_Server.Util
         {
             String retorno = "";
             string[] dados_pacote = pacote_recebido.ToString().Split('|');
-            VO.CONSTANTES.TiposPacotesDadosEnum TipoPacote;
+            CONSTANTES.TiposPacotesDadosEnum TipoPacote;
             if (Enum.TryParse(dados_pacote[0], out TipoPacote))
             {
                 try
                 {
-
+                    //OPCode
                     switch (TipoPacote)
                     {
-                        case VO.CONSTANTES.TiposPacotesDadosEnum.RequisicaoLogin:
+                        case CONSTANTES.TiposPacotesDadosEnum.RequisicaoLogin:
+                            retorno = new RequisicaoLoginController().RequisicaoLogin(JSON_Logic.Deserializa<RequisicaoLogin>(dados_pacote[1]));
                             break;
-                        case VO.CONSTANTES.TiposPacotesDadosEnum.ReceberNovasMensagens:
+                        case CONSTANTES.TiposPacotesDadosEnum.ReceberNovasMensagens:
                             break;
-                        case VO.CONSTANTES.TiposPacotesDadosEnum.EnviarNovaMensagem:
+                        case CONSTANTES.TiposPacotesDadosEnum.EnviarNovaMensagem:
                             break;
-                        case VO.CONSTANTES.TiposPacotesDadosEnum.StatusContato:
+                        case CONSTANTES.TiposPacotesDadosEnum.StatusContato:
                             break;
-                        case VO.CONSTANTES.TiposPacotesDadosEnum.StatusMensagem:
+                        case CONSTANTES.TiposPacotesDadosEnum.StatusMensagem:
                             break;
-                        case VO.CONSTANTES.TiposPacotesDadosEnum.NovoCadastro:
-                            retorno = new Controller.UsuarioController().NovoCadastro(JSON_Logic.Deserializa<VO.Usuario>(dados_pacote[1]));
+                        case CONSTANTES.TiposPacotesDadosEnum.NovoCadastro:
+                            retorno = new UsuarioController().NovoCadastro(JSON_Logic.Deserializa<Usuario>(dados_pacote[1]));
                             break;
-                        case VO.CONSTANTES.TiposPacotesDadosEnum.EnviarNovoUsuario:
+                        case CONSTANTES.TiposPacotesDadosEnum.EnviarNovoUsuario:
                             break;
-                        case VO.CONSTANTES.TiposPacotesDadosEnum.EnviarNovoGrupo:
+                        case CONSTANTES.TiposPacotesDadosEnum.EnviarNovoGrupo:
                             break;
                         default:
                             throw new NotImplementedException();

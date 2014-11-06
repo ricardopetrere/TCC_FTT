@@ -62,7 +62,7 @@ namespace QTCC_Server.VO
 
         #region Inativo
         [DataMember(Name = Campos.Inativo)]
-        private Boolean Inativo
+        public Boolean Inativo
         {
             get;
             set;

@@ -9,11 +9,6 @@ namespace QTCC_Server.Controller
 {
     class UsuarioController : EntidadeBaseController<Usuario>
     {
-        public override Usuario MontaVO(System.Data.DataRow registro)
-        {
-            throw new NotImplementedException();
-        }
-
         public override int Insere(Usuario entidade)
         {
             return UsuarioDAO.Insere(entidade);
@@ -46,6 +41,11 @@ namespace QTCC_Server.Controller
                 return "Cadastro efetuado com sucesso";
             else
                 return "Falha no cadastro";
+        }
+
+        public override Usuario MontaVO(System.Data.DataRow registro)
+        {
+            throw new NotImplementedException();
         }
     }
 }

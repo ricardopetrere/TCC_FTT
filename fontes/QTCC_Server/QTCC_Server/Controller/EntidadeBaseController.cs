@@ -7,8 +7,6 @@ namespace QTCC_Server.Controller
 {
     public abstract class EntidadeBaseController<T>
     {
-        public T Entidade { get; set; }
-
         public abstract T MontaVO(System.Data.DataRow registro);
 
         public abstract int Insere(T entidade);

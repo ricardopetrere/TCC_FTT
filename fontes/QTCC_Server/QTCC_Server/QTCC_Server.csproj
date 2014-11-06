@@ -69,6 +69,7 @@
     <Compile Include="Controller\EntidadeBaseController.cs" />
     <Compile Include="Controller\RequisicaoLoginController.cs" />
     <Compile Include="Controller\UsuarioController.cs" />
+    <Compile Include="DAO\RequisicaoLoginDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Util\ComunicacaoController.cs" />
     <Compile Include="Util\PacoteBaseJSON.cs" />

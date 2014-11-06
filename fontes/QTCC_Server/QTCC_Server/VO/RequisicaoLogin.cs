@@ -12,7 +12,7 @@ namespace QTCC_Server.VO
         #region Propriedades
         #region Login
         [DataMember(Name = Campos.Login)]
-        public int Login { get; set; }
+        public String Login { get; set; }
         #endregion Login
 
         #region Senha
