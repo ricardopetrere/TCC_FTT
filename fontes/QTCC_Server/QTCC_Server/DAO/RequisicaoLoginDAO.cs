@@ -11,13 +11,13 @@ namespace QTCC_Server.DAO
 {
     class RequisicaoLoginDAO
     {
-        public static VO.Usuario RequisicaoLogin(RequisicaoLogin login)
+        public static Usuario RequisicaoLogin(RequisicaoLogin login)
         {
             SqlConnection c = BD_SQL.Connection;
             try
             {
-                SqlCommand cmd = new SqlCommand(string.Format("select cont_id,cont_nome,cont_foto,cont_inativo,usu_email,usu_texto_status from tbUsuario where usu_email=@Usu_Email and usu_senha=@Usu_Senha"), c);
-                cmd.Parameters.AddWithValue("@Usu_Email", login.Login);
+                SqlCommand cmd = new SqlCommand(string.Format("select tbUsuario.cont_id,cont_nome,cont_foto,cont_inativo,usu_email,usu_senha,usu_texto_status from tbContato inner join tbUsuario on tbContato.cont_id = tbUsuario.cont_id where usu_email=@Usu_Login and usu_senha=@Usu_Senha"), c);
+                cmd.Parameters.AddWithValue("@Usu_Login", login.Login);
                 cmd.Parameters.AddWithValue("@Usu_Senha", login.Senha);
                 DataTable dt = BD_SQL.ExecutaSelect(cmd);
                 if(dt.Rows.Count==1)

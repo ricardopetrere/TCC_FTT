@@ -34,7 +34,7 @@
   </widget>
   <action name="actionLogout">
    <property name="text">
-    <string>Logout</string>
+    <string>Login/Logout</string>
    </property>
   </action>
   <action name="actionExibir_Conversas">

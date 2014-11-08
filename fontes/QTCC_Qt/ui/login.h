@@ -41,7 +41,8 @@ private slots:
 private:
     Ui::Login *ui;
     static int login;
-
+protected:
+    void closeEvent(QCloseEvent *event);
 };
 
 #endif // LOGIN_H

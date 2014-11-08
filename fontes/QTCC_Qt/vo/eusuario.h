@@ -33,7 +33,6 @@ public:
     class Campos
     {
         public:
-            //static const QString IDUsuario;
             static const QString Texto_Status;
             static const QString Contatos;
             static const QString Email;

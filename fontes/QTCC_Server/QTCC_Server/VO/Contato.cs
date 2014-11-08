@@ -42,7 +42,7 @@ namespace QTCC_Server.VO
             {//http://www.c-sharpcorner.com/Forums/Thread/240427/image-transfer-using-json.aspx
                 using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
                 {
-                    Foto.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    Foto.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                     return Convert.ToBase64String(ms.ToArray());
                 }
             }
@@ -74,7 +74,6 @@ namespace QTCC_Server.VO
         public static class Campos
         {
             public const string IDContato = EntidadeBase.Campos.ID;
-            //public const string IDContato = "IDContato";
             public const string Nome = "Nome";
             public const string Foto = "Foto";
             public const string Inativo = "Inativo";

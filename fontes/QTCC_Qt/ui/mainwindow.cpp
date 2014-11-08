@@ -30,9 +30,9 @@ void MainWindow::on_actionLogout_triggered()
     if(Login::estaLogado())
     {
         Login::realizaLogout();
-        l->setWindowModality(Qt::WindowModal);
-        l->show();
     }
+    l->setWindowModality(Qt::WindowModal);
+    l->show();
 }
 
 void MainWindow::on_actionExibir_Conversas_triggered()

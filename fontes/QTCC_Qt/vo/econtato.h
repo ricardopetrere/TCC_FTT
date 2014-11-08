@@ -22,7 +22,6 @@ public:
     class Campos
     {
         public:
-            //static const QString IDContato;
             static const QString Nome;
             static const QString Foto;
             static const QString Inativo;

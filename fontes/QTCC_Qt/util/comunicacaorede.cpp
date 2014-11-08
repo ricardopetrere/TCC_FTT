@@ -26,7 +26,7 @@ QString ComunicacaoRede::enviaPacote(QString pacote)
     //while(!socket->bytesAvailable()>0)
     while (socket->waitForReadyRead(-1))
     {
-        retorno = QString(socket->readAll());
+        retorno += QString(socket->readAll());
     }
     if(retorno.startsWith("Falha: "))
         return "";

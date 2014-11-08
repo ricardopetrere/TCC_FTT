@@ -3,7 +3,6 @@
 #include <QBuffer>
 #include <QByteArray>
 
-//const QString EContato::Campos::IDContato = EBase::Campos::ID;
 const QString EContato::Campos::Nome = "Nome";
 const QString EContato::Campos::Foto = "Foto";
 const QString EContato::Campos::Inativo = "Inativo";
@@ -60,10 +59,6 @@ EContato EContato::Deserializar(QJsonObject &json)
     QImage a;
     QByteArray array = json[Campos::Foto].toString().toLatin1();
     if(a.loadFromData(QByteArray::fromBase64(array)))
-    //    ui->lblFoto->setPixmap(QPixmap::fromImage(a));
-
-    //QImage a;
-    //if(a.loadFromData(json[Campos::Foto].toString().toLatin1()))
         e._foto = a;
     return e;
 }

@@ -95,6 +95,17 @@ namespace QTCC_Server.VO
             Email = "";
             Senha = "";
         }
+        public Usuario(Contato c)
+        {
+            this.IDContato = c.IDContato;
+            this.Nome = c.Nome;
+            this.Foto = c.Foto;
+            this.Inativo = c.Inativo;
+            Texto_Status = "";
+            Contatos = new List<Contato>();
+            Email = "";
+            Senha = "";
+        }
 
         public int AlteraStatus(String novo_status)
         {

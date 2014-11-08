@@ -4,7 +4,6 @@
 #include <QJsonArray>
 #include <controller/usuariocontroller.h>
 
-//const QString EUsuario::Campos::IDUsuario = EBase::Campos::ID;
 const QString EUsuario::Campos::Texto_Status = "Texto_Status";
 const QString EUsuario::Campos::Contatos = "Contatos";
 const QString EUsuario::Campos::Email = "Email";

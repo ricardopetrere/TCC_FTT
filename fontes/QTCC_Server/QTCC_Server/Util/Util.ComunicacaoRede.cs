@@ -37,12 +37,12 @@ namespace QTCC_Server.Util
         #region Servidor
         public static void ReceberPacote(object objClient)
         {
+            TcpClient client = (TcpClient)objClient;
+            NetworkStream s = client.GetStream();
             try
             {
-                TcpClient client = (TcpClient)objClient;
                 String recebido = "";
                 byte[] buffer = new byte[1024];
-                NetworkStream s = client.GetStream();
                 int offset;
                 while ((offset = s.Read(buffer, 0, buffer.Length)) != 0 )
                 {
@@ -68,14 +68,17 @@ namespace QTCC_Server.Util
                     resposta = Encoding.Default.GetBytes("Falha: "+e.Message);
                 }
                 s.Write(resposta, 0, resposta.Length);
-                s.Close();
-                client.Close();
 
                 Console.WriteLine(recebido);
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Erro: " + ex.Message);
+            }
+            finally
+            {
+                s.Close();
+                client.Close();
             }
         }
         public static void IniciarServidor()

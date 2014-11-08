@@ -65,6 +65,17 @@ create table tmpUsuariosLogados
 alter table tmpUsuariosLogados add constraint PK_UsuariosLogados primary key (cont_id/*,log_ip*/)
 go
 
+create table tbMensagens
+(
+	 msg_id int not null
+	,cont_de int not null
+	,cont_para int not null
+	,msg_dta_envio datetime not null
+	,msg_dados image not null
+	,msg_tipo_mensagem int not null
+	,msg_cont_de_deletou bit not null
+	,msg_cont_para_deletou bit not null
+)
 ---------------------------------------------------------------
 --------------------Stored Procedures--------------------------
 ---------------------------------------------------------------

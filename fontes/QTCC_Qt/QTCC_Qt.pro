@@ -26,7 +26,10 @@ SOURCES += main.cpp \
     vo/eusuario.cpp \
     util/comunicacaorede.cpp \
     vo/constantes.cpp \
-    controller/usuariocontroller.cpp
+    controller/usuariocontroller.cpp \
+    vo/erequisicaologin.cpp \
+    controller/requisicaologincontroller.cpp \
+    controller/mensagemcontroller.cpp
 
 HEADERS  += \
     ui/mainwindow.h \
@@ -43,7 +46,10 @@ HEADERS  += \
     vo/eusuario.h \
     util/comunicacaorede.h \
     vo/constantes.h \
-    controller/usuariocontroller.h
+    controller/usuariocontroller.h \
+    vo/erequisicaologin.h \
+    controller/requisicaologincontroller.h \
+    controller/mensagemcontroller.h
 
 FORMS    += ui/mainwindow.ui \
     ui/conversas.ui \

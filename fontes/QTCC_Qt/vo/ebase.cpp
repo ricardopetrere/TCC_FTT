@@ -1,6 +1,6 @@
 #include "ebase.h"
 
-const QString EBase::Campos::ID="Id";
+const QString EBase::Campos::ID="ID";
 
 EBase::EBase()
 {

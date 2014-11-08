@@ -50,18 +50,42 @@ namespace QTCC_Server.DAO
 
         public static Usuario MontaVO(DataRow registro)
         {
-            Usuario retorno=new Usuario();
-            retorno.IDContato = (int)registro["cont_id"];
-            retorno.Nome = registro["cont_nome"].ToString();
-            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
-            {
-                byte[] a = Convert.FromBase64String(registro["cont_foto"].ToString());
-                ms.Write(a,0,a.Length);
-                retorno.Foto = System.Drawing.Image.FromStream(ms);
-            }
-            retorno.Inativo = (bool)registro["cont_inativo"];
-
+            Usuario retorno = new Usuario(ContatoDAO.MontaVO(registro));
+            retorno.Texto_Status = registro["usu_texto_status"].ToString();
+            retorno.Email = registro["usu_email"].ToString();
+            retorno.Senha = registro["usu_senha"].ToString();
+            retorno.Contatos = BuscaContatos(retorno.IDContato);
             return retorno;
+        }
+
+        private static List<Contato> BuscaContatos(int id)
+        {
+            List<Contato> contatos=new List<Contato>();
+            SqlConnection c = BD_SQL.Connection;
+            try
+            {
+                c.Open();
+                SqlCommand cmd = new SqlCommand("select cont_id,lst_id from tbListaContatos where cont_id=@Cont_Id", c);
+                cmd.Parameters.AddWithValue("@Cont_Id", id);
+                foreach (DataRow contato in BD_SQL.ExecutaSelect(cmd).Rows)
+                {
+                    contatos.Add(ContatoDAO.BuscaContato((int)contato["lst_id"]));
+                }
+            }
+            catch(SqlException sql_ex)
+            {
+                throw sql_ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                c.Close();
+            }
+
+            return contatos;
         }
     }
 }

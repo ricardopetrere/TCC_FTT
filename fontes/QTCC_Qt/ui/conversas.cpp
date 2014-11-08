@@ -9,6 +9,7 @@ Conversas::Conversas(QWidget *parent) :
     ui(new Ui::Conversas)
 {
     ui->setupUi(this);
+
 }
 
 Conversas::~Conversas()

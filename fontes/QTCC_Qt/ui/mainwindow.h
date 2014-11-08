@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <vo/eusuario.h>
 
 namespace Ui {
 class MainWindow;
@@ -14,7 +15,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-
+    static EUsuario _usuario_logado;
 
 private slots:
     void on_actionLogout_triggered();
