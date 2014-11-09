@@ -72,210 +72,150 @@
        <property name="text">
         <string>Contato 1</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
       <item>
        <property name="text">
         <string>New Item</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
       <item>
        <property name="text">
         <string>New Item</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
       <item>
        <property name="text">
         <string>New Item</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
       <item>
        <property name="text">
         <string>New Item</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
       <item>
        <property name="text">
         <string>New Item</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
       <item>
        <property name="text">
         <string>New Item</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
       <item>
        <property name="text">
         <string>New Item</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
       <item>
        <property name="text">
         <string>New Item</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
       <item>
        <property name="text">
         <string>New Item</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
       <item>
        <property name="text">
         <string>New Item</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
       <item>
        <property name="text">
         <string>New Item</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
       <item>
        <property name="text">
         <string>New Item</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
       <item>
        <property name="text">
         <string>New Item</string>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
       <item>
        <property name="text">
         <string>Contato 2</string>
+       </property>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
        </property>
       </item>
      </widget>

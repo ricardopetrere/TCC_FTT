@@ -10,9 +10,11 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     //Login::validaLogin(true,this);
-    Login *l = new Login(this);
     if(!Login::estaLogado())
     {
+        Login *l = new Login(this);
+        l->setFocus();
+        l->activateWindow();
         l->setWindowModality(Qt::WindowModal);
         l->show();
     }

@@ -2,9 +2,6 @@
 <ui version="4.0">
  <class>Conversas</class>
  <widget class="QMainWindow" name="Conversas">
-  <property name="windowModality">
-   <enum>Qt::WindowModal</enum>
-  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -60,10 +57,26 @@
        <property name="text">
         <string>Conversa 1</string>
        </property>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
+       </property>
+       <property name="flags">
+        <set>ItemIsDragEnabled|ItemIsUserCheckable</set>
+       </property>
       </item>
       <item>
        <property name="text">
         <string>Conversa 2</string>
+       </property>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
+       </property>
+       <property name="flags">
+        <set>ItemIsDragEnabled|ItemIsUserCheckable</set>
        </property>
       </item>
      </widget>
@@ -84,10 +97,12 @@
      <string>Opções</string>
     </property>
     <addaction name="actionNova_Conversa"/>
+    <addaction name="separator"/>
+    <addaction name="actionLogout"/>
    </widget>
    <addaction name="menuOp_es"/>
   </widget>
-  <action name="actionDetalhes">
+  <action name="actionNovo_Grupo">
    <property name="text">
     <string>Novo Grupo</string>
    </property>
@@ -100,6 +115,11 @@
    </property>
    <property name="text">
     <string>Nova Conversa</string>
+   </property>
+  </action>
+  <action name="actionLogout">
+   <property name="text">
+    <string>Login/Logout</string>
    </property>
   </action>
  </widget>

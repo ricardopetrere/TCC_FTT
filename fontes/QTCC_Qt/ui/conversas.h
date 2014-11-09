@@ -23,6 +23,8 @@ private slots:
 
     void on_listConversas_customContextMenuRequested(const QPoint &pos);
 
+    void on_actionLogout_triggered();
+
 private:
     Ui::Conversas *ui;
 };

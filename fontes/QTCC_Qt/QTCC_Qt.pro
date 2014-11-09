@@ -29,7 +29,8 @@ SOURCES += main.cpp \
     controller/usuariocontroller.cpp \
     vo/erequisicaologin.cpp \
     controller/requisicaologincontroller.cpp \
-    controller/mensagemcontroller.cpp
+    controller/mensagemcontroller.cpp \
+    controls/contatowidget.cpp
 
 HEADERS  += \
     ui/mainwindow.h \
@@ -49,14 +50,18 @@ HEADERS  += \
     controller/usuariocontroller.h \
     vo/erequisicaologin.h \
     controller/requisicaologincontroller.h \
-    controller/mensagemcontroller.h
+    controller/mensagemcontroller.h \
+    controls/contatowidget.h
 
 FORMS    += ui/mainwindow.ui \
     ui/conversas.ui \
     ui/contatos.ui \
     ui/mensagens.ui \
     ui/login.ui \
-    ui/cadastre_se.ui
+    ui/cadastre_se.ui \
+    controls/contatowidget.ui \
+    controls/mensagem.ui \
+    controls/mensagem_de.ui
 
 CONFIG += mobility
 MOBILITY = 

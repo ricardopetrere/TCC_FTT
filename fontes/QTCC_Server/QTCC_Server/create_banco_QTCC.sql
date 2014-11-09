@@ -58,24 +58,24 @@ alter table tmpMensagensPendentes add constraint FK_MensagensPendentes_Contato f
 
 create table tmpUsuariosLogados
 (
-	 cont_id int not null			--ID do contato
+	 cont_id int not null				--ID do contato
 	--,log_ip varchar(20) not null		--IP da máquina onde está conectado (para o caso de estar logado em vários lugares
 	,log_visto_ultimo datetime not null	--"Visto por último" do contato
 )
 alter table tmpUsuariosLogados add constraint PK_UsuariosLogados primary key (cont_id/*,log_ip*/)
 go
 
-create table tbMensagens
-(
-	 msg_id int not null
-	,cont_de int not null
-	,cont_para int not null
-	,msg_dta_envio datetime not null
-	,msg_dados image not null
-	,msg_tipo_mensagem int not null
-	,msg_cont_de_deletou bit not null
-	,msg_cont_para_deletou bit not null
-)
+--create table tbMensagens
+--(
+--	 msg_id int not null
+--	,cont_de int not null
+--	,cont_para int not null
+--	,msg_dta_envio datetime not null
+--	,msg_dados image not null
+--	,msg_tipo_mensagem int not null
+--	,msg_cont_de_deletou bit not null
+--	,msg_cont_para_deletou bit not null
+--)
 ---------------------------------------------------------------
 --------------------Stored Procedures--------------------------
 ---------------------------------------------------------------
