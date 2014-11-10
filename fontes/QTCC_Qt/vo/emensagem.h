@@ -3,8 +3,8 @@
 
 #include <vo/ebase.h>
 #include <vo/econtato.h>
-#include <QDate>
 #include <vo/constantes.h>
+#include <QDate>
 #include <QJsonObject>
 
 class EMensagem : public EBase

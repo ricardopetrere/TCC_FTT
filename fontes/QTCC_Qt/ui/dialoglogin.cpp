@@ -27,7 +27,6 @@ void DialogLogin::on_btnLogin_clicked()
     if(MainWindow::_usuario_logado.Id()>0)
     {
         Logger::debug(MainWindow::_usuario_logado.Nome()," logou com sucesso.");
-        //Login::login = MainWindow::_usuario_logado.Id();//ui->lineEmail->text();
         close();
     }
     else

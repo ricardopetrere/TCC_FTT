@@ -1,12 +1,12 @@
 #include "login.h"
 #include "ui_login.h"
-#include "cadastre_se.h"
-#include "ngc/logger.h"
-#include "vo/erequisicaologin.h"
-#include "vo/eusuario.h"
-#include "mainwindow.h"
 #include <QCloseEvent>
 #include <QMessageBox>
+//#include "cadastre_se.h"
+//#include "ngc/logger.h"
+//#include "vo/erequisicaologin.h"
+//#include "vo/eusuario.h"
+//#include "mainwindow.h"
 
 Login::Login(QWidget *parent) :
     QMainWindow(parent),

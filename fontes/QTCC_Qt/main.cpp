@@ -1,4 +1,4 @@
-#include "ui/mainwindow.h"
+//#include "ui/mainwindow.h"
 #include "ui/conversas.h"
 #include <QApplication>
 

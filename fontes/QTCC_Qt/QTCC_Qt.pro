@@ -18,8 +18,8 @@ SOURCES += main.cpp \
     ui/contatos.cpp \
     ngc/historicoconversa.cpp \
     ui/mensagens.cpp \
-    ui/login.cpp \
-    ui/cadastre_se.cpp \
+    #ui/login.cpp \
+    #ui/cadastre_se.cpp \
     vo/ebase.cpp \
     vo/emensagem.cpp \
     vo/econtato.cpp \
@@ -40,8 +40,8 @@ HEADERS  += \
     ui/contatos.h \
     ngc/historicoconversa.h \
     ui/mensagens.h \
-    ui/login.h \
-    ui/cadastre_se.h \
+    #ui/login.h \
+    #ui/cadastre_se.h \
     ngc/logger.h \
     vo/ebase.h \
     vo/emensagem.h \
@@ -62,8 +62,8 @@ FORMS    += ui/mainwindow.ui \
     ui/conversas.ui \
     ui/contatos.ui \
     ui/mensagens.ui \
-    ui/login.ui \
-    ui/cadastre_se.ui \
+    #ui/login.ui \
+    #ui/cadastre_se.ui \
     ui/dialoglogin.ui \
     ui/dialogcadastre_se.ui \
     controls/mensagem_recebida.ui \

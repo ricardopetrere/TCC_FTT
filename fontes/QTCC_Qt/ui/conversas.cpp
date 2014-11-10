@@ -2,12 +2,12 @@
 #include "ui_conversas.h"
 #include "contatos.h"
 #include "mensagens.h"
-#include "ngc/logger.h"
-#include "mainwindow.h"
-#include "login.h"
-#include "ui_conversawidget.h"
-#include "ui_mensagem_enviada.h"
-#include "ui_mensagem_recebida.h"
+//#include "ngc/logger.h"
+//#include "mainwindow.h"
+//#include "login.h"
+//#include "ui_conversawidget.h"
+//#include "ui_mensagem_enviada.h"
+//#include "ui_mensagem_recebida.h"
 #include "ui/dialoglogin.h"
 
 Conversas::Conversas(QWidget *parent) :
@@ -63,7 +63,7 @@ void Conversas::carregaDadosUsuario()
     ui->listConversas->clear();
     if(DialogLogin::estaLogado())
     {
-        MainWindow::_usuario_contatos = EContato::lerContatos();
-        MainWindow::_usuario_conversas = EConversa::lerConversas();
+        MainWindow::_usuario_contatos = EContato::lerContatos(MainWindow::_usuario_logado.Id());
+        MainWindow::_usuario_conversas = EConversa::lerConversas(MainWindow::_usuario_logado.Id());
     }
 }

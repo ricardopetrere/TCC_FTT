@@ -1,7 +1,7 @@
-#include "eusuario.h"
-#include "econtato.h"
 #include <QJsonObject>
 #include <QJsonArray>
+#include "eusuario.h"
+//#include "econtato.h"
 #include <controller/usuariocontroller.h>
 
 const QString EUsuario::Campos::Texto_Status = "Texto_Status";
