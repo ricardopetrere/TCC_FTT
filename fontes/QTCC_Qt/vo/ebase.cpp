@@ -17,10 +17,10 @@ void EBase::setId(const int &id)
     _id = id;
 }
 
-QJsonObject EBase::Serializar(const EBase e)
+QJsonObject EBase::Serializar(const EBase &e)
 {
 }
 
-EBase EBase::Deserializar(const QJsonObject json)
+EBase EBase::Deserializar(const QJsonObject &json)
 {
 }

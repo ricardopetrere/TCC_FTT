@@ -5,13 +5,27 @@
 #include <vo/econtato.h>
 #include <QDate>
 #include <vo/constantes.h>
+#include <QJsonObject>
 
 class EMensagem : public EBase
 {
 public:
     EMensagem();
     bool enviaEMensagemParaServidor();
-
+    static QJsonObject Serializar(EMensagem &m);
+    static EMensagem Deserializar(QJsonObject &json);
+    class Campos
+    {
+    public:
+        static const QString Contato_De;
+        static const QString Contato_Para;
+        static const QString Data;
+        static const QString Status_Envio;
+        static const QString Tipo_Mensagem;
+        static const QString Dados;
+        static const QString Contato_De_Deletou;
+        static const QString Contato_Para_Deletou;
+    };
 protected:
     EContato _contato_de;
     EContato _contato_para;

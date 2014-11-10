@@ -8,7 +8,6 @@ class HistoricoConversa : public QObject
     Q_OBJECT
 public:
     explicit HistoricoConversa(QObject *parent = 0);
-
 signals:
 
 public slots:

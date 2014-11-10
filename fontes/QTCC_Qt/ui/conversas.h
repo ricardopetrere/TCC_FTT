@@ -16,6 +16,8 @@ public:
     explicit Conversas(QWidget *parent = 0);
     ~Conversas();
 
+signals:
+
 private slots:
     void on_listConversas_itemClicked(QListWidgetItem *item);
 
@@ -24,6 +26,8 @@ private slots:
     void on_listConversas_customContextMenuRequested(const QPoint &pos);
 
     void on_actionLogout_triggered();
+
+    void carregaDadosUsuario();
 
 private:
     Ui::Conversas *ui;

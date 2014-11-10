@@ -11,8 +11,8 @@ public:
     const int &Id();
     void setId(const int &id);
 
-    static QJsonObject Serializar(const EBase e);
-    static EBase Deserializar(const QJsonObject json);
+    static QJsonObject Serializar(const EBase &e);
+    static EBase Deserializar(const QJsonObject &json);
     class Campos
     {
     public:

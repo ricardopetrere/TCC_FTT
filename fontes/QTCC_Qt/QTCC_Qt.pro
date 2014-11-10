@@ -30,7 +30,9 @@ SOURCES += main.cpp \
     vo/erequisicaologin.cpp \
     controller/requisicaologincontroller.cpp \
     controller/mensagemcontroller.cpp \
-    controls/contatowidget.cpp
+    ui/dialoglogin.cpp \
+    ui/dialogcadastre_se.cpp \
+    vo/econversa.cpp
 
 HEADERS  += \
     ui/mainwindow.h \
@@ -51,7 +53,10 @@ HEADERS  += \
     vo/erequisicaologin.h \
     controller/requisicaologincontroller.h \
     controller/mensagemcontroller.h \
-    controls/contatowidget.h
+    ui/dialoglogin.h \
+    ui/dialogcadastre_se.h \
+    vo/econversa.h \
+    util/InteracaoArquivo.h
 
 FORMS    += ui/mainwindow.ui \
     ui/conversas.ui \
@@ -59,9 +64,12 @@ FORMS    += ui/mainwindow.ui \
     ui/mensagens.ui \
     ui/login.ui \
     ui/cadastre_se.ui \
-    controls/contatowidget.ui \
-    controls/mensagem.ui \
-    controls/mensagem_de.ui
+    ui/dialoglogin.ui \
+    ui/dialogcadastre_se.ui \
+    controls/mensagem_recebida.ui \
+    controls/mensagem_enviada.ui \
+    controls/conversawidget.ui \
+    controls/contatowidget.ui
 
 CONFIG += mobility
 MOBILITY = 

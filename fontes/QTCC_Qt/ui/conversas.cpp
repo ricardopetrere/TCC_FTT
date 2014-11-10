@@ -3,29 +3,19 @@
 #include "contatos.h"
 #include "mensagens.h"
 #include "ngc/logger.h"
-
 #include "mainwindow.h"
-
 #include "login.h"
+#include "ui_conversawidget.h"
+#include "ui_mensagem_enviada.h"
+#include "ui_mensagem_recebida.h"
+#include "ui/dialoglogin.h"
 
 Conversas::Conversas(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::Conversas)
 {
     ui->setupUi(this);
-
-    //Login::validaLogin(true,this);
-    if(!Login::estaLogado())
-    {
-        Login *l = new Login(this);
-        l->setWindowModality(Qt::WindowModal);
-        l->show();
-        l->setFocus();
-        l->activateWindow();
-    }
-    ui->listConversas->clear();
-
-    ui->listConversas->addScrollBarWidget(,Qt::AlignLeft);
+    carregaDadosUsuario();
 }
 
 Conversas::~Conversas()
@@ -58,12 +48,22 @@ void Conversas::on_listConversas_customContextMenuRequested(const QPoint &pos)
 
 void Conversas::on_actionLogout_triggered()
 {
-    Logger::debug("Logout.");
-    Login *l = new Login(this);
-    if(Login::estaLogado())
+    Logger::debug("Login/Logout.");
+    DialogLogin *l = new DialogLogin(this);
+    if(DialogLogin::estaLogado())
     {
-        Login::realizaLogout();
+        DialogLogin::realizaLogout();
     }
-    l->setWindowModality(Qt::WindowModal);
-    l->show();
+    l->exec();
+}
+
+void Conversas::carregaDadosUsuario()
+{
+    DialogLogin::validaLogin(true,0);
+    ui->listConversas->clear();
+    if(DialogLogin::estaLogado())
+    {
+        MainWindow::_usuario_contatos = EContato::lerContatos();
+        MainWindow::_usuario_conversas = EConversa::lerConversas();
+    }
 }

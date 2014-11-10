@@ -8,7 +8,7 @@
 class MensagemController
 {
 public:
-    static QList<EMensagem> retornaConversas(int &cont_id)
+    static QList<EMensagem> retornaMensagens(int &cont_id)
     {
 
     }
