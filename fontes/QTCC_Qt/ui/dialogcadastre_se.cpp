@@ -1,8 +1,8 @@
 #include "dialogcadastre_se.h"
 #include "ui_dialogcadastre_se.h"
-#include "QFileDialog"
+#include <QFileDialog>
 #include "ngc/logger.h"
-#include "vo/econtato.h"
+//#include "vo/econtato.h"
 #include "vo/eusuario.h"
 
 DialogCadastre_se::DialogCadastre_se(QWidget *parent) :

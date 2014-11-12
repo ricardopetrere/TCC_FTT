@@ -93,6 +93,7 @@
     <Compile Include="VO\RequisicaoLogin.cs" />
     <Compile Include="VO\Usuario.cs" />
     <Compile Include="Util\Util.ComunicacaoRede.cs" />
+    <Compile Include="VO\UsuarioAdicionado.cs" />
     <EmbeddedResource Include="frPrincipal.resx">
       <DependentUpon>frPrincipal.cs</DependentUpon>
     </EmbeddedResource>

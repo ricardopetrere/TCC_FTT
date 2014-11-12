@@ -7,6 +7,8 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include "emensagem.h"
+#include "eusuario.h"
+
 //#include "econtato.h"
 //#include "ngc/logger.h"
 //#include "ui/mainwindow.h"
@@ -17,11 +19,20 @@ class EConversa
 public:
     EConversa();
     EContato contato();
+
+    static QList<EConversa> _usuario_conversas;
+
+    static void lerConversas()
+    {
+        _usuario_conversas = EConversa::lerConversas(EUsuario::_usuario_logado.Id());
+    }
+
     QList<EMensagem> mensagens();
     void setContato(EContato &contato);
     void setMensagens(QList<EMensagem> &mensagens);
-    static QList<EConversa> lerConversas(const int &cont_id)
+    static QList<EConversa> lerConversas(const int &cont_id1)
     {
+        int cont_id = EUsuario::_usuario_logado.Id();
         QList<EConversa> retorno;
         QJsonDocument load(QJsonDocument::fromJson(InteracaoArquivo::lerArquivo(cont_id + "/conversas.json")));
         QJsonObject conteudo_json = load.object();
@@ -33,8 +44,9 @@ public:
         }
         return retorno;
     }
-    static void salvarConversas(QList<EConversa> conversas,const int &cont_id)
+    static void salvarConversas(QList<EConversa> conversas,const int &cont_id1)
     {
+        int cont_id = EUsuario::_usuario_logado.Id();
         QJsonArray json_conversas;
         foreach (EConversa conversa, conversas)
             json_conversas.append(EConversa::Serializar(conversa));

@@ -1,10 +1,10 @@
 #ifndef REQUISICAOLOGINCONTROLLER_H
 #define REQUISICAOLOGINCONTROLLER_H
 
-#include "vo/eusuario.h"
+#include <QJsonDocument>
+//#include "vo/eusuario.h"
 #include "vo/erequisicaologin.h"
 #include "util/comunicacaorede.h"
-#include <QJsonDocument>
 
 class RequisicaoLoginController
 {

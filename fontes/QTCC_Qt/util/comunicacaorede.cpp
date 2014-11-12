@@ -4,7 +4,7 @@
 ComunicacaoRede::ComunicacaoRede(QObject *parent) :
     QObject(parent)
 {
-    //connect(this,&ComunicacaoRede::connected,this,&ComunicacaoRede::)
+
 }
 
 QString ComunicacaoRede::enviaPacote(QString pacote)

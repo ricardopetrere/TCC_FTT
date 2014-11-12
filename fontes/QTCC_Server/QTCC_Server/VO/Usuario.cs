@@ -142,5 +142,10 @@ namespace QTCC_Server.VO
             throw new NotImplementedException();
         }
         #endregion
+
+        internal static Usuario BuscaUsuario(string email)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

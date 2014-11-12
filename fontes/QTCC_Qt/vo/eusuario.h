@@ -1,8 +1,8 @@
 #ifndef EUSUARIO_H
 #define EUSUARIO_H
-
-#include <vo/econtato.h>
+//#pragma once
 #include <QList>
+#include <vo/econtato.h>
 
 class EUsuario : public EContato
 {
@@ -13,6 +13,21 @@ public:
     using EContato::Id;
     using EContato::setNome;
     using EContato::Nome;
+    using EContato::Foto;
+
+    static EUsuario _usuario_logado;
+
+    static bool estaLogado()
+    {
+        return _usuario_logado.Id()!=-1;
+    }
+
+    static QList<EContato> _usuario_contatos;
+
+    static void lerContatos()
+    {
+        _usuario_contatos = EContato::lerContatos(_usuario_logado.Id());
+    }
 
     QString texto_status() const;
     void setTexto_status(const QString &texto_status);

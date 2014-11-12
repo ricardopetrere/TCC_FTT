@@ -47,5 +47,10 @@ namespace QTCC_Server.Controller
         {
             throw new NotImplementedException();
         }
+
+        public string EnviarNovoUsuario(UsuarioAdicionado usuarioAdicionado)
+        {
+
+        }
     }
 }

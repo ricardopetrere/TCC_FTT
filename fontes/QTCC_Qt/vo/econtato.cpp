@@ -1,7 +1,7 @@
-#include "econtato.h"
 #include <QImage>
 #include <QBuffer>
 #include <QByteArray>
+#include "econtato.h"
 
 const QString EContato::Campos::Nome = "Nome";
 const QString EContato::Campos::Foto = "Foto";

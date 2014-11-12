@@ -16,9 +16,21 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    static EUsuario _usuario_logado;
-    static QList<EContato> _usuario_contatos;
-    static QList<EConversa> _usuario_conversas;
+//    static EUsuario _usuario_logado;
+//    static QList<EContato> _usuario_contatos;
+//    static QList<EConversa> _usuario_conversas;
+//    static bool estaLogado()
+//    {
+//        return _usuario_logado.Id()!=-1;
+//    }
+//    static void lerContatos()
+//    {
+//        _usuario_contatos = EContato::lerContatos(_usuario_logado.Id());
+//    }
+//    static void lerConversas()
+//    {
+//        _usuario_conversas = EConversa::lerConversas(_usuario_logado.Id());
+//    }
 
 private slots:
     void on_actionLogout_triggered();

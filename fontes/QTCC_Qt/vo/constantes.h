@@ -27,7 +27,6 @@ public:
         EnviarNovoUsuario=7,
         EnviarNovoGrupo=8
     };
-
 };
 
 #endif // CONSTANTES_H

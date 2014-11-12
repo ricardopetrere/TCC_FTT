@@ -1,10 +1,10 @@
 #ifndef USUARIOCONTROLLER_H
 #define USUARIOCONTROLLER_H
 
-#include <vo/eusuario.h>
-#include <QString>
-#include <util/comunicacaorede.h>
 #include <QJsonDocument>
+//#include <QString>
+#include <vo/eusuario.h>
+#include <util/comunicacaorede.h>
 
 class UsuarioController
 {

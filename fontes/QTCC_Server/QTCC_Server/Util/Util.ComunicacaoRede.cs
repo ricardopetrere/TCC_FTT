@@ -57,7 +57,7 @@ namespace QTCC_Server.Util
                     {
                         onPacoteRecebido(recebido, new EventArgs());
                     }
-                    else//Como poderia cair aqui??
+                    else
                     {
                         Console.WriteLine("onPacoteRecebido não instanciado!");
                     }

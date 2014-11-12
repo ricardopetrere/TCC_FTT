@@ -1,6 +1,6 @@
 #include "erequisicaologin.h"
 #include "controller/requisicaologincontroller.h"
-//#include "eusuario.h"
+
 
 const QString ERequisicaoLogin::Campos::Login = "Login";
 const QString ERequisicaoLogin::Campos::Senha = "Senha";

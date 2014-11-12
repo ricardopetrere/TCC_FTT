@@ -1,6 +1,6 @@
 #include "dialoglogin.h"
 #include "ui_dialoglogin.h"
-#include "ngc/logger.h"
+//#include "ngc/logger.h"
 #include "vo/erequisicaologin.h"
 #include "dialogcadastre_se.h"
 
@@ -23,10 +23,10 @@ void DialogLogin::on_btnLogin_clicked()
     ERequisicaoLogin login;
     login.setLogin(ui->lineEmail->text());
     login.setSenha(ui->lineSenha->text());
-    MainWindow::_usuario_logado = login.requisicaoLogin();
-    if(MainWindow::_usuario_logado.Id()>0)
+    EUsuario::_usuario_logado = login.requisicaoLogin();
+    if(EUsuario::_usuario_logado.Id()>0)
     {
-        Logger::debug(MainWindow::_usuario_logado.Nome()," logou com sucesso.");
+        Logger::debug(EUsuario::_usuario_logado.Nome()," logou com sucesso.");
         close();
     }
     else

@@ -45,6 +45,7 @@ namespace QTCC_Server.Util
                             retorno = new UsuarioController().NovoCadastro(JSON_Logic.Deserializa<Usuario>(dados_pacote[1]));
                             break;
                         case CONSTANTES.TiposPacotesDadosEnum.EnviarNovoUsuario:
+                            retorno = new UsuarioController().EnviarNovoUsuario(JSON_Logic.Deserializa<UsuarioAdicionado>(dados_pacote[1]));
                             break;
                         case CONSTANTES.TiposPacotesDadosEnum.EnviarNovoGrupo:
                             break;

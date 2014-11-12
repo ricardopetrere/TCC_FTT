@@ -1,4 +1,4 @@
-#include "vo/emensagem.h"
+#include "emensagem.h"
 #include <QJsonObject>
 
 const QString EMensagem::Campos::Contato_De = "Contato_De";

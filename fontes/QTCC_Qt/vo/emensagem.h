@@ -1,11 +1,11 @@
 #ifndef EMENSAGEM_H
 #define EMENSAGEM_H
 
-#include <vo/ebase.h>
-#include <vo/econtato.h>
-#include <vo/constantes.h>
 #include <QDate>
 #include <QJsonObject>
+#include <vo/constantes.h>
+//#include <vo/ebase.h>
+#include <vo/econtato.h>
 
 class EMensagem : public EBase
 {

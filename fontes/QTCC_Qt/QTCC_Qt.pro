@@ -16,7 +16,6 @@ SOURCES += main.cpp \
     ui/mainwindow.cpp \
     ui/conversas.cpp \
     ui/contatos.cpp \
-    ngc/historicoconversa.cpp \
     ui/mensagens.cpp \
     #ui/login.cpp \
     #ui/cadastre_se.cpp \
@@ -38,7 +37,6 @@ HEADERS  += \
     ui/mainwindow.h \
     ui/conversas.h \
     ui/contatos.h \
-    ngc/historicoconversa.h \
     ui/mensagens.h \
     #ui/login.h \
     #ui/cadastre_se.h \

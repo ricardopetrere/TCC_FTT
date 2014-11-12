@@ -1,17 +1,20 @@
 #ifndef ECONTATO_H
 #define ECONTATO_H
-
-#include <vo/ebase.h>
+//#pragma once
 #include <QImage>
-#include <util/InteracaoArquivo.h>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
+#include <vo/ebase.h>
+#include <util/InteracaoArquivo.h>
 
 class EContato : public EBase
 {
 public:
     EContato();
+    using EBase::setId;
+    using EBase::Id;
+
     void setNome(const QString &nome);
     const QString &Nome();
     void setFoto(const QImage &foto);
