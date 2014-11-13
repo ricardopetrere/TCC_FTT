@@ -6,7 +6,7 @@
 //#include "mainwindow.h"
 
 namespace Ui {
-class DialogLogin;class MainWindow;
+class DialogLogin;
 }
 
 class DialogLogin : public QDialog

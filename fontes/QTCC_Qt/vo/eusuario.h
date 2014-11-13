@@ -19,14 +19,14 @@ public:
 
     static bool estaLogado()
     {
-        return _usuario_logado.Id()!=-1;
+        return EUsuario::_usuario_logado.Id()!=-1;
     }
 
     static QList<EContato> _usuario_contatos;
 
     static void lerContatos()
     {
-        _usuario_contatos = EContato::lerContatos(_usuario_logado.Id());
+        EUsuario::_usuario_contatos = EContato::lerContatos(EUsuario::_usuario_logado.Id());
     }
 
     QString texto_status() const;

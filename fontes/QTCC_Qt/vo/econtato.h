@@ -48,7 +48,7 @@ public:
     }
 
     static EContato Deserializar(QJsonObject &json);
-    static QJsonObject Serializar(EContato e);
+    static QJsonObject Serializar(EContato c);
     class Campos
     {
         public:

@@ -18,19 +18,20 @@ class EConversa
 {
 public:
     EConversa();
-    EContato contato();
 
     static QList<EConversa> _usuario_conversas;
 
-    static void lerConversas()
-    {
-        _usuario_conversas = EConversa::lerConversas(EUsuario::_usuario_logado.Id());
-    }
+//    static void lerConversas()
+//    {
+//        _usuario_conversas = EConversa::lerConversas();
+//    }
 
-    QList<EMensagem> mensagens();
     void setContato(EContato &contato);
+    EContato contato();
     void setMensagens(QList<EMensagem> &mensagens);
-    static QList<EConversa> lerConversas(const int &cont_id1)
+    QList<EMensagem> mensagens();
+
+    static QList<EConversa> lerConversas()
     {
         int cont_id = EUsuario::_usuario_logado.Id();
         QList<EConversa> retorno;
@@ -44,7 +45,7 @@ public:
         }
         return retorno;
     }
-    static void salvarConversas(QList<EConversa> conversas,const int &cont_id1)
+    static void salvarConversas(QList<EConversa> conversas)
     {
         int cont_id = EUsuario::_usuario_logado.Id();
         QJsonArray json_conversas;

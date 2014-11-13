@@ -12,6 +12,24 @@ class EMensagem : public EBase
 public:
     EMensagem();
     bool enviaEMensagemParaServidor();
+
+    void setContato_De(EContato &contato_de);
+    EContato Contato_De();
+    void setContato_Para(EContato &contato_para);
+    EContato Contato_Para();
+    void setData(QDate &data);
+    QDate Data();
+    void setStatus_Envio(Constantes::EStatusEnvioEnum &status_envio);
+    Constantes::EStatusEnvioEnum Status_Envio();
+    void setTipo_Mensagem(Constantes::ETipoMensagemEnum &tipo_mensagem);
+    Constantes::ETipoMensagemEnum Tipo_Mensagem();
+    void setDados(QByteArray dados);
+    QByteArray Dados();
+    void setContato_De_Deletou(bool &contato_de_deletou);
+    bool Contato_De_Deletou();
+    void setContato_Para_Deletou(bool &contato_para_deletou);
+    bool Contato_Para_Deletou();
+
     static QJsonObject Serializar(EMensagem &m);
     static EMensagem Deserializar(QJsonObject &json);
     class Campos
@@ -26,6 +44,8 @@ public:
         static const QString Contato_De_Deletou;
         static const QString Contato_Para_Deletou;
     };
+
+
 protected:
     EContato _contato_de;
     EContato _contato_para;

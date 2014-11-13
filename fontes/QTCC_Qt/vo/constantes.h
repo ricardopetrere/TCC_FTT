@@ -17,7 +17,7 @@ public:
         Audio=4,
         Video=5
     };
-    enum TiposPacotesDadosEnum{
+    enum ETiposPacotesDadosEnum{
         RequisicaoLogin = 1,
         ReceberNovasMensagens=2,
         EnviarNovaMensagem=3,

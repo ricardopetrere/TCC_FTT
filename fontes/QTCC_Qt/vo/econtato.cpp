@@ -51,31 +51,31 @@ EContato EContato::busca(const int &id)
 
 EContato EContato::Deserializar(QJsonObject &json)
 {
-    EContato e;
-    e._id = json[EBase::Campos::ID].toInt();
-    e._nome = json[Campos::Nome].toString();
-    e._inativo = json[Campos::Inativo].toBool();
+    EContato c;
+    c._id = json[EBase::Campos::ID].toInt();
+    c._nome = json[Campos::Nome].toString();
+    c._inativo = json[Campos::Inativo].toBool();
 
     QImage a;
     QByteArray array = json[Campos::Foto].toString().toLatin1();
     if(a.loadFromData(QByteArray::fromBase64(array)))
-        e._foto = a;
-    return e;
+        c._foto = a;
+    return c;
 }
 
-QJsonObject EContato::Serializar(EContato e)
+QJsonObject EContato::Serializar(EContato c)
 {
     QJsonObject json;
-    json[EBase::Campos::ID] = e._id;
-    json[Campos::Nome] = e._nome;
+    json[EBase::Campos::ID] = c._id;
+    json[Campos::Nome] = c._nome;
 
     QByteArray array;
     QBuffer buffer(&array);
     buffer.open(QIODevice::WriteOnly);
-    e._foto.save(&buffer,"PNG");
+    c._foto.save(&buffer,"PNG");
 
     json[Campos::Foto] = QString(array.toBase64(QByteArray::Base64Encoding));
-    json[Campos::Inativo] = e._inativo;
+    json[Campos::Inativo] = c._inativo;
     return json;
 }
 

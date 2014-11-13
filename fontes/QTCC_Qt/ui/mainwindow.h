@@ -2,8 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <vo/eusuario.h>
-#include <vo/econversa.h>
+//#include <vo/eusuario.h>
+//#include <vo/econversa.h>
 
 namespace Ui {
 class MainWindow;

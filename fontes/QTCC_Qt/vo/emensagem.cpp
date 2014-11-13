@@ -22,6 +22,86 @@ EMensagem::EMensagem() : EBase()
     _contato_para_deletou = false;
 }
 
+void EMensagem::setContato_De(EContato &contato_de)
+{
+
+}
+
+EContato EMensagem::Contato_De()
+{
+
+}
+
+void EMensagem::setContato_Para(EContato &contato_para)
+{
+
+}
+
+EContato EMensagem::Contato_Para()
+{
+
+}
+
+void EMensagem::setData(QDate &data)
+{
+
+}
+
+QDate EMensagem::Data()
+{
+
+}
+
+void EMensagem::setStatus_Envio(Constantes::EStatusEnvioEnum &status_envio)
+{
+
+}
+
+Constantes::EStatusEnvioEnum EMensagem::Status_Envio()
+{
+
+}
+
+void EMensagem::setTipo_Mensagem(Constantes::ETipoMensagemEnum &tipo_mensagem)
+{
+
+}
+
+Constantes::ETipoMensagemEnum EMensagem::Tipo_Mensagem()
+{
+
+}
+
+void EMensagem::setDados(QByteArray dados)
+{
+
+}
+
+QByteArray EMensagem::Dados()
+{
+
+}
+
+void EMensagem::setContato_De_Deletou(bool &contato_de_deletou)
+{
+
+}
+
+bool EMensagem::Contato_De_Deletou()
+{
+
+}
+
+void EMensagem::setContato_Para_Deletou(bool &contato_para_deletou)
+{
+
+}
+
+bool EMensagem::Contato_Para_Deletou()
+{
+
+}
+
 QJsonObject EMensagem::Serializar(EMensagem &m)
 {
     QJsonObject json;
