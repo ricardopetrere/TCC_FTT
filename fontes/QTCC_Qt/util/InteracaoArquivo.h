@@ -4,7 +4,7 @@
 #include <QByteArray>
 #include <QString>
 #include <QFile>
-#include "ngc/logger.h"
+#include "util/logger.h"
 
 class InteracaoArquivo
 {

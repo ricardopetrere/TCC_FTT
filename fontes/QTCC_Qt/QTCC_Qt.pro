@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2014-10-13T22:00:05
+# Project created by QtCreator 2014-11-12T18:49:08
 #
 #-------------------------------------------------
 
@@ -13,65 +13,49 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    ui/mainwindow.cpp \
-    ui/conversas.cpp \
-    ui/contatos.cpp \
-    ui/mensagens.cpp \
-    #ui/login.cpp \
-    #ui/cadastre_se.cpp \
-    vo/ebase.cpp \
-    vo/emensagem.cpp \
-    vo/econtato.cpp \
-    vo/eusuario.cpp \
     util/comunicacaorede.cpp \
-    vo/constantes.cpp \
-    controller/usuariocontroller.cpp \
-    vo/erequisicaologin.cpp \
-    controller/requisicaologincontroller.cpp \
     controller/mensagemcontroller.cpp \
+    controller/requisicaologincontroller.cpp \
+    controller/usuariocontroller.cpp \
+    vo/constantes.cpp \
+    vo/ebase.cpp \
+    vo/econtato.cpp \
+    vo/econversa.cpp \
+    vo/emensagem.cpp \
+    vo/erequisicaologin.cpp \
+    vo/eusuario.cpp \
     ui/dialoglogin.cpp \
     ui/dialogcadastre_se.cpp \
-    vo/econversa.cpp
+    ui/windowconversas.cpp \
+    ui/windowcontatos.cpp \
+    ui/windowmensagens.cpp
 
 HEADERS  += \
-    ui/mainwindow.h \
-    ui/conversas.h \
-    ui/contatos.h \
-    ui/mensagens.h \
-    #ui/login.h \
-    #ui/cadastre_se.h \
-    ngc/logger.h \
-    vo/ebase.h \
-    vo/emensagem.h \
-    vo/econtato.h \
-    vo/eusuario.h \
-    util/comunicacaorede.h \
-    vo/constantes.h \
-    controller/usuariocontroller.h \
-    vo/erequisicaologin.h \
-    controller/requisicaologincontroller.h \
     controller/mensagemcontroller.h \
+    controller/requisicaologincontroller.h \
+    controller/usuariocontroller.h \
+    util/logger.h \
+    util/comunicacaorede.h \
+    util/InteracaoArquivo.h \
+    vo/constantes.h \
+    vo/ebase.h \
+    vo/econtato.h \
+    vo/econversa.h \
+    vo/emensagem.h \
+    vo/erequisicaologin.h \
+    vo/eusuario.h \
     ui/dialoglogin.h \
     ui/dialogcadastre_se.h \
-    vo/econversa.h \
-    util/InteracaoArquivo.h
+    ui/windowconversas.h \
+    ui/windowcontatos.h \
+    ui/windowmensagens.h
 
-FORMS    += ui/mainwindow.ui \
-    ui/conversas.ui \
-    ui/contatos.ui \
-    ui/mensagens.ui \
-    #ui/login.ui \
-    #ui/cadastre_se.ui \
+FORMS    += \
     ui/dialoglogin.ui \
     ui/dialogcadastre_se.ui \
-    controls/mensagem_recebida.ui \
-    controls/mensagem_enviada.ui \
-    controls/conversawidget.ui \
-    controls/contatowidget.ui
-
-CONFIG += mobility
-MOBILITY = 
+    ui/windowconversas.ui \
+    ui/windowcontatos.ui \
+    ui/windowmensagens.ui
 
 RESOURCES += \
-    QTCC_Qt.qrc
-
+    QTCC_Images.qrc

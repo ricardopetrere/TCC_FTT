@@ -47,8 +47,8 @@ public:
         InteracaoArquivo::gravarArquivo(cont_id + "/contatos.json",save.toJson());
     }
 
-    static EContato Deserializar(QJsonObject &json);
     static QJsonObject Serializar(EContato c);
+    static EContato Deserializar(QJsonObject &json);
     class Campos
     {
         public:

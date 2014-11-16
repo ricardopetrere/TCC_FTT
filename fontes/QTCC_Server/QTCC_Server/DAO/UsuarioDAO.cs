@@ -45,7 +45,6 @@ namespace QTCC_Server.DAO
             {
                 c.Close();
             }
-
         }
 
         public static Usuario MontaVO(DataRow registro)
@@ -58,7 +57,7 @@ namespace QTCC_Server.DAO
             return retorno;
         }
 
-        private static List<Contato> BuscaContatos(int id)
+        private static List<Contato> BuscaContatos(int cont_id)
         {
             List<Contato> contatos=new List<Contato>();
             SqlConnection c = BD_SQL.Connection;
@@ -66,7 +65,7 @@ namespace QTCC_Server.DAO
             {
                 c.Open();
                 SqlCommand cmd = new SqlCommand("select cont_id,lst_id from tbListaContatos where cont_id=@Cont_Id", c);
-                cmd.Parameters.AddWithValue("@Cont_Id", id);
+                cmd.Parameters.AddWithValue("@Cont_Id", cont_id);
                 foreach (DataRow contato in BD_SQL.ExecutaSelect(cmd).Rows)
                 {
                     contatos.Add(ContatoDAO.BuscaContato((int)contato["lst_id"]));
@@ -84,8 +83,67 @@ namespace QTCC_Server.DAO
             {
                 c.Close();
             }
-
             return contatos;
+        }
+
+        public static Usuario BuscaPeloId(int cont_id)
+        {
+            Usuario retorno = new Usuario();
+            SqlConnection c = BD_SQL.Connection;
+            try
+            {
+                c.Open();
+                SqlCommand cmd = new SqlCommand("select tbUsuario.cont_id,cont_nome,cont_foto,cont_inativo,usu_email,usu_senha,usu_texto_status from tbContato inner join tbUsuario on tbContato.cont_id = tbUsuario.cont_id and tbUsuario.cont_id=@Cont_Id", c);
+                cmd.Parameters.AddWithValue("@Cont_Id", cont_id);
+                using (DataTable select = BD_SQL.ExecutaSelect(cmd))
+                {
+                    if (select.Rows.Count > 0)
+                        retorno = MontaVO(select.Rows[0]);
+                }
+            }
+            catch(SqlException sql_ex)
+            {
+                throw sql_ex;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                c.Close();
+            }
+            return retorno;
+        }
+
+        public static Usuario BuscaPeloEmail(string usu_email)
+        {
+            Usuario retorno = new Usuario();
+            SqlConnection c = BD_SQL.Connection;
+            try
+            {
+                c.Open();
+                SqlCommand cmd = new SqlCommand("select tbUsuario.cont_id,cont_nome,cont_foto,cont_inativo,usu_email,usu_senha,usu_texto_status from tbContato inner join tbUsuario on tbContato.cont_id = tbUsuario.cont_id and usu_email=@Usu_Email", c);
+                cmd.Parameters.AddWithValue("@Usu_Email", usu_email);
+                using (DataTable select = BD_SQL.ExecutaSelect(cmd))
+                {
+                    if (select.Rows.Count > 0)
+                        retorno = MontaVO(select.Rows[0]);
+                }
+            }
+            catch (SqlException sql_ex)
+            {
+                throw sql_ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                c.Close();
+            }
+            return retorno;
         }
     }
 }

@@ -10,7 +10,7 @@
 #include "eusuario.h"
 
 //#include "econtato.h"
-//#include "ngc/logger.h"
+//#include "util/logger.h"
 //#include "ui/mainwindow.h"
 //#include "util/InteracaoArquivo.h"
 
@@ -20,11 +20,6 @@ public:
     EConversa();
 
     static QList<EConversa> _usuario_conversas;
-
-//    static void lerConversas()
-//    {
-//        _usuario_conversas = EConversa::lerConversas();
-//    }
 
     void setContato(EContato &contato);
     EContato contato();
@@ -56,31 +51,19 @@ public:
         QJsonDocument save(json_arquivo);
         InteracaoArquivo::gravarArquivo(cont_id + "/conversas.json",save.toJson());
     }
-    static QJsonObject Serializar(EConversa &conversa)
+    static QJsonObject Serializar(EConversa &c);
+    static EConversa Deserializar(QJsonObject &json);
+
+    class Campos
     {
-        QJsonObject json;
-        json["Contato"] = conversa.contato().Id();
-        QJsonArray mensagensArray;
-        foreach (EMensagem mensagem, conversa.mensagens())
-            mensagensArray.append(EMensagem::Serializar(mensagem));
-        json["Mensagens"] = mensagensArray;
-        return json;
-    }
-    static EConversa Deserializar(QJsonObject &json)
-    {
-        EConversa conversa;
-        conversa._contato = EContato::busca(json["Contato"].toInt());
-        QJsonArray mensagemArray = json["Mensagens"].toArray();
-        for(int mensagemIndex = 0;mensagemIndex<mensagemArray.size();mensagemIndex++)
-        {
-            QJsonObject mensagemObject = mensagemArray[mensagemIndex].toObject();
-            conversa._mensagens.append(EMensagem::Deserializar(mensagemObject));
-        }
-        return conversa;
-    }
-private:
-    QList<EMensagem> _mensagens;
+    public:
+        static const QString Contato;
+        static const QString Mensagens;
+    };
+
+protected:
     EContato _contato;
+    QList<EMensagem> _mensagens;
 };
 
 #endif // ECONVERSA_H

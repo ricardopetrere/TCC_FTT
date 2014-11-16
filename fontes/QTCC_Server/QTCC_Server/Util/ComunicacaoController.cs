@@ -48,6 +48,7 @@ namespace QTCC_Server.Util
                             retorno = new UsuarioController().EnviarNovoUsuario(JSON_Logic.Deserializa<UsuarioAdicionado>(dados_pacote[1]));
                             break;
                         case CONSTANTES.TiposPacotesDadosEnum.EnviarNovoGrupo:
+                            retorno = new UsuarioController().EnviarNovoGrupo(JSON_Logic.Deserializa<Grupo>(dados_pacote[1]));
                             break;
                         default:
                             throw new NotImplementedException();

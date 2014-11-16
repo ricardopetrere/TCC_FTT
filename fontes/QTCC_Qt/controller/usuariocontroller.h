@@ -12,15 +12,9 @@ public:
     static bool cadastraNovo(EUsuario u)
     {
         ComunicacaoRede comm;
-        return !(_recebido = comm.enviaPacote("NovoCadastro|" + QString(QJsonDocument(EUsuario::Serializar(u)).toJson()))).isEmpty();
+        QString recebido = comm.enviaPacote("NovoCadastro|" + QString(QJsonDocument(EUsuario::Serializar(u)).toJson()));
+        return (!recebido.isEmpty() && recebido==NULL);
     }
-    static QString &recebido()
-    {
-        return _recebido;
-    }
-
-private:
-    static QString _recebido;
 };
 
 #endif // USUARIOCONTROLLER_H

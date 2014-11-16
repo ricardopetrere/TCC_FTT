@@ -13,21 +13,8 @@ public:
     using EContato::Id;
     using EContato::setNome;
     using EContato::Nome;
+    using EContato::setFoto;
     using EContato::Foto;
-
-    static EUsuario _usuario_logado;
-
-    static bool estaLogado()
-    {
-        return EUsuario::_usuario_logado.Id()!=-1;
-    }
-
-    static QList<EContato> _usuario_contatos;
-
-    static void lerContatos()
-    {
-        EUsuario::_usuario_contatos = EContato::lerContatos(EUsuario::_usuario_logado.Id());
-    }
 
     QString texto_status() const;
     void setTexto_status(const QString &texto_status);
@@ -41,7 +28,16 @@ public:
     QString senha() const;
     void setSenha(const QString &senha);
 
-    bool cadastraNovo();
+    static EUsuario _usuario_logado;
+    static QList<EContato> _usuario_contatos;
+    static bool estaLogado()
+    {
+        return EUsuario::_usuario_logado.Id()!=-1;
+    }
+    static void lerContatos()
+    {
+        EUsuario::_usuario_contatos = EContato::lerContatos(EUsuario::_usuario_logado.Id());
+    }
 
     static EUsuario Deserializar(QJsonObject &json);
     static QJsonObject Serializar(EUsuario u);

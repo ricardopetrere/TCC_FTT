@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WindowConversas</class>
+ <widget class="QMainWindow" name="WindowConversas">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>452</width>
+    <height>611</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QListWidget" name="listConversas">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>1</horstretch>
+        <verstretch>1</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="contextMenuPolicy">
+       <enum>Qt::CustomContextMenu</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="verticalScrollMode">
+       <enum>QAbstractItemView::ScrollPerPixel</enum>
+      </property>
+      <property name="uniformItemSizes">
+       <bool>true</bool>
+      </property>
+      <item>
+       <property name="text">
+        <string>Conversa 1</string>
+       </property>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
+       </property>
+       <property name="flags">
+        <set>ItemIsDragEnabled|ItemIsUserCheckable</set>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Conversa 2</string>
+       </property>
+       <property name="font">
+        <font>
+         <strikeout>true</strikeout>
+        </font>
+       </property>
+       <property name="flags">
+        <set>ItemIsDragEnabled|ItemIsUserCheckable</set>
+       </property>
+      </item>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>452</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuOp_es">
+    <property name="title">
+     <string>Opções</string>
+    </property>
+    <addaction name="actionNova_Conversa"/>
+    <addaction name="separator"/>
+    <addaction name="actionLogout"/>
+   </widget>
+   <addaction name="menuOp_es"/>
+  </widget>
+  <action name="actionNova_Conversa">
+   <property name="icon">
+    <iconset>
+     <normalon>../../QTCC_QML (obsoleto)/images/qtcreator.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Nova Conversa</string>
+   </property>
+  </action>
+  <action name="actionLogout">
+   <property name="text">
+    <string>Login/Logout</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

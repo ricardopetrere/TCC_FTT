@@ -24,9 +24,13 @@ namespace QTCC_Server.Controller
             throw new NotImplementedException();
         }
 
-        public override Usuario Busca(int id)
+        public override Usuario Busca(int cont_id)
         {
-            throw new NotImplementedException();
+            return UsuarioDAO.BuscaPeloId(cont_id);
+        }
+        public Usuario Busca(string usu_email)
+        {
+            return UsuarioDAO.BuscaPeloEmail(usu_email);
         }
 
         public override List<Usuario> Lista()
@@ -34,6 +38,7 @@ namespace QTCC_Server.Controller
             throw new NotImplementedException();
         }
 
+        #region Métodos de ComunicacaoController
         public String NovoCadastro(Usuario usuario)
         {
             int ID_Inserido = Insere(usuario);
@@ -43,14 +48,29 @@ namespace QTCC_Server.Controller
                 return "Falha no cadastro";
         }
 
-        public override Usuario MontaVO(System.Data.DataRow registro)
+        public string EnviarNovoUsuario(UsuarioAdicionado usuarioAdicionado)
+        {
+            if(usuarioAdicionado.NovoUsuario==null)
+            {
+                return "Não existe nenhum usuário com esse e-mail.";
+            }
+            else
+            {
+                if(ContatoDAO.AdicionaContatoListaContatos(usuarioAdicionado.IDContato,usuarioAdicionado.NovoUsuario.IDContato))
+                {
+                    return "Usuário adicionado à lista de contatos como sucesso!";
+                }
+                else
+                {
+                    return "Falha ao adicionar o usuário à lista de contatos.";
+                }
+            }
+        }
+
+        public string EnviarNovoGrupo(Grupo grupo)
         {
             throw new NotImplementedException();
         }
-
-        public string EnviarNovoUsuario(UsuarioAdicionado usuarioAdicionado)
-        {
-
-        }
+        #endregion Métodos de ComunicacaoController
     }
 }

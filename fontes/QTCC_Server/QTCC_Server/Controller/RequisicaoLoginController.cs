@@ -44,10 +44,5 @@ namespace QTCC_Server.Controller
                 return "";
             }
         }
-
-        public override RequisicaoLogin MontaVO(System.Data.DataRow registro)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -172,7 +172,6 @@ namespace QTCC_Server.VO
         public static class Campos
         {
             public const string IDMensagem = EntidadeBase.Campos.ID;
-            //public const string IDMensagem = "IDMensagem";
             public const string Contato_De = "Contato_De";
             public const string Contato_Para = "Contato_Para";
             public const string Data_Envio = "Data_Envio";

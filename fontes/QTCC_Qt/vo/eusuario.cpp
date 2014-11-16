@@ -65,11 +65,6 @@ void EUsuario::setSenha(const QString &senha)
     _senha = senha;
 }
 
-bool EUsuario::cadastraNovo()
-{
-    return UsuarioController::cadastraNovo(*this);
-}
-
 EUsuario EUsuario::Deserializar(QJsonObject &json)
 {
     EUsuario u(EContato::Deserializar(json));

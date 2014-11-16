@@ -41,6 +41,37 @@ namespace QTCC_Server.DAO
                         retorno = MontaVO(select.Rows[0]);
                 }
             }
+            catch(SqlException sql_ex)
+            {
+                throw sql_ex;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                c.Close();
+            }
+            return retorno;
+        }
+
+        public static bool AdicionaContatoListaContatos(int cont_id, int lst_id)
+        {
+            bool retorno = false;
+            SqlConnection c = BD_SQL.Connection;
+            try
+            {
+                c.Open();
+                SqlCommand cmd = new SqlCommand("insert into tbListaContatos(cont_id,lst_id)values(@Cont_Id,@Lst_Id)",c);
+                cmd.Parameters.AddWithValue("@Cont_Id", cont_id);
+                cmd.Parameters.AddWithValue("@Lst_Id", lst_id);
+                retorno = BD_SQL.ExecutaSQL(cmd) > 0;
+            }
+            catch (SqlException sql_ex)
+            {
+                throw sql_ex;
+            }
             catch(Exception ex)
             {
                 throw ex;

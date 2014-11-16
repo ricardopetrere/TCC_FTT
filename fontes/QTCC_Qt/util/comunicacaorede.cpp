@@ -1,5 +1,5 @@
 #include "comunicacaorede.h"
-#include "ngc/logger.h"
+#include "util/logger.h"
 
 ComunicacaoRede::ComunicacaoRede(QObject *parent) :
     QObject(parent)

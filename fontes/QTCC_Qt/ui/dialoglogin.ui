@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>200</width>
-    <height>105</height>
+    <width>219</width>
+    <height>103</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Login</string>
+   <string>Dialog</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="leftMargin">
@@ -27,71 +27,67 @@
     <number>0</number>
    </property>
    <item>
-    <layout class="QGridLayout" name="gridLayout">
+    <layout class="QFormLayout" name="formLayout">
      <item row="0" column="0">
-      <layout class="QFormLayout" name="formLayout">
-       <item row="0" column="0">
-        <widget class="QLabel" name="lblEmail">
-         <property name="text">
-          <string>E-mail</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLineEdit" name="lineEmail"/>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="lblSenha">
-         <property name="text">
-          <string>Senha</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="lineSenha">
-         <property name="echoMode">
-          <enum>QLineEdit::Password</enum>
-         </property>
-         <property name="clearButtonEnabled">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Expanding</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
+      <widget class="QLabel" name="lblEmail">
+       <property name="text">
+        <string>E-mail</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEmail"/>
      </item>
      <item row="1" column="0">
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <item>
-        <widget class="QPushButton" name="btnLogin">
-         <property name="text">
-          <string>Login</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="btnCadastre_se">
-         <property name="text">
-          <string>Cadastre-se</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <widget class="QLabel" name="lblSenha">
+       <property name="text">
+        <string>Senha</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineSenha">
+       <property name="echoMode">
+        <enum>QLineEdit::Password</enum>
+       </property>
+       <property name="clearButtonEnabled">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="btnLogin">
+       <property name="text">
+        <string>Login</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btnCadastre_se">
+       <property name="text">
+        <string>Cadastre-se</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>

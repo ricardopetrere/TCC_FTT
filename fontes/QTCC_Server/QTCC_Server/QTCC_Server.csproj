@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Controller\ContatoController.cs" />
     <Compile Include="Controller\EntidadeBaseController.cs" />
+    <Compile Include="Controller\MensagemController.cs" />
     <Compile Include="Controller\RequisicaoLoginController.cs" />
     <Compile Include="Controller\UsuarioController.cs" />
     <Compile Include="DAO\ContatoDAO.cs" />
