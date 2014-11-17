@@ -1,7 +1,7 @@
 #ifndef EUSUARIO_H
 #define EUSUARIO_H
 //#pragma once
-#include <QList>
+//#include <QList>
 #include <vo/econtato.h>
 
 class EUsuario : public EContato
@@ -27,17 +27,6 @@ public:
 
     QString senha() const;
     void setSenha(const QString &senha);
-
-    static EUsuario _usuario_logado;
-    static QList<EContato> _usuario_contatos;
-    static bool estaLogado()
-    {
-        return EUsuario::_usuario_logado.Id()!=-1;
-    }
-    static void lerContatos()
-    {
-        EUsuario::_usuario_contatos = EContato::lerContatos(EUsuario::_usuario_logado.Id());
-    }
 
     static EUsuario Deserializar(QJsonObject &json);
     static QJsonObject Serializar(EUsuario u);

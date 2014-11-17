@@ -19,6 +19,10 @@ public:
 private slots:
     void on_listContatos_itemClicked(QListWidgetItem *item);
 
+    void on_listContatos_customContextMenuRequested(const QPoint &pos);
+
+    void on_actionNovoContato_triggered();
+
 private:
     Ui::WindowContatos *ui;
 };

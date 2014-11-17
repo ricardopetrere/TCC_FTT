@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
+using QTCC_Server.Controller;
 
 namespace QTCC_Server.VO
 {
@@ -33,7 +34,7 @@ namespace QTCC_Server.VO
                 List<Usuario> retorno = new List<Usuario>();
                 foreach (int ID in value)
                 {
-                    Usuario u = Usuario.BuscaUsuario(ID);
+                    Usuario u = new UsuarioController().Busca(ID);
                     if (u != null)
                     {
                         retorno.Add(u);
@@ -64,7 +65,7 @@ namespace QTCC_Server.VO
             set
             {
                 Usuario adm;
-                if ((adm = Usuario.BuscaUsuario(value)) != null)
+                if ((adm = new UsuarioController().Busca(value)) != null)
                 {
                     this.Administrador = adm;
                 }

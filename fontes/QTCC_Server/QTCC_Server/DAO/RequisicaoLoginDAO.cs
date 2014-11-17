@@ -50,6 +50,7 @@ namespace QTCC_Server.DAO
             SqlConnection c = BD_SQL.Connection;
             try
             {
+                c.Open();
                 SqlCommand cmd = new SqlCommand(string.Format(
                     "if exists (select * from tmpUsuariosLogados where cont_id = @Cont_Id)\n"+
 	                    "update tmpUsuariosLogados set log_visto_ultimo = getdate() where cont_id = @Cont_Id\n"+

@@ -1,8 +1,7 @@
+#include "eusuario.h"
 #include <QJsonObject>
 #include <QJsonArray>
-#include "eusuario.h"
-//#include "econtato.h"
-#include <controller/usuariocontroller.h>
+#include <controller/contatocontroller.h>
 
 const QString EUsuario::Campos::Texto_Status = "Texto_Status";
 const QString EUsuario::Campos::Contatos = "Contatos";
@@ -76,7 +75,7 @@ EUsuario EUsuario::Deserializar(QJsonObject &json)
     for (int contatoIndex = 0; contatoIndex < contatosArray.size(); ++contatoIndex) {
         QJsonObject contatoObject = contatosArray[contatoIndex].toObject();
         EContato contato;
-        contato = EContato::busca(contatoObject[EBase::Campos::ID].toInt());
+        contato = ContatoController::busca(contatoObject[EBase::Campos::ID].toInt());
         //contato = EContato::Deserializar(contatoObject);
         u._contatos.append(contato);
     }

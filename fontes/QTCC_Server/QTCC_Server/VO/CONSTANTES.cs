@@ -31,7 +31,9 @@ namespace QTCC_Server.VO
             StatusMensagem=5,
             NovoCadastro=6,
             EnviarNovoUsuario=7,
-            EnviarNovoGrupo=8
+            EnviarNovoGrupo=8,
+            BuscaUsuarioPeloEmail=9,
+            BuscaUsuarioPeloID=10
         };
         #endregion Enumeradores
     }

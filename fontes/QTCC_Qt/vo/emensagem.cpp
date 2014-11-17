@@ -1,5 +1,5 @@
 #include "emensagem.h"
-#include <QJsonObject>
+#include <controller/contatocontroller.h>
 
 const QString EMensagem::Campos::Contato_De = "Contato_De";
 const QString EMensagem::Campos::Contato_Para = "Contato_Para";
@@ -24,82 +24,82 @@ EMensagem::EMensagem() : EBase()
 
 void EMensagem::setContato_De(EContato &contato_de)
 {
-
+    _contato_de = contato_de;
 }
 
 EContato EMensagem::Contato_De()
 {
-
+    return _contato_de;
 }
 
 void EMensagem::setContato_Para(EContato &contato_para)
 {
-
+    _contato_para = contato_para;
 }
 
 EContato EMensagem::Contato_Para()
 {
-
+    return _contato_para;
 }
 
 void EMensagem::setData(QDate &data)
 {
-
+    _data = data;
 }
 
 QDate EMensagem::Data()
 {
-
+    return _data;
 }
 
 void EMensagem::setStatus_Envio(Constantes::EStatusEnvioEnum &status_envio)
 {
-
+    _status_envio = status_envio;
 }
 
 Constantes::EStatusEnvioEnum EMensagem::Status_Envio()
 {
-
+    return _status_envio;
 }
 
 void EMensagem::setTipo_Mensagem(Constantes::ETipoMensagemEnum &tipo_mensagem)
 {
-
+    _tipo_mensagem = tipo_mensagem;
 }
 
 Constantes::ETipoMensagemEnum EMensagem::Tipo_Mensagem()
 {
-
+    return _tipo_mensagem;
 }
 
-void EMensagem::setDados(QByteArray dados)
+void EMensagem::setDados(QByteArray &dados)
 {
-
+    _dados = dados;
 }
 
 QByteArray EMensagem::Dados()
 {
-
+    return _dados;
 }
 
 void EMensagem::setContato_De_Deletou(bool &contato_de_deletou)
 {
-
+    _contato_de_deletou = contato_de_deletou;
 }
 
 bool EMensagem::Contato_De_Deletou()
 {
-
+    return _contato_de_deletou;
 }
 
 void EMensagem::setContato_Para_Deletou(bool &contato_para_deletou)
 {
-
+    _contato_para_deletou = contato_para_deletou;
 }
 
 bool EMensagem::Contato_Para_Deletou()
 {
-
+    return _contato_para_deletou;
 }
 
 QJsonObject EMensagem::Serializar(EMensagem &m)
@@ -123,8 +123,8 @@ EMensagem EMensagem::Deserializar(QJsonObject &json)
 {
     EMensagem m;
     m._id = json[EBase::Campos::ID].toInt();
-    m._contato_de = EContato::busca(json[EMensagem::Campos::Contato_De].toInt());
-    m._contato_para = EContato::busca(json[EMensagem::Campos::Contato_Para].toInt());
+    m._contato_de = ContatoController::busca(json[EMensagem::Campos::Contato_De].toInt());
+    m._contato_para = ContatoController::busca(json[EMensagem::Campos::Contato_Para].toInt());
 //    m._contato_de = EContato::busca(json[EMensagem::Campos::Contato_De].toObject());
 //    m._contato_para = EContato::Deserializar(json[EMensagem::Campos::Contato_Para].toObject());
     m._data = QDate::fromString(json[EMensagem::Campos::Data].toString());

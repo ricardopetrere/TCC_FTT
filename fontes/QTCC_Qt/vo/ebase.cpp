@@ -19,8 +19,14 @@ void EBase::setId(const int &id)
 
 QJsonObject EBase::Serializar(const EBase &e)
 {
+    QJsonObject json;
+    json[Campos::ID] = e._id;
+    return json;
 }
 
 EBase EBase::Deserializar(const QJsonObject &json)
 {
+    EBase e;
+    e._id = json[Campos::ID].toInt();
+    return e;
 }

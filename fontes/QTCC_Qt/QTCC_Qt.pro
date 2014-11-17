@@ -28,7 +28,11 @@ SOURCES += main.cpp \
     ui/dialogcadastre_se.cpp \
     ui/windowconversas.cpp \
     ui/windowcontatos.cpp \
-    ui/windowmensagens.cpp
+    ui/windowmensagens.cpp \
+    controller/conversacontroller.cpp \
+    controller/contatocontroller.cpp \
+    controller/basecontroller.cpp \
+    ui/dialogbuscacontato.cpp
 
 HEADERS  += \
     controller/mensagemcontroller.h \
@@ -36,7 +40,6 @@ HEADERS  += \
     controller/usuariocontroller.h \
     util/logger.h \
     util/comunicacaorede.h \
-    util/InteracaoArquivo.h \
     vo/constantes.h \
     vo/ebase.h \
     vo/econtato.h \
@@ -48,14 +51,20 @@ HEADERS  += \
     ui/dialogcadastre_se.h \
     ui/windowconversas.h \
     ui/windowcontatos.h \
-    ui/windowmensagens.h
+    ui/windowmensagens.h \
+    controller/conversacontroller.h \
+    controller/contatocontroller.h \
+    controller/basecontroller.h \
+    util/interacaoarquivo.h \
+    ui/dialogbuscacontato.h
 
 FORMS    += \
     ui/dialoglogin.ui \
     ui/dialogcadastre_se.ui \
     ui/windowconversas.ui \
     ui/windowcontatos.ui \
-    ui/windowmensagens.ui
+    ui/windowmensagens.ui \
+    ui/dialogbuscacontato.ui
 
 RESOURCES += \
-    QTCC_Images.qrc
+    QTCC_Images.qrc \

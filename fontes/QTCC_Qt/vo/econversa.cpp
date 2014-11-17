@@ -1,5 +1,7 @@
 #include "econversa.h"
 
+#include <controller/contatocontroller.h>
+
 const QString EConversa::Campos::Contato = "Contato";
 const QString EConversa::Campos::Mensagens = "Mensagens";
 
@@ -33,7 +35,7 @@ QJsonObject EConversa::Serializar(EConversa &c)
 EConversa EConversa::Deserializar(QJsonObject &json)
 {
     EConversa c;
-    c._contato = EContato::busca(json[Campos::Contato].toInt());
+    c._contato = ContatoController::busca(json[Campos::Contato].toInt());
     QJsonArray mensagemArray = json[Campos::Mensagens].toArray();
     for(int mensagemIndex = 0;mensagemIndex<mensagemArray.size();mensagemIndex++)
     {

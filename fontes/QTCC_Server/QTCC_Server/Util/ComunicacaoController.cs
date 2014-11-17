@@ -50,6 +50,12 @@ namespace QTCC_Server.Util
                         case CONSTANTES.TiposPacotesDadosEnum.EnviarNovoGrupo:
                             retorno = new UsuarioController().EnviarNovoGrupo(JSON_Logic.Deserializa<Grupo>(dados_pacote[1]));
                             break;
+                        case CONSTANTES.TiposPacotesDadosEnum.BuscaUsuarioPeloEmail:
+                            retorno = JSON_Logic.Serializa<Usuario>(new UsuarioController().Busca(dados_pacote[1]));
+                            break;
+                        case CONSTANTES.TiposPacotesDadosEnum.BuscaUsuarioPeloID:
+                            retorno = JSON_Logic.Serializa<Usuario>(new UsuarioController().Busca(Convert.ToInt32(dados_pacote[1])));
+                            break;
                         default:
                             throw new NotImplementedException();
                     }

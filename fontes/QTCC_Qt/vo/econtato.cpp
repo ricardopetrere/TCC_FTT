@@ -44,11 +44,6 @@ const bool &EContato::Inativo()
     return _inativo;
 }
 
-EContato EContato::busca(const int &id)
-{
-
-}
-
 EContato EContato::Deserializar(QJsonObject &json)
 {
     EContato c;

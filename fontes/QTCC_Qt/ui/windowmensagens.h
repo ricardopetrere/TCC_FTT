@@ -18,6 +18,8 @@ public:
 private slots:
     void on_btnEnviar_clicked();
 
+    void on_listMensagens_customContextMenuRequested(const QPoint &pos);
+
 private:
     Ui::WindowMensagens *ui;
 };

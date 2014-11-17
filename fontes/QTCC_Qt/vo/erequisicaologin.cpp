@@ -11,10 +11,6 @@ ERequisicaoLogin::ERequisicaoLogin()
     _senha = "";
 }
 
-EUsuario ERequisicaoLogin::requisicaoLogin()
-{
-    return RequisicaoLoginController::requisicaoLogin(*this);
-}
 QString ERequisicaoLogin::login() const
 {
     return _login;

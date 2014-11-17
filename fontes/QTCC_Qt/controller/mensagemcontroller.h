@@ -2,12 +2,18 @@
 #define MENSAGEMCONTROLLER_H
 
 #include <QList>
+#include <controller/basecontroller.h>
 #include <vo/emensagem.h>
-//#include <vo/econtato.h>
+
 
 class MensagemController
 {
 public:
+    static bool enviaEMensagemParaServidor(EMensagem m)
+    {
+
+    }
+
     static QList<EMensagem> retornaMensagens(int &cont_id)
     {
 

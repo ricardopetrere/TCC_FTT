@@ -106,46 +106,6 @@ namespace QTCC_Server.VO
             Email = "";
             Senha = "";
         }
-
-        public int AlteraStatus(String novo_status)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int AdicionaContato(Contato novo_contato)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int RemoveContato(Contato contato)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Contato BuscaContato(String contato_email)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Boolean PossuiContato(Contato contato)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int AlterarSenha(String senha_antiga, String senha_nova)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static Usuario BuscaUsuario(int idcontato)
-        {
-            throw new NotImplementedException();
-        }
         #endregion
-
-        internal static Usuario BuscaUsuario(string email)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -2,7 +2,9 @@
 #define EBASE_H
 
 #include <QString>
+#include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonArray>
 
 class EBase
 {

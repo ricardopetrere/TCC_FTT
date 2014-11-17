@@ -9,8 +9,6 @@ class ERequisicaoLogin
 {
 public:
     ERequisicaoLogin();
-    EUsuario requisicaoLogin();
-
     QString login() const;
     void setLogin(const QString &login);
 

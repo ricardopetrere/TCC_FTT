@@ -2,17 +2,16 @@
 #define EMENSAGEM_H
 
 #include <QDate>
-#include <QJsonObject>
 #include <vo/constantes.h>
-//#include <vo/ebase.h>
+#include <vo/ebase.h>
 #include <vo/econtato.h>
 
 class EMensagem : public EBase
 {
 public:
     EMensagem();
-    bool enviaEMensagemParaServidor();
-
+    using EBase::setId;
+    using EBase::Id;
     void setContato_De(EContato &contato_de);
     EContato Contato_De();
     void setContato_Para(EContato &contato_para);
@@ -23,7 +22,7 @@ public:
     Constantes::EStatusEnvioEnum Status_Envio();
     void setTipo_Mensagem(Constantes::ETipoMensagemEnum &tipo_mensagem);
     Constantes::ETipoMensagemEnum Tipo_Mensagem();
-    void setDados(QByteArray dados);
+    void setDados(QByteArray &dados);
     QByteArray Dados();
     void setContato_De_Deletou(bool &contato_de_deletou);
     bool Contato_De_Deletou();

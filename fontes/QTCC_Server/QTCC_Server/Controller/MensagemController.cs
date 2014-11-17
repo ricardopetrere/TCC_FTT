@@ -33,5 +33,25 @@ namespace QTCC_Server.Controller
         {
             throw new NotImplementedException();
         }
+
+        public int InsereMensagem(Mensagem mensagem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Mensagem BuscaMensagem(int id_mensagem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Mensagem> ListaMensagensPorStatus(CONSTANTES.StatusEnvioEnum status_envio)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int DeletaMensagemParaContato(Contato contato)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

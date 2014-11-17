@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QTCC_Server.Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -29,7 +30,7 @@ namespace QTCC_Server.VO
             }
             set
             {
-                NovoUsuario = Usuario.BuscaUsuario(value);
+                NovoUsuario = new UsuarioController().Busca(value);
             }
         }
         public Usuario NovoUsuario
