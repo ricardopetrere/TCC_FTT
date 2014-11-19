@@ -9,6 +9,14 @@
 class UsuarioController
 {
 public:
+    static void lerContatosUsuarioLogado()
+    {
+        ContatoController::_usuario_contatos = ContatoController::lerContatosUsuario(UsuarioController::_usuario_logado.Id());
+    }
+    static void salvarContatosUsuarioLogado()
+    {
+        ContatoController::salvarContatos(ContatoController::_usuario_contatos,UsuarioController::_usuario_logado.Id());
+    }
     static EUsuario _usuario_logado;
     static EUsuario buscaUsuarioPeloEmail(QString &usu_email)
     {
@@ -16,10 +24,10 @@ public:
         //Primeiro checa na lista interna, pra evitar tráfego na rede
         foreach (EContato contato, ContatoController::_usuario_contatos)
         {
-            EUsuario* contato_as_usuario = dynamic_cast<EUsuario*>(&contato);
-            if(contato_as_usuario.Id()>0)
-                if(contato_as_usuario.email()==usu_email)
-                    return contato_as_usuario;
+//            EUsuario* contato_as_usuario = dynamic_cast<EUsuario*>(&contato);
+//            if(contato_as_usuario.Id()>0)
+//                if(contato_as_usuario.email()==usu_email)
+//                    return contato_as_usuario;
         }
         ComunicacaoRede comm;
         QString recebido = comm.enviaPacote("BuscaUsuarioPeloEmail|"+usu_email);

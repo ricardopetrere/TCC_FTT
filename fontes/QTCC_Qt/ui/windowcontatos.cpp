@@ -5,7 +5,7 @@
 
 #include <util/logger.h>
 
-#include <controller/contatocontroller.h>
+#include <controller/usuariocontroller.h>
 
 WindowContatos::WindowContatos(QWidget *parent) :
     QMainWindow(parent),

@@ -11,7 +11,6 @@ DialogBuscaContato::DialogBuscaContato(QWidget *parent) :
 DialogBuscaContato::DialogBuscaContato(QString mensagem_sobre_pesquisa, QString texto_pushbutton, QString titulo, QWidget *parent) :
     DialogBuscaContato(parent)
 {
-    ui->setupUi(this);
     ui->lblBuscarContato->setText(mensagem_sobre_pesquisa);
     ui->btnBuscarContato->setText(texto_pushbutton);
     setWindowTitle(titulo);

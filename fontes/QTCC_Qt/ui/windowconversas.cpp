@@ -15,8 +15,8 @@ WindowConversas::WindowConversas(QWidget *parent) :
     ui(new Ui::WindowConversas)
 {
     ui->setupUi(this);
-    ui->listConversas->clear();
-    carregaDadosUsuario();
+//    ui->listConversas->clear();
+//    carregaDadosUsuario();
     foreach (EConversa conversa, ConversaController::_usuario_conversas) {
         ui->listConversas->addItem(conversa.contato().Nome());
     }
@@ -68,7 +68,7 @@ void WindowConversas::carregaDadosUsuario()
     DialogLogin::validaLogin(true,0);
     if(UsuarioController::estaLogado())
     {
-        ContatoController::lerContatosUsuarioLogado();
+        UsuarioController::lerContatosUsuarioLogado();
         ConversaController::lerConversasUsuarioLogado();
     }
 }

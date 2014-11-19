@@ -4,21 +4,17 @@
 #include <controller/basecontroller.h>
 #include <util/interacaoarquivo.h>
 #include <vo/econtato.h>
-#include "usuariocontroller.h"
+//#include <controller/usuariocontroller.h
 
 class ContatoController
 {
 public:
     static QList<EContato> _usuario_contatos;
-    static EContato busca(const int &cont_id)
+    static EContato busca(int cont_id)
     {
         EContato e;
 
         return e;
-    }
-    static void lerContatosUsuarioLogado()
-    {
-        ContatoController::_usuario_contatos = lerContatosUsuario(UsuarioController::_usuario_logado.Id());
     }
 
     static QList<EContato> lerContatosUsuario(const int &cont_id)
@@ -33,10 +29,6 @@ public:
             retorno.append(EContato::Deserializar(contatoObject));
         }
         return retorno;
-    }
-    static void salvarContatosUsuarioLogado()
-    {
-        salvarContatos(ContatoController::_usuario_contatos,UsuarioController::_usuario_logado.Id());
     }
 
     static void salvarContatos(QList<EContato> contatos,const int &cont_id)
