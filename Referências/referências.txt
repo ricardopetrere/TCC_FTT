@@ -12,3 +12,4 @@ https://www.wireshark.org/download/docs/user-guide-us.pdf
 http://www.pucrs.br/edipucrs/online/historiadacomputacao.pdf
 http://it-ebooks.info/book/1301/
 http://uet.vnu.edu.vn/~chauttm/e-books/java/JH2P-9th.pdf
+http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf
