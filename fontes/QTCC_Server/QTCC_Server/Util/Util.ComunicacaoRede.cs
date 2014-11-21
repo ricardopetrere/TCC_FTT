@@ -33,6 +33,7 @@ namespace QTCC_Server.Util
             }
         }
         private static TcpListener listener;
+        //static Thread tEscutaClientes;
         //http://tech.pro/tutorial/704/csharp-tutorial-simple-threaded-tcp-server
         #region Servidor
         public static void ReceberPacote(object objClient)
@@ -94,16 +95,24 @@ namespace QTCC_Server.Util
             esta_escutando_porta = true;
             while (true && Esta_Escutando_Porta)
             {
-                TcpClient client = listener.AcceptTcpClient();
-                Thread tReceberPacote = new Thread(new ParameterizedThreadStart(ReceberPacote));
-                tReceberPacote.IsBackground = true;
-                tReceberPacote.Start(client);
+                try
+                {
+                    TcpClient client = listener.AcceptTcpClient();
+                    Thread tReceberPacote = new Thread(new ParameterizedThreadStart(ReceberPacote));
+                    tReceberPacote.IsBackground = true;
+                    tReceberPacote.Start(client);
+                }
+                catch
+                {
+
+                }
             }
         }
         public static void FechaConexao()
         {
             listener.Stop();
             esta_escutando_porta = false;
+            //tEscutaClientes.Abort();
         }
         #endregion Servidor
     }

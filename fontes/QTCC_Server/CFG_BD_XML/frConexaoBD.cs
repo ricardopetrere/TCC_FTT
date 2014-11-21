@@ -16,6 +16,9 @@ namespace CFG_BD_XML
     /// </summary>
     public partial class frConexaoBD : Form
     {
+        /// <summary>
+        /// Instancia um objeto da classe <see cref="frConexaoBD"/>
+        /// </summary>
         public frConexaoBD()
         {
             InitializeComponent();
@@ -62,6 +65,13 @@ namespace CFG_BD_XML
         #endregion
 
         #region Métodos
+        /// <summary>
+        /// Método responsável por validar se o usuário preencheu todos os campos necessários
+        /// para se salvar as configurações de acesso à base de dados.
+        /// <para/>
+        /// Será exibido um indicador de erro do <see cref="System.Windows.Forms.ErrorProvider"/> para cada campo necessário não preenchido.
+        /// </summary>
+        /// <returns>O resultado da validação (Se possui todos os campos ou não)</returns>
         private bool PossuiTodosOsCampos()
         {
             errorProvider1.Clear();
@@ -88,7 +98,7 @@ namespace CFG_BD_XML
         /// <summary>
         /// Indica se o usuário desejou sair sem salvar as configurações realizadas.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>O resultado da validação (Usuário saiu sem salvar as novas configurações ou não)</returns>
         private bool ValidaSairSemSalvar()
         {
             if (MessageBox.Show("Deseja cancelar as alterações realizadas?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
@@ -103,6 +113,9 @@ namespace CFG_BD_XML
                 return false;
         }
 
+        /// <summary>
+        /// Salva as configurações de acesso realizadas
+        /// </summary>
         private void SalvarConfiguracao()
         {
             BD_Connection conn = new BD_Connection();
@@ -119,6 +132,9 @@ namespace CFG_BD_XML
             this.Close();
         }
 
+        /// <summary>
+        /// Método responsável por listar os bancos de dados disponíveis com base na conexão especificada nos campos da tela.
+        /// </summary>
         private void ListarBancos()
         {
             cbBanco.Items.Clear();
@@ -135,6 +151,8 @@ namespace CFG_BD_XML
                 conn.Open();
                 SqlCommand cmd = new SqlCommand("select name from sys.databases"
                     , conn);
+
+                //Não se pode usar BD_SQL.ExecutaSelect(String sql) porque não se pode usar a conexão atual, visto que é uma conexão temporária
                 DataTable temp = BD_SQL.ExecutaSelect(cmd);
                 foreach (DataRow registro in temp.Rows)
                 {
