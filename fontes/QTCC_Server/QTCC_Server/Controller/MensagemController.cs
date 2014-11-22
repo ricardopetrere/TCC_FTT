@@ -53,5 +53,20 @@ namespace QTCC_Server.Controller
         {
             throw new NotImplementedException();
         }
+
+        internal List<Mensagem> ReceberNovasMensagens(int cont_id)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal string EnviarNovaMensagem(Mensagem mensagem)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal string StatusMensagem(int p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

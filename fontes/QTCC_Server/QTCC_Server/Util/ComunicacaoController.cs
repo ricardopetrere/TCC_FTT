@@ -34,12 +34,16 @@ namespace QTCC_Server.Util
                             retorno = new RequisicaoLoginController().RequisicaoLogin(JSON_Logic.Deserializa<RequisicaoLogin>(dados_pacote[1]));
                             break;
                         case CONSTANTES.TiposPacotesDadosEnum.ReceberNovasMensagens:
+                            retorno = JSON_Logic.Serializa<List<Mensagem>>(new MensagemController().ReceberNovasMensagens(Convert.ToInt32(dados_pacote[1])));
                             break;
                         case CONSTANTES.TiposPacotesDadosEnum.EnviarNovaMensagem:
+                            retorno = new MensagemController().EnviarNovaMensagem(JSON_Logic.Deserializa<Mensagem>(dados_pacote[1]));
                             break;
                         case CONSTANTES.TiposPacotesDadosEnum.StatusContato:
+                            retorno = new ContatoController().StatusContato(Convert.ToInt32(dados_pacote[1]));
                             break;
                         case CONSTANTES.TiposPacotesDadosEnum.StatusMensagem:
+                            retorno = new MensagemController().StatusMensagem(Convert.ToInt32(dados_pacote[1]));
                             break;
                         case CONSTANTES.TiposPacotesDadosEnum.NovoCadastro:
                             retorno = new UsuarioController().NovoCadastro(JSON_Logic.Deserializa<Usuario>(dados_pacote[1]));

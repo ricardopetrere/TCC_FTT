@@ -21,18 +21,21 @@ namespace QTCC_Server
         
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MostrarListaContatos(listView1.SelectedIndices.Count>0);
+            MostrarListaContatos(lstUsuariosOnline.SelectedIndices.Count>0);
         }
 
         private void MostrarListaContatos(bool mostrar)
         {
             if (mostrar)
             {
-                groupBox1.Visible = true;
+                grpContatos.Visible = true;
+                timerContatosUsuario.Start();
+                LeContatosUsuarioSelecionado();
             }
             else
             {
-                groupBox1.Visible = false;
+                grpContatos.Visible = false;
+                timerContatosUsuario.Stop();
             }
         }
 
@@ -42,12 +45,15 @@ namespace QTCC_Server
             {
                 //Dessa forma, é possível alterar a conexão do banco sem comprometer os dados
                 ComunicacaoRede.FechaConexao();
+                timerUsuariosOnline.Stop();
+                timerContatosUsuario.Stop(); //Só para garantir
                 if (new frConexaoBD().ShowDialog() == DialogResult.OK)
                 {
                     LeUsuariosOnline();
                 }
                 //Reinicia a conexão de rede, agora com as configurações de acesso ao banco de dados atualizadas.
                 ComunicacaoRede.IniciarServidor();
+                timerUsuariosOnline.Start();
             }
         }
 
@@ -57,6 +63,7 @@ namespace QTCC_Server
             if (BD_Connection.LeuBDXML())
             {
                 ComunicacaoRede.IniciarServidor();
+                timerUsuariosOnline.Start();
                 LeUsuariosOnline();
             }
         }
@@ -68,11 +75,60 @@ namespace QTCC_Server
 
         void LeUsuariosOnline()
         {
-            listView1.Items.Clear();
+            int usuario_selecionado = 0;
+            if (lstUsuariosOnline.SelectedItems.Count > 0)
+                usuario_selecionado = Convert.ToInt32(lstUsuariosOnline.SelectedItems[0].SubItems[2].Text);
+            lstUsuariosOnline.Items.Clear();
             String sql = "select cont.cont_id,cont.cont_nome,tmp.log_visto_ultimo from tbContato cont inner join tbUsuario usu on usu.cont_id=cont.cont_id inner join tmpUsuariosLogados tmp on tmp.cont_id = cont.cont_id where cont_inativo = 0";
             foreach(DataRow registro in  BD_SQL.ExecutaSelect(sql).Rows)
             {
-                listView1.Items.Add(registro["cont_nome"].ToString());
+                ListViewItem itmUsuarioOnline = new ListViewItem();
+                itmUsuarioOnline.Text = registro["cont_nome"].ToString();
+                DateTime dtaVistoUltimo = Convert.ToDateTime(registro["log_visto_ultimo"]);
+                itmUsuarioOnline.SubItems.Add(DeterminarTempoOnline(dtaVistoUltimo));
+                itmUsuarioOnline.SubItems.Add(registro["cont_id"].ToString());
+                lstUsuariosOnline.Items.Add(itmUsuarioOnline);
+            }
+            if (usuario_selecionado > 0)
+                lstUsuariosOnline.FindItemWithText(usuario_selecionado.ToString(), true, 0).Selected = true;
+        }
+        String DeterminarTempoOnline(DateTime dta_visto_ultimo)
+        {
+            TimeSpan diferenca_tempo = DateTime.Now.Subtract(dta_visto_ultimo);
+            if (diferenca_tempo.TotalMinutes < 5)
+                return "Online";
+            else if (diferenca_tempo.TotalMinutes < 60)
+                return "Há " + diferenca_tempo.TotalMinutes.ToString() + " minutos";
+            else if (diferenca_tempo.TotalDays == 0)
+                return "Hoje às " + dta_visto_ultimo.ToString("HH:mm");
+            else
+                return dta_visto_ultimo.ToString("dd/MM/yyyy HH:mm");
+        }
+
+        private void timerUsuariosOnline_Tick(object sender, EventArgs e)
+        {
+            LeUsuariosOnline();
+        }
+
+        private void timerContatosUsuario_Tick(object sender, EventArgs e)
+        {
+            LeContatosUsuarioSelecionado();
+        }
+        void LeContatosUsuarioSelecionado()
+        {
+            LeContatosUsuarioSelecionado(Convert.ToInt32(lstUsuariosOnline.SelectedItems[0].SubItems[2].Text));
+        }
+        void LeContatosUsuarioSelecionado(int cont_id)
+        {
+            lstContatos.Items.Clear();
+            String sql = "select cont.cont_nome from tbContato cont inner join tbListaContatos lst on lst.cont_id = cont.cont_id where cont.cont_id = " + cont_id.ToString();
+            foreach (DataRow registro in BD_SQL.ExecutaSelect(sql).Rows)
+            {
+                ListViewItem itmContatoUsuario = new ListViewItem();
+                itmContatoUsuario.Text = registro["cont_nome"].ToString();
+                DateTime dtaVistoUltimo = Convert.ToDateTime(registro["log_visto_ultimo"]);
+                itmContatoUsuario.SubItems.Add(DeterminarTempoOnline(dtaVistoUltimo));
+                lstContatos.Items.Add(itmContatoUsuario);
             }
         }
     }

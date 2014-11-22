@@ -33,5 +33,10 @@ namespace QTCC_Server.Controller
         {
             throw new NotImplementedException();
         }
+
+        internal string StatusContato(int p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

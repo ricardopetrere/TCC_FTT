@@ -33,7 +33,6 @@ namespace QTCC_Server.Util
             }
         }
         private static TcpListener listener;
-        //static Thread tEscutaClientes;
         //http://tech.pro/tutorial/704/csharp-tutorial-simple-threaded-tcp-server
         #region Servidor
         public static void ReceberPacote(object objClient)
@@ -112,7 +111,6 @@ namespace QTCC_Server.Util
         {
             listener.Stop();
             esta_escutando_porta = false;
-            //tEscutaClientes.Abort();
         }
         #endregion Servidor
     }
