@@ -33,14 +33,6 @@ namespace QTCC_Server.DAO
                 BD_SQL.ExecutaSQL(cmd);
                 return u.IDContato = (int)cmd.Parameters["@Cont_Id"].Value;
             }
-            catch(SqlException sql_ex)
-            {
-                throw sql_ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
             finally
             {
                 c.Close();
@@ -71,14 +63,6 @@ namespace QTCC_Server.DAO
                     contatos.Add(ContatoDAO.BuscaContato((int)contato["lst_id"]));
                 }
             }
-            catch(SqlException sql_ex)
-            {
-                throw sql_ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
             finally
             {
                 c.Close();
@@ -101,14 +85,6 @@ namespace QTCC_Server.DAO
                         retorno = MontaVO(select.Rows[0]);
                 }
             }
-            catch(SqlException sql_ex)
-            {
-                throw sql_ex;
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
             finally
             {
                 c.Close();
@@ -130,14 +106,6 @@ namespace QTCC_Server.DAO
                     if (select.Rows.Count > 0)
                         retorno = MontaVO(select.Rows[0]);
                 }
-            }
-            catch (SqlException sql_ex)
-            {
-                throw sql_ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
             }
             finally
             {

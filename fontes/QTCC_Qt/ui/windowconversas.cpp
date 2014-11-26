@@ -15,8 +15,8 @@ WindowConversas::WindowConversas(QWidget *parent) :
     ui(new Ui::WindowConversas)
 {
     ui->setupUi(this);
-//    ui->listConversas->clear();
-//    carregaDadosUsuario();
+    ui->listConversas->clear();
+    carregaDadosUsuario();
     foreach (EConversa conversa, ConversaController::_usuario_conversas) {
         ui->listConversas->addItem(conversa.contato().Nome());
     }

@@ -12,7 +12,7 @@ WindowContatos::WindowContatos(QWidget *parent) :
     ui(new Ui::WindowContatos)
 {
     ui->setupUi(this);
-    ui->listContatos->clear();
+//    ui->listContatos->clear();
     foreach (EContato contato, ContatoController::_usuario_contatos) {
         ui->listContatos->addItem(contato.Nome());
     }
@@ -44,5 +44,6 @@ void WindowContatos::on_actionNovoContato_triggered()
 {
     DialogBuscaContato *b = new DialogBuscaContato("Insira o e-mail do contato a ser adicionado","Adicionar","Adicionar Contato",this);
     b->exec();
-    EUsuario u = UsuarioController::buscaUsuarioPeloEmail(b->pesquisado);
+    if(!b->pesquisado.isEmpty())
+        EUsuario u = UsuarioController::buscaUsuarioPeloEmail(b->pesquisado);
 }

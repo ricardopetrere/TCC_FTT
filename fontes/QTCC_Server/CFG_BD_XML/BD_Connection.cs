@@ -118,8 +118,14 @@ namespace CFG_BD_XML
         {
             XmlSerializer writer = new XmlSerializer(connection.GetType());
             StreamWriter arquivo = new StreamWriter(NomeArquivo);
-            writer.Serialize(arquivo, connection);
-            arquivo.Close();
+            try
+            {
+                writer.Serialize(arquivo, connection);
+            }
+            finally
+            {
+                arquivo.Close();
+            }
         }
 
         /// <summary>

@@ -49,28 +49,18 @@
       </property>
       <item>
        <property name="text">
-        <string>Conversa 1</string>
-       </property>
-       <property name="font">
-        <font>
-         <strikeout>true</strikeout>
-        </font>
+        <string>Usuário de Teste 1</string>
        </property>
        <property name="flags">
-        <set>ItemIsDragEnabled|ItemIsUserCheckable</set>
+        <set>ItemIsUserCheckable|ItemIsEnabled</set>
        </property>
       </item>
       <item>
        <property name="text">
-        <string>Conversa 2</string>
-       </property>
-       <property name="font">
-        <font>
-         <strikeout>true</strikeout>
-        </font>
+        <string>Usuário de Teste 2</string>
        </property>
        <property name="flags">
-        <set>ItemIsDragEnabled|ItemIsUserCheckable</set>
+        <set>ItemIsUserCheckable|ItemIsEnabled</set>
        </property>
       </item>
      </widget>

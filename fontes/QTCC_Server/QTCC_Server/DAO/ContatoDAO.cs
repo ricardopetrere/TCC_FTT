@@ -41,14 +41,6 @@ namespace QTCC_Server.DAO
                         retorno = MontaVO(select.Rows[0]);
                 }
             }
-            catch(SqlException sql_ex)
-            {
-                throw sql_ex;
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
             finally
             {
                 c.Close();
@@ -67,14 +59,6 @@ namespace QTCC_Server.DAO
                 cmd.Parameters.AddWithValue("@Cont_Id", cont_id);
                 cmd.Parameters.AddWithValue("@Lst_Id", lst_id);
                 retorno = BD_SQL.ExecutaSQL(cmd) > 0;
-            }
-            catch (SqlException sql_ex)
-            {
-                throw sql_ex;
-            }
-            catch(Exception ex)
-            {
-                throw ex;
             }
             finally
             {

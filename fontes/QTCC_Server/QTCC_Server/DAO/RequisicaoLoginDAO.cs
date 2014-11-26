@@ -31,14 +31,6 @@ namespace QTCC_Server.DAO
                     return null;
                 }
             }
-            catch (SqlException sql_ex)
-            {
-                throw sql_ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
             finally
             {
                 c.Close();
@@ -58,14 +50,6 @@ namespace QTCC_Server.DAO
 	                    "insert into tmpUsuariosLogados(cont_id,log_visto_ultimo) values (@Cont_Id,getdate())"), c);
                 cmd.Parameters.AddWithValue("@Cont_Id", cont_id);
                 BD_SQL.ExecutaSQL(cmd);
-            }
-            catch (SqlException sql_ex)
-            {
-                throw sql_ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
             }
             finally
             {

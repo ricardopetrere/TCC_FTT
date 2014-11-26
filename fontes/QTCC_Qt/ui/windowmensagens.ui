@@ -30,7 +30,49 @@
     <item row="0" column="0">
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QListWidget" name="listMensagens"/>
+       <widget class="QListWidget" name="listMensagens">
+        <item>
+         <property name="text">
+          <string>Teste com texto</string>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="background">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>221</red>
+            <green>221</green>
+            <blue>221</blue>
+           </color>
+          </brush>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Recebido</string>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="textAlignment">
+          <set>AlignRight|AlignVCenter</set>
+         </property>
+         <property name="background">
+          <brush brushstyle="SolidPattern">
+           <color alpha="255">
+            <red>178</red>
+            <green>248</green>
+            <blue>157</blue>
+           </color>
+          </brush>
+         </property>
+        </item>
+       </widget>
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
