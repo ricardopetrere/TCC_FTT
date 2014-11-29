@@ -25,6 +25,8 @@ void WindowMensagens::on_btnEnviar_clicked()
     itm_Mensagem->setTextAlignment(Qt::AlignRight);
     itm_Mensagem->setFont(QFont("Segoe UI",12));
     ui->listMensagens->addItem(itm_Mensagem);
+	//Se enviou a mensagem, apagar da txt
+	ui->textMensagem->clear();
 }
 
 void WindowMensagens::on_listMensagens_customContextMenuRequested(const QPoint &pos)
