@@ -60,6 +60,9 @@ namespace QTCC_Server.Util
                         case CONSTANTES.TiposPacotesDadosEnum.BuscaUsuarioPeloID:
                             retorno = JSON_Logic.Serializa<Usuario>(new UsuarioController().Busca(Convert.ToInt32(dados_pacote[1])));
                             break;
+                        case CONSTANTES.TiposPacotesDadosEnum.BuscaContato:
+                            retorno = JSON_Logic.Serializa<Contato>(new ContatoController().Busca(Convert.ToInt32(dados_pacote[1])));
+                            break;
                         default:
                             throw new NotImplementedException();
                     }

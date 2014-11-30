@@ -16,6 +16,7 @@ public:
     explicit WindowContatos(QWidget *parent = 0);
     ~WindowContatos();
 
+    void lerContatos();
 private slots:
     void on_listContatos_itemClicked(QListWidgetItem *item);
 

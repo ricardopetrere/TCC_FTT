@@ -42,6 +42,15 @@ namespace QTCC_Server.Controller
         {
             throw new NotImplementedException();
         }
+
+        public override Usuario Busca(int cont_id)
+        {
+            return UsuarioDAO.BuscaPeloId(cont_id);
+        }
+        public Usuario Busca(string usu_email)
+        {
+            return UsuarioDAO.BuscaPeloEmail(usu_email);
+        }
         #endregion Métodos de ComunicacaoController
 
         public override int Insere(Usuario entidade)
@@ -57,15 +66,6 @@ namespace QTCC_Server.Controller
         public override int Exclui(int id)
         {
             throw new NotImplementedException();
-        }
-
-        public override Usuario Busca(int cont_id)
-        {
-            return UsuarioDAO.BuscaPeloId(cont_id);
-        }
-        public Usuario Busca(string usu_email)
-        {
-            return UsuarioDAO.BuscaPeloEmail(usu_email);
         }
 
         public override List<Usuario> Lista()
@@ -96,6 +96,11 @@ namespace QTCC_Server.Controller
         public int AlterarSenha(String senha_antiga, String senha_nova)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Contato> BuscaContatos(int cont_id)
+        {
+            return UsuarioDAO.BuscaContatos(cont_id);
         }
     }
 }

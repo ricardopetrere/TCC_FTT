@@ -26,7 +26,7 @@ namespace QTCC_Server.Controller
 
         public override Contato Busca(int id)
         {
-            throw new NotImplementedException();
+            return ContatoDAO.BuscaContato(id);
         }
 
         public override List<Contato> Lista()
@@ -34,7 +34,7 @@ namespace QTCC_Server.Controller
             throw new NotImplementedException();
         }
 
-        internal string StatusContato(int p)
+        internal string StatusContato(int cont_id)
         {
             throw new NotImplementedException();
         }

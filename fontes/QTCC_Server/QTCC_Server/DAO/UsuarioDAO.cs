@@ -19,15 +19,15 @@ namespace QTCC_Server.DAO
                 c.Open();
                 SqlCommand cmd = new SqlCommand("spInsereUsuario", c);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Cont_Nome",u.Nome);
+                cmd.Parameters.AddWithValue("@Cont_Nome", u.Nome);
                 using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
                 {
                     u.Foto.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
                     cmd.Parameters.AddWithValue("@Cont_Foto", ms.ToArray());
                 }
-                cmd.Parameters.AddWithValue("@Usu_Email",u.Email);
-                cmd.Parameters.AddWithValue("@Usu_Senha",u.Senha);
-                cmd.Parameters.AddWithValue("@Usu_Texto_Status",u.Texto_Status);
+                cmd.Parameters.AddWithValue("@Usu_Email", u.Email);
+                cmd.Parameters.AddWithValue("@Usu_Senha", u.Senha);
+                cmd.Parameters.AddWithValue("@Usu_Texto_Status", u.Texto_Status);
                 cmd.Parameters.Add("@Cont_Id", SqlDbType.Int).Direction = ParameterDirection.Output;
 
                 BD_SQL.ExecutaSQL(cmd);
@@ -49,9 +49,9 @@ namespace QTCC_Server.DAO
             return retorno;
         }
 
-        private static List<Contato> BuscaContatos(int cont_id)
+        public static List<Contato> BuscaContatos(int cont_id)
         {
-            List<Contato> contatos=new List<Contato>();
+            List<Contato> contatos = new List<Contato>();
             SqlConnection c = BD_SQL.Connection;
             try
             {
@@ -69,7 +69,6 @@ namespace QTCC_Server.DAO
             }
             return contatos;
         }
-
         public static Usuario BuscaPeloId(int cont_id)
         {
             Usuario retorno = new Usuario();

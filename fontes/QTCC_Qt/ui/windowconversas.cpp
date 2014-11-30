@@ -17,9 +17,6 @@ WindowConversas::WindowConversas(QWidget *parent) :
     ui->setupUi(this);
     ui->listConversas->clear();
     carregaDadosUsuario();
-    foreach (EConversa conversa, ConversaController::_usuario_conversas) {
-        ui->listConversas->addItem(conversa.contato().Nome());
-    }
 }
 
 WindowConversas::~WindowConversas()
@@ -47,12 +44,12 @@ void WindowConversas::on_actionNova_Conversa_triggered()
 void WindowConversas::on_actionLogout_triggered()
 {
     Logger::debug("Login/Logout.");
-    DialogLogin *l = new DialogLogin(this);
     if(UsuarioController::estaLogado())
     {
+        ui->actionNova_Conversa->setEnabled(false);
         UsuarioController::realizaLogout();
     }
-    l->exec();
+    carregaDadosUsuario();
 }
 
 void WindowConversas::on_listConversas_customContextMenuRequested(const QPoint &pos)
@@ -68,7 +65,12 @@ void WindowConversas::carregaDadosUsuario()
     DialogLogin::validaLogin(true,0);
     if(UsuarioController::estaLogado())
     {
+        ui->actionNova_Conversa->setEnabled(true);
         UsuarioController::lerContatosUsuarioLogado();
-        ConversaController::lerConversasUsuarioLogado();
+        ConversaController::_usuario_conversas = ConversaController::lerConversasUsuarioLogado();
+        foreach (EConversa conversa, ConversaController::_usuario_conversas)
+        {
+            ui->listConversas->addItem(conversa.contato().Nome());
+        }
     }
 }

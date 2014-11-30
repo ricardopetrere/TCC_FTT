@@ -9,12 +9,12 @@
 class MensagemController
 {
 public:
-    static bool enviaEMensagemParaServidor(EMensagem m)
+    static bool EnviarNovaMensagem(EMensagem m)
     {
 
     }
 
-    static QList<EMensagem> retornaMensagens(int &cont_id)
+    static QList<EMensagem> ReceberNovasMensagens(int &cont_id)
     {
 
     }

@@ -33,7 +33,8 @@ namespace QTCC_Server.VO
             EnviarNovoUsuario=7,
             EnviarNovoGrupo=8,
             BuscaUsuarioPeloEmail=9,
-            BuscaUsuarioPeloID=10
+            BuscaUsuarioPeloID=10,
+            BuscaContato=11
         };
         #endregion Enumeradores
     }

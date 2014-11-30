@@ -16,7 +16,7 @@ public:
     {
         int cont_id = UsuarioController::_usuario_logado.Id();
         QList<EConversa> retorno;
-        QJsonDocument load(QJsonDocument::fromJson(InteracaoArquivo::lerArquivo(cont_id + "/conversas.json")));
+        QJsonDocument load(QJsonDocument::fromJson(InteracaoArquivo::lerArquivo("/"+QString::number(cont_id) + "_conversas.json")));
         QJsonObject conteudo_json = load.object();
         QJsonArray json_conversas(conteudo_json["Conversas"].toArray());
         for (int conversaIndex = 0; conversaIndex < json_conversas.size(); ++conversaIndex)
@@ -35,7 +35,7 @@ public:
         QJsonObject json_arquivo;
         json_arquivo["Conversas"] = json_conversas;
         QJsonDocument save(json_arquivo);
-        InteracaoArquivo::gravarArquivo(cont_id + "/conversas.json",save.toJson());
+        InteracaoArquivo::gravarArquivo("/"+QString::number(cont_id) + "_conversas.json",save.toJson());
     }
 };
 

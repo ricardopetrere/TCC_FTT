@@ -1,24 +1,24 @@
 #ifndef USUARIOCONTROLLER_H
 #define USUARIOCONTROLLER_H
 
-#include <controller/basecontroller.h>
-//#include <ui/dialoglogin.h>
 #include <vo/eusuario.h>
 #include <controller/contatocontroller.h>
+#include <vo/eusuarioadicionado.h>
 
 class UsuarioController
 {
 public:
     static void lerContatosUsuarioLogado()
     {
-        ContatoController::_usuario_contatos = ContatoController::lerContatosUsuario(UsuarioController::_usuario_logado.Id());
+//        ContatoController::_usuario_contatos = ContatoController::lerContatosUsuario_JSON(UsuarioController::_usuario_logado.Id());
+        ContatoController::_usuario_contatos = UsuarioController::_usuario_logado.contatos();
     }
     static void salvarContatosUsuarioLogado()
     {
         ContatoController::salvarContatos(ContatoController::_usuario_contatos,UsuarioController::_usuario_logado.Id());
     }
     static EUsuario _usuario_logado;
-    static EUsuario buscaUsuarioPeloEmail(QString &usu_email)
+    static EUsuario buscaUsuarioPeloEmail(QString usu_email)
     {
         EUsuario retorno;
         //Primeiro checa na lista interna, pra evitar tráfego na rede
@@ -38,7 +38,7 @@ public:
         }
         return retorno = EUsuario();
     }
-    static EUsuario buscaUsuarioPeloID(int &cont_id)
+    static EUsuario buscaUsuarioPeloID(int cont_id)
     {
         EUsuario retorno;
         //Primeiro checa na lista interna, pra evitar tráfego na rede
@@ -61,6 +61,16 @@ public:
         QString recebido = comm.enviaPacote("NovoCadastro|" + QString(QJsonDocument(EUsuario::Serializar(u)).toJson()));
         return (!recebido.isEmpty() && recebido==NULL);
     }
+    static QString EnviarNovoUsuario(EUsuario u)
+    {
+        EUsuarioAdicionado ua;
+        ua.setId(UsuarioController::_usuario_logado.Id());
+        ua.setNovoUsuario(u);
+        ComunicacaoRede comm;
+        QString recebido = comm.enviaPacote("EnviarNovoUsuario|"+QString(QJsonDocument(EUsuarioAdicionado::Serializar(ua)).toJson()));
+        return recebido;
+    }
+
     static bool estaLogado()
     {
         return UsuarioController::_usuario_logado.Id()!=-1;

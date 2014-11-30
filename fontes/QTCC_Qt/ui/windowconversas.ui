@@ -87,6 +87,9 @@
    <addaction name="menuOp_es"/>
   </widget>
   <action name="actionNova_Conversa">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="icon">
     <iconset>
      <normalon>../../QTCC_QML (obsoleto)/images/qtcreator.png</normalon>

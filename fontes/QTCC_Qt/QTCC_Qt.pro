@@ -32,7 +32,8 @@ SOURCES += main.cpp \
     controller/conversacontroller.cpp \
     controller/contatocontroller.cpp \
     controller/basecontroller.cpp \
-    ui/dialogbuscacontato.cpp
+    ui/dialogbuscacontato.cpp \
+    vo/eusuarioadicionado.cpp
 
 HEADERS  += \
     controller/mensagemcontroller.h \
@@ -56,7 +57,8 @@ HEADERS  += \
     controller/contatocontroller.h \
     controller/basecontroller.h \
     util/interacaoarquivo.h \
-    ui/dialogbuscacontato.h
+    ui/dialogbuscacontato.h \
+    vo/eusuarioadicionado.h
 
 FORMS    += \
     ui/dialoglogin.ui \

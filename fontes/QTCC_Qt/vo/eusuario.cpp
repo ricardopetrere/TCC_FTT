@@ -73,10 +73,10 @@ EUsuario EUsuario::Deserializar(QJsonObject &json)
     u._contatos.clear();
     QJsonArray contatosArray = json[Campos::Contatos].toArray();
     for (int contatoIndex = 0; contatoIndex < contatosArray.size(); ++contatoIndex) {
-        QJsonObject contatoObject = contatosArray[contatoIndex].toObject();
         EContato contato;
-        contato = ContatoController::busca(contatoObject[EBase::Campos::ID].toInt());
-        //contato = EContato::Deserializar(contatoObject);
+        contato = ContatoController::busca(contatosArray[contatoIndex].toInt());
+//      QJsonObject contatoObject = contatosArray[contatoIndex].toObject();
+//        contato = EContato::Deserializar(contatoObject);
         u._contatos.append(contato);
     }
     return u;
