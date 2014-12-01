@@ -23,7 +23,7 @@ namespace QTCC_Server.DAO
                 if(dtUsuario.Rows.Count==1)
                 {
                     Usuario retorno = UsuarioDAO.MontaVO(dtUsuario.Rows[0]);
-                    AtualizaStatus(retorno.IDContato);
+                    UsuarioDAO.AtualizaStatus(retorno.IDContato);
                     return retorno;
                 }
                 else
@@ -36,26 +36,5 @@ namespace QTCC_Server.DAO
                 c.Close();
             }
         }
-
-        public static void AtualizaStatus(int cont_id)
-        {
-            SqlConnection c = BD_SQL.Connection;
-            try
-            {
-                c.Open();
-                SqlCommand cmd = new SqlCommand(string.Format(
-                    "if exists (select * from tmpUsuariosLogados where cont_id = @Cont_Id)\n"+
-	                    "update tmpUsuariosLogados set log_visto_ultimo = getdate() where cont_id = @Cont_Id\n"+
-                    "else\n"+
-	                    "insert into tmpUsuariosLogados(cont_id,log_visto_ultimo) values (@Cont_Id,getdate())"), c);
-                cmd.Parameters.AddWithValue("@Cont_Id", cont_id);
-                BD_SQL.ExecutaSQL(cmd);
-            }
-            finally
-            {
-                c.Close();
-            }
-        }
-
     }
 }

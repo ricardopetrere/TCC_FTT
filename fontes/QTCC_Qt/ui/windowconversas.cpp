@@ -27,7 +27,7 @@ WindowConversas::~WindowConversas()
 void WindowConversas::on_listConversas_itemClicked(QListWidgetItem *item)
 {
     Logger::debug(item->text(), " Clicado.");
-    WindowMensagens *m = new WindowMensagens(this);
+    WindowMensagens *m = new WindowMensagens(ConversaController::defineConversaSelecionada(item->text()),this);
     m->setWindowModality(Qt::WindowModal);
     m->show();
     m->setWindowTitle(item->text());
@@ -47,6 +47,8 @@ void WindowConversas::on_actionLogout_triggered()
     if(UsuarioController::estaLogado())
     {
         ui->actionNova_Conversa->setEnabled(false);
+        ui->listConversas->clear();
+        ConversaController::_usuario_conversas = new QList<EConversa>();
         UsuarioController::realizaLogout();
     }
     carregaDadosUsuario();
@@ -67,8 +69,8 @@ void WindowConversas::carregaDadosUsuario()
     {
         ui->actionNova_Conversa->setEnabled(true);
         UsuarioController::lerContatosUsuarioLogado();
-        ConversaController::_usuario_conversas = ConversaController::lerConversasUsuarioLogado();
-        foreach (EConversa conversa, ConversaController::_usuario_conversas)
+        *ConversaController::_usuario_conversas = ConversaController::lerConversasUsuarioLogado();
+        foreach (EConversa conversa, *ConversaController::_usuario_conversas)
         {
             ui->listConversas->addItem(conversa.contato().Nome());
         }

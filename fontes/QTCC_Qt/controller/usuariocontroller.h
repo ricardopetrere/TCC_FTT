@@ -78,6 +78,7 @@ public:
 
     static void realizaLogout()
     {
+        ContatoController::_usuario_contatos = QList<EContato>();
         UsuarioController::_usuario_logado = EUsuario();
     }
 };

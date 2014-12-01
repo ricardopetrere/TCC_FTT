@@ -13,18 +13,20 @@ class WindowMensagens : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit WindowMensagens(QWidget *parent = 0);
+
     ~WindowMensagens();
-    explicit WindowMensagens(EContato contato_destino,QWidget *parent=0);
+    explicit WindowMensagens(EConversa* conversa,QWidget *parent=0);
     void lerMensagens();
+    bool enviarMensagemParaServidor(EMensagem m);
 private slots:
     void on_btnEnviar_clicked();
 
     void on_listMensagens_customContextMenuRequested(const QPoint &pos);
 
 private:
+    explicit WindowMensagens(QWidget *parent = 0);
     Ui::WindowMensagens *ui;
-    EContato _contato_destino;
+    EConversa* _conversa;
     QColor cor_EntregaPendente = QColor::fromRgb(250,250,150);
     QColor cor_Enviado = QColor::fromRgb(180,180,255);
     QColor cor_RecebidoNoDestino = QColor::fromRgb(178,248,157);

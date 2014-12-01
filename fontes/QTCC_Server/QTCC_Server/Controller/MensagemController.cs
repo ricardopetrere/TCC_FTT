@@ -54,19 +54,19 @@ namespace QTCC_Server.Controller
             throw new NotImplementedException();
         }
 
-        internal List<Mensagem> ReceberNovasMensagens(int cont_id)
+        public List<Mensagem> ReceberNovasMensagens(int cont_id)
         {
-            throw new NotImplementedException();
+            return MensagemDAO.ReceberNovasMensagens(cont_id);
         }
 
-        internal string EnviarNovaMensagem(Mensagem mensagem)
+        public string EnviarNovaMensagem(Mensagem mensagem)
         {
-            throw new NotImplementedException();
+            return MensagemDAO.EnviarNovaMensagem(mensagem);
         }
 
-        internal string StatusMensagem(int p)
+        public int StatusMensagem(Mensagem m)
         {
-            throw new NotImplementedException();
+            return MensagemDAO.StatusMensagem(m);
         }
     }
 }

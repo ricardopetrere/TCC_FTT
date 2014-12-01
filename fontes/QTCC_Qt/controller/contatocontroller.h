@@ -33,7 +33,7 @@ public:
     static QList<EContato> lerContatosUsuario_JSON(const int &cont_id)
     {
         QList<EContato> retorno;
-        QJsonDocument load(QJsonDocument::fromJson(InteracaoArquivo::lerArquivo("/"+QString::number(cont_id) + "_contatos.json")));
+        QJsonDocument load(QJsonDocument::fromJson(InteracaoArquivo::lerArquivo(QString::number(cont_id) + "_contatos.json")));
         QJsonObject conteudo_json = load.object();
         QJsonArray json_contatos(conteudo_json["Contatos"].toArray());
         for (int contatoIndex = 0; contatoIndex < json_contatos.size(); ++contatoIndex)
@@ -52,7 +52,7 @@ public:
         QJsonObject json_arquivo;
         json_arquivo["Contatos"] = json_contatos;
         QJsonDocument save(json_arquivo);
-        InteracaoArquivo::gravarArquivo("/"+QString::number(cont_id) + "_contatos.json",save.toJson());
+        InteracaoArquivo::gravarArquivo(QString::number(cont_id) + "_contatos.json",save.toJson());
     }
 };
 

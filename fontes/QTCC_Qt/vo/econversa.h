@@ -12,10 +12,11 @@ class EConversa
 {
 public:
     EConversa();
+    EConversa* operator*(){return this;}
     void setContato(EContato &contato);
     EContato contato();
-    void setMensagens(QList<EMensagem> &mensagens);
-    QList<EMensagem> mensagens();
+    void setMensagens(QList<EMensagem>* mensagens);
+    QList<EMensagem>* mensagens();
 
     static QJsonObject Serializar(EConversa &c);
     static EConversa Deserializar(QJsonObject &json);
@@ -28,7 +29,7 @@ public:
 
 protected:
     EContato _contato;
-    QList<EMensagem> _mensagens;
+    QList<EMensagem>* _mensagens;
 };
 
 #endif // ECONVERSA_H

@@ -71,6 +71,7 @@
     <Compile Include="Controller\RequisicaoLoginController.cs" />
     <Compile Include="Controller\UsuarioController.cs" />
     <Compile Include="DAO\ContatoDAO.cs" />
+    <Compile Include="DAO\MensagemDAO.cs" />
     <Compile Include="DAO\RequisicaoLoginDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Util\ComunicacaoController.cs" />

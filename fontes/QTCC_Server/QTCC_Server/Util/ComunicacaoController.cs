@@ -43,7 +43,7 @@ namespace QTCC_Server.Util
                             retorno = new ContatoController().StatusContato(Convert.ToInt32(dados_pacote[1]));
                             break;
                         case CONSTANTES.TiposPacotesDadosEnum.StatusMensagem:
-                            retorno = new MensagemController().StatusMensagem(Convert.ToInt32(dados_pacote[1]));
+                            retorno = new MensagemController().StatusMensagem(JSON_Logic.Deserializa<Mensagem>(dados_pacote[1])).ToString();
                             break;
                         case CONSTANTES.TiposPacotesDadosEnum.NovoCadastro:
                             retorno = new UsuarioController().NovoCadastro(JSON_Logic.Deserializa<Usuario>(dados_pacote[1]));

@@ -23,7 +23,7 @@ WindowContatos::~WindowContatos()
 void WindowContatos::on_listContatos_itemClicked(QListWidgetItem *item)
 {
     Logger::debug(item->text(), " Clicado.");
-    WindowMensagens *m = new WindowMensagens(this);
+    WindowMensagens *m = new WindowMensagens(ConversaController::defineConversaSelecionada(item->text()),this);
     m->setWindowModality(Qt::WindowModal);
     m->show();
     m->setWindowTitle(item->text());

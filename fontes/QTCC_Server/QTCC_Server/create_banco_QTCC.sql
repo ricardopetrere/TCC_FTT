@@ -51,7 +51,7 @@ create table tmpMensagensPendentes
 	,msg_usu_ori int not null		--Usuário que enviou a mensagem
 	,msg_dta_envio datetime	not null--Data de envio da mensagem (data que a mensagem foi recebida pelo servidor)
 	,msg_texto image not null		--Bytes da mensagem a ser enviada (texto, mídia)
-	,msg_tamanho int				--Tamanho da mídia (para imagem, áudio, vídeo)
+	--,msg_tamanho int				--Tamanho da mídia (para imagem, áudio, vídeo)
 )
 alter table tmpMensagensPendentes add constraint PK_MensagensPendentes primary key (cont_id,msg_usu_ori,msg_dta_envio)
 alter table tmpMensagensPendentes add constraint FK_MensagensPendentes_Contato foreign key (cont_id) references tbContato (cont_id)
@@ -76,6 +76,7 @@ go
 --	,msg_cont_de_deletou bit not null
 --	,msg_cont_para_deletou bit not null
 --)
+
 ---------------------------------------------------------------
 --------------------Stored Procedures--------------------------
 ---------------------------------------------------------------
@@ -144,5 +145,66 @@ begin
 		rollback transaction;
 		throw 51000,'Falha na inserção do contato',1
 	end catch
+end
+go
+
+if exists (select * from sys.procedures where name = 'spInsereMensagem' and is_ms_shipped=0)
+	drop procedure spInsereMensagem
+go
+
+-- =============================================
+-- Author:		Ricardo Petrére
+-- Create date: 30/11/2014
+-- Description:	Procedure responsável por inserir
+-- uma nova mensagem banco de dados.
+-- =============================================
+create procedure spInsereMensagem
+(
+	 @Cont_Id int
+	,@Msg_Usu_Ori int
+	,@Msg_Dta_Envio datetime
+	,@Msg_Texto image
+)
+as
+begin
+	begin transaction
+	--Verifica se o contato de destino é um grupo.
+	if exists (select cont_id from tbGrupo where cont_id = @Cont_Id)
+		begin
+		--Se não for membro do grupo, não tem porque poder enviar mensagem. Lança erro
+		if not exists (select lst_id from tbListaContatos where cont_id = @Cont_Id and lst_id = @Msg_Usu_Ori)
+		begin;
+			throw 51000,'Usuário não é membro do grupo',1
+		end
+		begin try
+			--Se for membro, envia a mensagem para todos os membros do grupo (exceto a si mesmo) passando como remetente o grupo
+			declare @lst_id int
+			declare cursor_MembrosGrupo scroll cursor for select lst_id from tbListaContatos where cont_id = @Cont_Id and lst_id <> @Msg_Usu_Ori
+			open cursor_MembrosGrupo
+			fetch next from cursor_MembrosGrupo into @lst_id
+			while(@@FETCH_STATUS=0)
+			begin
+				insert into tmpMensagensPendentes(cont_id,msg_usu_ori,msg_dta_envio,msg_texto)values(@lst_id,@Cont_Id,@Msg_Dta_Envio,@Msg_Texto)
+				fetch next from cursor_MembrosGrupo into @lst_id
+			end
+			close cursor_MembrosGrupo
+			deallocate cursor_MembrosGrupo
+		end try
+		begin catch
+			rollback transaction;
+			throw 51000,'Falha no envio da mensagem',1
+		end catch
+	end
+	else
+	begin
+		begin try
+			insert into tmpMensagensPendentes(cont_id,msg_usu_ori,msg_dta_envio,msg_texto)values(@Cont_Id,@Msg_Usu_Ori,@Msg_Dta_Envio,@Msg_Texto)
+		end try
+		begin catch
+			rollback transaction;
+			throw 51000,'Falha no envio da mensagem',1
+		end catch
+	end
+	commit transaction
 end
 go
