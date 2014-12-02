@@ -5,6 +5,7 @@
 #include <controller/basecontroller.h>
 #include <vo/emensagem.h>
 #include <vo/constantes.h>
+#include <controller/usuariocontroller.h>
 
 class MensagemController
 {
@@ -14,6 +15,10 @@ public:
         ComunicacaoRede comm;
         QString recebido = comm.enviaPacote("EnviarNovaMensagem|"+QString(QJsonDocument(EMensagem::Serializar(m)).toJson()));
         return !(recebido.isEmpty() && recebido==NULL);
+    }
+    static QList<EMensagem> ReceberNovasMensagens()
+    {
+        return ReceberNovasMensagens(UsuarioController::_usuario_logado.Id());
     }
 
     static QList<EMensagem> ReceberNovasMensagens(int cont_id)

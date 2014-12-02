@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QListWidgetItem>
+#include <controller/lermensagenscontroller.h>
 
 namespace Ui {
 class WindowConversas;
@@ -26,8 +27,10 @@ private slots:
 
     void on_listConversas_customContextMenuRequested(const QPoint &pos);
 
+    void receberNovasMensagens();
 private:
     Ui::WindowConversas *ui;
+    LerMensagensController *l;
 };
 
 #endif // WINDOWCONVERSAS_H

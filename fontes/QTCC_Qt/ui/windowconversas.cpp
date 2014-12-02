@@ -3,6 +3,7 @@
 #include "windowmensagens.h"
 #include "windowcontatos.h"
 #include "dialoglogin.h"
+#include <QThread>
 
 #include <util/logger.h>
 
@@ -16,6 +17,7 @@ WindowConversas::WindowConversas(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->listConversas->clear();
+    l = new LerMensagensController(this);
     carregaDadosUsuario();
 }
 
@@ -46,6 +48,8 @@ void WindowConversas::on_actionLogout_triggered()
     Logger::debug("Login/Logout.");
     if(UsuarioController::estaLogado())
     {
+        if(!l->workerThread.isFinished())
+            l->workerThread.quit();
         ui->actionNova_Conversa->setEnabled(false);
         ui->listConversas->clear();
         ConversaController::_usuario_conversas = new QList<EConversa>();
@@ -62,17 +66,29 @@ void WindowConversas::on_listConversas_customContextMenuRequested(const QPoint &
         Logger::debug(windowTitle()," contextMenu");
 }
 
+void WindowConversas::receberNovasMensagens()
+{
+    *ConversaController::_usuario_conversas = ConversaController::lerConversasUsuarioLogado();
+    emit l->operate("");
+    foreach (EConversa conversa, *ConversaController::_usuario_conversas)
+    {
+        ui->listConversas->addItem(conversa.contato().Nome());
+    }
+}
+
 void WindowConversas::carregaDadosUsuario()
 {
     DialogLogin::validaLogin(true,0);
     if(UsuarioController::estaLogado())
     {
+        if(!l->workerThread.isRunning())
+        {
+            delete l;
+            l = new LerMensagensController(this);
+//            l->workerThread.start();
+        }
         ui->actionNova_Conversa->setEnabled(true);
         UsuarioController::lerContatosUsuarioLogado();
-        *ConversaController::_usuario_conversas = ConversaController::lerConversasUsuarioLogado();
-        foreach (EConversa conversa, *ConversaController::_usuario_conversas)
-        {
-            ui->listConversas->addItem(conversa.contato().Nome());
-        }
+        receberNovasMensagens();
     }
 }

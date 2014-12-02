@@ -1,9 +1,9 @@
 #include "windowmensagens.h"
 #include "ui_windowmensagens.h"
-#include <QThread>
 
 #include <util/logger.h>
 #include <controller/mensagemcontroller.h>
+#include <controller/lermensagenscontroller.h>
 
 WindowMensagens::WindowMensagens(QWidget *parent) :
     QMainWindow(parent),
@@ -100,9 +100,6 @@ void WindowMensagens::on_btnEnviar_clicked()
     mensagens->append(m);
     _conversa->setMensagens(mensagens);
     ConversaController::salvarConversasUsuarioLogado();
-//    QThread t(this);
-//    t.setEventDispatcher(enviarMensagemParaServidor(m));
-//    t.start();
 }
 bool WindowMensagens::enviarMensagemParaServidor(EMensagem m)
 {

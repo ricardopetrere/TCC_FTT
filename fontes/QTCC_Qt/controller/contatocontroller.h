@@ -23,12 +23,12 @@ public:
         return e;
     }
 
-    static QList<EContato> lerContatosUsuario_Rede(const int &cont_id)
-    {
-        QList<EContato> retorno;
+//    static QList<EContato> lerContatosUsuario_Rede(const int &cont_id)
+//    {
+//        QList<EContato> retorno;
 
-        return retorno;
-    }
+//        return retorno;
+//    }
 
     static QList<EContato> lerContatosUsuario_JSON(const int &cont_id)
     {

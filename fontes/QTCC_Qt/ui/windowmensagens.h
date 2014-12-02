@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <controller/conversacontroller.h>
+#include <QThread>
 
 namespace Ui {
 class WindowMensagens;
@@ -24,6 +25,7 @@ private slots:
     void on_listMensagens_customContextMenuRequested(const QPoint &pos);
 
 private:
+    QThread receberMensagensThread;
     explicit WindowMensagens(QWidget *parent = 0);
     Ui::WindowMensagens *ui;
     EConversa* _conversa;

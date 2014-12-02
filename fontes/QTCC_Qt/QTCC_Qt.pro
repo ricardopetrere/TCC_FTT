@@ -33,7 +33,11 @@ SOURCES += main.cpp \
     controller/contatocontroller.cpp \
     controller/basecontroller.cpp \
     ui/dialogbuscacontato.cpp \
-    vo/eusuarioadicionado.cpp
+    vo/eusuarioadicionado.cpp \
+    controller/enviamensagemworker.cpp \
+    controller/enviamensagemcontroller.cpp \
+    controller/lermensagensworker.cpp \
+    controller/lermensagenscontroller.cpp
 
 HEADERS  += \
     controller/mensagemcontroller.h \
@@ -58,7 +62,11 @@ HEADERS  += \
     controller/basecontroller.h \
     util/interacaoarquivo.h \
     ui/dialogbuscacontato.h \
-    vo/eusuarioadicionado.h
+    vo/eusuarioadicionado.h \
+    controller/enviamensagemworker.h \
+    controller/enviamensagemcontroller.h \
+    controller/lermensagensworker.h \
+    controller/lermensagenscontroller.h
 
 FORMS    += \
     ui/dialoglogin.ui \

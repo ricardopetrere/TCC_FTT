@@ -97,14 +97,15 @@ namespace QTCC_Server
         }
         String DeterminarTempoOnline(DateTime dta_visto_ultimo)
         {
-            TimeSpan diferenca_tempo = DateTime.Now.Subtract(dta_visto_ultimo);
+            DateTime agora = DateTime.Now;
+            TimeSpan diferenca_tempo = agora.Subtract(dta_visto_ultimo);
             if (diferenca_tempo.TotalMinutes < 1)
                 return "Online";
             else if (diferenca_tempo.TotalMinutes < 60)
                 return "Há " + ((int)diferenca_tempo.TotalMinutes).ToString() + " minutos";
-            else if (diferenca_tempo.TotalDays < 1)
+            else if (dta_visto_ultimo.Subtract(agora.Date).TotalDays >= 0)
                 return "Hoje às " + dta_visto_ultimo.ToString("HH:mm");
-            else if (diferenca_tempo.TotalDays < 2)
+            else if (dta_visto_ultimo.Subtract(agora.Date).TotalDays < 0)
                 return "Ontem às " + dta_visto_ultimo.ToString("HH:mm");
             else if (dta_visto_ultimo == DateTime.MinValue)
                 return "Nunca";
