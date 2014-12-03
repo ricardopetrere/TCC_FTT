@@ -50,12 +50,13 @@ void WindowMensagens::lerMensagens()
                         itm_Mensagem->setBackgroundColor(cor_EntregaPendente);
                         break;
                     }
+                    itm_Mensagem->setTextAlignment(Qt::AlignRight);
                 }
                 else
                 {
                     itm_Mensagem->setBackgroundColor(cor_Recebido);
+                    itm_Mensagem->setTextAlignment(Qt::AlignLeft);
                 }
-                itm_Mensagem->setTextAlignment(Qt::AlignRight);
                 itm_Mensagem->setFont(QFont("Segoe UI",12));
                 ui->listMensagens->addItem(itm_Mensagem);
             }

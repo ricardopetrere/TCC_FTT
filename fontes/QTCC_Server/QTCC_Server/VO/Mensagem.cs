@@ -106,7 +106,7 @@ namespace QTCC_Server.VO
         {
             get
             {
-                return Status_Envio.ToString();
+                return ((int)Status_Envio).ToString();
             }
             set
             {
@@ -130,7 +130,7 @@ namespace QTCC_Server.VO
         {
             get
             {
-                return Tipo_Mensagem.ToString();
+                return ((int)Tipo_Mensagem).ToString();
             }
             set
             {
@@ -152,7 +152,11 @@ namespace QTCC_Server.VO
         [DataMember(Name = Campos.Dados)]
         String Dados_String
         {
-            get { return Encoding.Default.GetString(Dados); }
+            get 
+            {
+                String retorno = Encoding.Default.GetString(Dados);
+                return retorno;
+            }
             set
             {
                 this.Dados = Encoding.Default.GetBytes(value);

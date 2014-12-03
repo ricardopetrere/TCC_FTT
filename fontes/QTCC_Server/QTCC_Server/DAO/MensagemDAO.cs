@@ -17,7 +17,7 @@ namespace QTCC_Server.DAO
             retorno.Contato_De = ContatoDAO.BuscaContato(Convert.ToInt32(registro["msg_usu_ori"]));
             retorno.Contato_Para = ContatoDAO.BuscaContato(Convert.ToInt32(registro["cont_id"]));
             retorno.Data_Envio = Convert.ToDateTime(registro["msg_dta_envio"]);
-            retorno.Dados = Encoding.Default.GetBytes(registro["msg_texto"].ToString());
+            retorno.Dados = (byte[])registro["msg_texto"];//Encoding.Default.GetBytes(registro["msg_texto"].ToString());
             retorno.Status_Envio = CONSTANTES.StatusEnvioEnum.EnviadoAoServidor;
             //A princípio fica assim.
             retorno.Tipo_Mensagem = CONSTANTES.TipoMensagemEnum.Texto;
