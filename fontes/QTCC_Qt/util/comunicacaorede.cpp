@@ -7,12 +7,15 @@ ComunicacaoRede::ComunicacaoRede(QObject *parent) :
 
 }
 
+//Envia o pacote recebido via rede, e retorna o que foi recebido
 QString ComunicacaoRede::enviaPacote(QString pacote)
 {
     socket = new QTcpSocket(this);
+    //Entra em loop até conseguir se conectar com o servidor
     while(!(socket->state()==QAbstractSocket::ConnectedState))
     {
         socket->connectToHost("localhost",5500);
+        //Caso não consiga, lançar log de erro
         while(!socket->waitForConnected(10000))
         {
             Logger::debug("não conseguiu");
@@ -20,14 +23,17 @@ QString ComunicacaoRede::enviaPacote(QString pacote)
     }
     QString retorno;
     socket->write(pacote.toLatin1());
-//    socket->flush();
+    //Espera indefinidamente até que se envie todo o pacote
     socket->waitForBytesWritten(-1);
+    //Este método libera o socket para receber a resposta do servidor
     socket->flush();
-    //while(!socket->bytesAvailable()>0)
+    //Entra em loop até receber todo o pacote de retorno
     while (socket->waitForReadyRead(-1))
     {
+        //Incrementar a variável de retorno com o que foi lido até então
         retorno += QString(socket->readAll());
     }
+    //Se o pacote indicar que ocorreu erro no envio, retornar nada
     if(retorno.startsWith("Falha: "))
         return "";
     else
