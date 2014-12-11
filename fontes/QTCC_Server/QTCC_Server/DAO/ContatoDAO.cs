@@ -48,20 +48,30 @@ namespace QTCC_Server.DAO
             return retorno;
         }
 
+        /// <summary>
+        /// Método responsável por adicionar um contato à lista de contatos de outro contato
+        /// </summary>
+        /// <param name="cont_id">Contato que irá adicionar um contato à lista (Usuário ou grupo)</param>
+        /// <param name="lst_id">Contato a ser adicionado à lista (Usuário ou Grupo)</param>
+        /// <returns>Se a inserção do contato à lista de contatos foi concluída com sucesso</returns>
         public static bool AdicionaContatoListaContatos(int cont_id, int lst_id)
         {
             bool retorno = false;
+            //Inicializa a conexão com base na Connection String utilizada na aplicação inteira
             SqlConnection c = BD_SQL.Connection;
             try
             {
                 c.Open();
+                //Construção de um comando SQL parametrizado. Previne contra SQL Injection
                 SqlCommand cmd = new SqlCommand("insert into tbListaContatos(cont_id,lst_id)values(@Cont_Id,@Lst_Id)",c);
                 cmd.Parameters.AddWithValue("@Cont_Id", cont_id);
                 cmd.Parameters.AddWithValue("@Lst_Id", lst_id);
+                //Retorna se a quantidade de registros afetados (inseridos, no caso) foi maior que zero
                 retorno = BD_SQL.ExecutaSQL(cmd) > 0;
             }
             finally
             {
+                //Fecha a conexão
                 c.Close();
             }
             return retorno;

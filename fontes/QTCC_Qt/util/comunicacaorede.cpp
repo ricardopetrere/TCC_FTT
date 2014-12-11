@@ -14,7 +14,7 @@ QString ComunicacaoRede::enviaPacote(QString pacote)
     //Entra em loop até conseguir se conectar com o servidor
     while(!(socket->state()==QAbstractSocket::ConnectedState))
     {
-        socket->connectToHost("localhost",5500);
+        socket->connectToHost("192.168.1.34",5500);
         //Caso não consiga, lançar log de erro
         while(!socket->waitForConnected(10000))
         {

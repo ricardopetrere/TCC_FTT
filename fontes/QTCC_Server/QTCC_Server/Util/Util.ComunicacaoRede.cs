@@ -81,15 +81,21 @@ namespace QTCC_Server.Util
                 client.Close();
             }
         }
+        /// <summary>
+        /// Método responsável por iniciar a escuta da porta TCP
+        /// </summary>
         public static void IniciarServidor()
         {
+            //Inicializa a Thread que irá escutar a porta TCP, com o método responsável
             Thread tEscutaClientes = new Thread(new ThreadStart(EscutaClientes));
+            //Necessário para que a Thread seja eliminada junto com a aplicação
             tEscutaClientes.IsBackground = true;
+            //Inicia a execução da Thread
             tEscutaClientes.Start();
         }
         private static void EscutaClientes()
         {
-            listener = new TcpListener(IPAddress.Loopback, porta_tcp);
+            listener = new TcpListener(IPAddress.Parse("192.168.1.34"), porta_tcp);
             listener.Start();
             esta_escutando_porta = true;
             while (true && Esta_Escutando_Porta)

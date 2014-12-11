@@ -105,7 +105,7 @@ namespace QTCC_Server
                 return "Há " + ((int)diferenca_tempo.TotalMinutes).ToString() + " minutos";
             else if (dta_visto_ultimo.Subtract(agora.Date).TotalDays >= 0)
                 return "Hoje às " + dta_visto_ultimo.ToString("HH:mm");
-            else if (dta_visto_ultimo.Subtract(agora.Date).TotalDays < 0)
+            else if (dta_visto_ultimo.Subtract(agora.Date).TotalDays > -1)
                 return "Ontem às " + dta_visto_ultimo.ToString("HH:mm");
             else if (dta_visto_ultimo == DateTime.MinValue)
                 return "Nunca";

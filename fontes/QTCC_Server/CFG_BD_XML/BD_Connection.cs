@@ -116,14 +116,18 @@ namespace CFG_BD_XML
         /// <param name="connection">A Connection String na forma de objeto do tipo BD_Connection</param>
         public static void CriarBDXML(BD_Connection connection)
         {
+            //Inicializa o serializador XML com base no tipo do objeto "connection"
             XmlSerializer writer = new XmlSerializer(connection.GetType());
+            //Inicializa o objeto responsável por gravar o arquivo "BD.XML"
             StreamWriter arquivo = new StreamWriter(NomeArquivo);
             try
             {
+                //Serializa a Connection String em XML
                 writer.Serialize(arquivo, connection);
             }
             finally
             {
+                //Fecha o buffer de "arquivo"
                 arquivo.Close();
             }
         }

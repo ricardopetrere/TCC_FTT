@@ -17,17 +17,23 @@ namespace QTCC_Server.Util
         //    {
         //    }
         //}
-
+        /// <summary>
+        /// Trata o pacote recebido via rede, redirecionando-o para o método correspondente
+        /// </summary>
+        /// <param name="pacote_recebido">O pacote recebido, no esquema (Identificador|dados)</param>
+        /// <returns>A resposta do servidor</returns>
         public static String TrataPacote(string pacote_recebido)
         {
             String retorno = "";
+            //Separa o pacote, entre identificador (OP Code) e dados
             string[] dados_pacote = pacote_recebido.ToString().Split('|');
+            //Tenta converter a primeira parte do pacote para o enumerador de identificadores
             CONSTANTES.TiposPacotesDadosEnum TipoPacote;
             if (Enum.TryParse(dados_pacote[0], out TipoPacote))
             {
                 try
                 {
-                    //OPCode
+                    //Verifica o OP Code passado no pacote
                     switch (TipoPacote)
                     {
                         case CONSTANTES.TiposPacotesDadosEnum.RequisicaoLogin:
@@ -63,7 +69,7 @@ namespace QTCC_Server.Util
                         case CONSTANTES.TiposPacotesDadosEnum.BuscaContato:
                             retorno = JSON_Logic.Serializa<Contato>(new ContatoController().Busca(Convert.ToInt32(dados_pacote[1])));
                             break;
-                        default:
+                        default://Se o OP Code não estiver listado acima, está errado
                             throw new NotImplementedException();
                     }
                     return retorno;
@@ -73,7 +79,7 @@ namespace QTCC_Server.Util
                     return ex.Message;
                 }
             }
-            else
+            else//Se não conseguiu encontrar um OP Code da primeira parte do pacote, lança exceção
             {
                 throw new InvalidCastException();
             }
