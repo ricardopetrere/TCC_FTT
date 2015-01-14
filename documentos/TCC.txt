@@ -1,0 +1,72 @@
+Pag 15 - Introdução
+- Tem o conceito de multiplaforma no rodapé, mas
+o conceito de plataformas só aparece na pag 17
+item 1.4 Metodologia
+
+final pag 16 e pag 17 - Justificativa
+"Portanto, o atual estudo visa verificar a utilidade e
+viabilidade em utilizá-la para uma simples aplicação
+cliente-servidor com comunicação TCP."
+
+pag 19 - História do Qt
+- Insituto Norueguês de Tecnologia 
+(Norwegian Institute of Technology - Italico?)
+- escreva uma vez, compile em qualquer lugar?
+
+pag 20 - 4ª linha
+- "Em 1993 eles haviam desenvolvido o primeiro Kernel
+ gráfico do framework Qt..."
+O que é um kernel grafico?
+
+pag 26 - Sinais e Slots
+O que é "widget"
+Definição apenas na pagina 31
+
+pag 32 - KDE
+Trolltech criadora do Framework Qt?
+mencionada pela primeira vez
+Haavard Nord e Eirik Chambe-Eng
+
+pag 33 - QML
+"cross-platform" - vide multiplataforma na página 15.
+
+pag 39 - Alternativas ao Qt
+- seguir um padrão de "comparação"?
+mono tem "beneficios" e java tem "histórico"
+
+pag 43 - IDEs
+4ª linha: "Como citado anteriormente, o plugin do Xamarin
+para a IDE Visual Studio da Microsoft fornece suporte ao
+desenvolvimento de tais aplicações, desde que possa se
+conectar à uma máquina com o Mac OS X instalado via rede."
+desnecessário?
+
+pag 51 - Sistemas operacionais suportados
+5ª linha - "Para o último, o suporte é prestado para o Playstation 3 rodando Linux."
+
+pag 55 - Vantagens e desvantagens
+Mesclar beneficios do mono com vatangens e desvantagens?
+
+---> correções
+pag 66 - Estudo de caso
+"O (objetivo do) estudo de caso deste trabalho foi demonstrar a 
+praticidade, funcionalidade e viabilidade do desenvolvimento 
+multiplataforma ao desenvolver um protótipo de troca de 
+mensagens utilizando o framework Qt"
+
+pag 73 - Interface da aplicação
+"Quando a aplicação cliente é executada em ambientes desktop, a exibição ocorreu normalmente"
+arrumar o tempo "...é executada..." e "...exibição ocorreu..."
+
+pag 78 - QJasonObject
+"identificador alfanumérico da desta", escrito errado?
+<--
+
+pag 79 - Envio pela rede
+Pequena explicação sobre o TCP?
+
+pag "80" - Quadros com código
+Poderiam ter comentários, em compensação o quadro 2 tem
+comentarios desnecessários?
+
+testado em linux?
