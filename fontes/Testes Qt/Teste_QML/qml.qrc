@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>conversas.qml</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>images/ouster.png</file>
+        <file>images/qtcreator.png</file>
+    </qresource>
+</RCC>

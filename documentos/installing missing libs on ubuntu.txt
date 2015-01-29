@@ -1,0 +1,13 @@
+Install g++
+Open a terminal and execute the following command to install g++:
+sudo apt-get install build-essential
+Configure a compiler
+Launch Qt Creator. Go to Tools > Options. Click Build & Run and select tab Kit. Configure a compiler if it is not automatically detected.
+
+Install OpenGL libraries
+Execute the following command to install OpenGL libraries:
+sudo apt-get install mesa-common-dev
+Note: Just installing the above-mentioned mesa-common-dev kit is not sufficient for more recent Ubuntu versions. Based on this comment in the forum [qt-project.org] an additional package needs installation. Execute following command:
+sudo apt-get install libglu1-mesa-dev -y
+
+Tested with Qt5.3.1 and Ubuntu 14.04 and it solved the problem with missing -lGL.
